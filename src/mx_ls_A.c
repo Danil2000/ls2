@@ -14,6 +14,7 @@ static char **write_to_arr_A(DIR *dir,char **s) {
 	s[i] =0;
 	return s;
 }
+
 void mx_ls_A(DIR *dir, char **argv) {
 	DIR *dir1;
 	t_ls *ls = NULL;
@@ -26,5 +27,4 @@ void mx_ls_A(DIR *dir, char **argv) {
 	ls->hres = mx_count_for_print(ls->s);
 	ls->count = mx_uls_len_name(ls->hres);
 	mx_ls_print(ls->s, ls->count, ls->size_dir);
-	//free(ls->s);
 }
