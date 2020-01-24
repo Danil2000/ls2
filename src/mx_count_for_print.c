@@ -33,6 +33,6 @@ int mx_count_for_print(char **s) {
             loc = c;
     int res = lens[loc];
      
-    free(lens);
+    //free(lens);
     return res;
 }
