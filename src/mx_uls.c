@@ -13,7 +13,7 @@ static void mx_choose_flag(char *arg, char **args, DIR *dir) {
 		mx_ls_A(dir, args);
 }
 
-int main(int argc, char **argv) {
+static void choose_wf_d(char **argv) {
 	DIR *dir;
 	//mx_printstr("\x1b[34mTest\x1b[0m");
 	if (argc == 1) 	{
@@ -27,6 +27,7 @@ int main(int argc, char **argv) {
 		mx_ls_wf(dir, argv);
 		return 0;
 	}
+	choose_wf_d(argv);
 	dir = opendir(argv[2]);
 	mx_check_dir(dir, argv);
 	mx_choose_flag(argv[1], argv, dir);

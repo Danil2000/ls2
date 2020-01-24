@@ -14,6 +14,7 @@ static char **write_to_arr_A(DIR *dir,char **s) {
 	s[i] =0;
 	return s;
 }
+
 void mx_ls_A(DIR *dir, char **argv) {
 	DIR *dir1;
 	t_ls *ls = NULL;

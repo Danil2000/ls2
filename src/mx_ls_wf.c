@@ -1,6 +1,6 @@
 #include "uls.h"
 
-static char** write_to_arr(DIR *dir, char **s) {
+char** write_to_arr(DIR *dir, char **s) {
 	int i = 0;
 	struct dirent *entry;
 
@@ -11,7 +11,7 @@ static char** write_to_arr(DIR *dir, char **s) {
 					i++;
 		}	
 	}
-	s[i] = 0;
+	s[i] = NULL;
 	return s;
 }
 
