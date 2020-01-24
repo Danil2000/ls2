@@ -7,7 +7,6 @@ static char** write_to_arr(DIR *dir, char **s) {
 	while ((entry = readdir(dir)) != NULL) {
 		if (entry->d_name[0] != '.')
 		{
-				
 					s[i] = entry->d_name;
 					i++;
 		}	
@@ -28,4 +27,5 @@ void mx_ls_wf(DIR *dir, char **argv) {
 	ls->hres = mx_count_for_print(ls->s);
 	ls->count = mx_uls_len_name(ls->hres);
 	mx_ls_print(ls->s, ls->count, ls->size_dir);
+	//free(ls);
 }

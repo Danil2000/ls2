@@ -12,7 +12,7 @@ static void mx_choose_flag(char *arg, char **args, DIR *dir) {
 	else if (!mx_strcmp(arg, "-a"))
 		mx_lsa(dir);
 	else if (!mx_strcmp(arg, "-A"))
-		mx_ls_A(dir);
+		mx_ls_A(dir, args);
 }
 
 int main(int argc, char **argv) {
@@ -29,9 +29,9 @@ int main(int argc, char **argv) {
 		dir = opendir(argv[1]);
 		mx_check_dir(dir, argv[1]);
 		mx_ls_wf(dir, argv);
+		//system("leaks -q uls");
 		return 0;
 	}
-
 	if(mx_strcmp(argv[2], "") == 0) {
 	 	mx_ls_d(argv);
 		return 0;
@@ -41,5 +41,5 @@ int main(int argc, char **argv) {
 	mx_choose_flag(argv[1], argv, dir);
 	mx_printstr(argv[2]);
 	closedir(dir);
-	system("leaks uls");
+	// system("leaks -q uls");
 }
