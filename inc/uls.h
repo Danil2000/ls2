@@ -23,3 +23,11 @@ int mx_count_for_print(char **s);
 int mx_uls_len_name(int a);
 void mx_ls_print(char **s, int count, int size);
 void mx_printspaces(int count, int len);
+
+typedef struct s_ls
+{
+	int size_dir;
+	int hres;
+	int count;
+	char **s;
+} t_ls;
