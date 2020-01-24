@@ -57,7 +57,7 @@ void mx_to_colls(int colls, char **s) {
 			j++;
 			//mx_printint(i);
 			mx_printstr(res[i]);
-			mx_printstr("    ");
+			mx_printstr("		");
 			//mx_printint(z);
 		}
 		// for (j = i; j <= colls; j += r) {

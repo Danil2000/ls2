@@ -5,6 +5,10 @@
 #include <sys/stat.h>
 #include <string.h>
 #include <errno.h>
+#include <sys/ioctl.h>
+#include <sys/stat.h>
+#include <time.h>
+#include <pwd.h>
 
 DIR *dir;
 
@@ -26,3 +30,12 @@ void mx_printspaces(int count, int len);
 void mx_to_colls(int colls, char **s);
 int mx_len_arr(char **s);
 bool mx_check_flags(char argv);
+void mx_get_width(char **s);
+
+    typedef struct s_ls
+{
+    int size_dir;
+    int hres;
+    int count;
+    char **s;
+} t_ls;

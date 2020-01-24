@@ -57,6 +57,7 @@ char *mx_strdup(const char *str);
 char *mx_replace_substr(const char *str, const char *sub, const char *replace);
 int mx_read_line (char **lineptr, int buf_size, char delim, const int fd);
 int mx_strncmp(const char *s1, const char *s2, size_t n);
+void mx_printerr(const char *s);
 
 void *mx_memset(void *b, int c, size_t len);
 void *mx_memcpy(void *restrict dst, const void *restrict src, size_t n);

@@ -25,6 +25,8 @@ void mx_ls_A(DIR *dir, char **argv) {
 	ls->s = write_to_arr_A(dir1, ls->s);
 	ls->hres = mx_count_for_print(ls->s);
 	ls->count = mx_uls_len_name(ls->hres);
-	mx_ls_print(ls->s, ls->count, ls->size_dir);
+
+	mx_get_width(ls->s);
+	//mx_ls_print(ls->s, ls->count, ls->size_dir);
 	//free(ls->s);
 }

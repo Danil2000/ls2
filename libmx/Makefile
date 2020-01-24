@@ -59,7 +59,8 @@ SRC = ./mx_binary_search.c \
     ./mx_swap.c \
     ./mx_mempcpy.c \
     ./mx_digit_count.c \
-    ./mx_strncmp.c
+    ./mx_strncmp.c\
+    ./mx_printerr.c
 
 SRCS = ./src/mx_binary_search.c \
     ./src/mx_memrchr.c \
@@ -119,7 +120,8 @@ SRCS = ./src/mx_binary_search.c \
     ./src/mx_swap.c \
     ./src/mx_mempcpy.c \
     ./src/mx_digit_count.c \
-    ./src/mx_strncmp.c
+    ./src/mx_strncmp.c\
+    ./src/mx_printerr.c
 OBJ = ./mx_binary_search.o \
     ./mx_memrchr.o \
     ./mx_bubble_sort.o \
@@ -178,7 +180,8 @@ OBJ = ./mx_binary_search.o \
     ./mx_swap.o \
     ./mx_mempcpy.o \
     ./mx_digit_count.o \
-    ./mx_strncmp.o
+    ./mx_strncmp.o\
+    ./mx_printerr.o
 OBJO = ./obj/mx_binary_search.o \
     ./obj/mx_memrchr.o \
     ./obj/mx_bubble_sort.o \
@@ -237,7 +240,8 @@ OBJO = ./obj/mx_binary_search.o \
     ./obj/mx_swap.o \
     ./obj/mx_mempcpy.o \
     ./obj/mx_digit_count.o \
-    ./obj/mx_strncmp.o
+    ./obj/mx_strncmp.o\
+    ./obj/mx_printerr.o
 CFLGS = -std=c11 -Wall -Wextra -Wpedantic -Werror 
 all: install uninstall
 install:
