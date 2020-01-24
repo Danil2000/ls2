@@ -7,7 +7,7 @@ int mx_uls_len_name(int a) {
     return max_len;
 }
 
-static int len_arr(char **s) {
+int mx_len_arr(char **s) {
     int i = 0;
 
     while (s[i]) {
@@ -21,8 +21,8 @@ int mx_count_for_print(char **s) {
     int i = 0;
     int loc = 0;
     int size = 0;
-   
-    size = len_arr(s);
+
+    size = mx_len_arr(s);
     lens = malloc(sizeof(int *) * size);
     while(s[i]) {
         lens[i] = mx_strlen(s[i]);

@@ -40,6 +40,7 @@ int main(int argc, char **argv) {
 	mx_check_dir(dir, argv[2]);
 	mx_choose_flag(argv[1], argv, dir);
 	mx_printstr(argv[2]);
-	closedir(dir);
+	void mx_to_colls(int colls, char **s);
+		closedir(dir);
 	system("leaks uls");
 }

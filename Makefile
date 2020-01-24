@@ -24,6 +24,8 @@ SRC =	mx_uls.c\
 		mx_count_for_print.c\
 		mx_ls_print.c\
 		mx_print_spaces.c\
+		mx_to_colls.c\
+		mx_check_flags.c
 
 
 SRCS	=	$(addprefix $(SRCD)/, $(SRC))
