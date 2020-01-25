@@ -1,8 +1,6 @@
 #include "uls.h"
 
-static void mx_choose_flag(char *arg, char **args, DIR *dir) {
-	if (!mx_strcmp(arg, "-F"))
-		mx_ls_F(dir);
+static void choose_flag(char *arg, char **args, DIR *dir) {
 	if (!mx_strcmp(arg, "-R"))
 		mx_ls_R(args[2]);
 	if (!mx_strcmp(arg, "-d"))
@@ -13,6 +11,13 @@ static void mx_choose_flag(char *arg, char **args, DIR *dir) {
 		mx_ls_A(dir, args);
 	if (!mx_strcmp(arg, "-1"))
 		mx_ls_flag_one(dir, args);
+}
+
+static void choose_combination(char *arg, char **args, DIR *dir) {
+	if (!mx_strcmp(arg, "-a1") || !mx_strcmp(arg, "-1a"))
+		mx_ls_a_one(dir, args);
+	if (!mx_strcmp(arg, "-A1") || !mx_strcmp(arg, "-1A"))
+		mx_ls_A_one(dir);
 }
 
 static void choose_wf_d(char **argv) {
@@ -38,11 +43,13 @@ int main(int argc, char **argv) {
 		mx_ls_wd();
 		return 0;
 	}
+
 	mx_check(argc, argv);
 	choose_wf_d(argv);
 	dir = opendir(argv[2]);
 	mx_check_dir(dir, argv);
-	mx_choose_flag(argv[1], argv, dir);
+	choose_combination(argv[1], argv, dir);
+	choose_flag(argv[1], argv, dir);
 	closedir(dir);
 	//system("leaks -q uls");
 }

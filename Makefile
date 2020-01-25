@@ -27,6 +27,8 @@ SRC =	mx_uls.c\
 		mx_check_flags.c\
 		mx_get_width.c\
 		mx_ls_flag_one.c\
+		mx_ls_a_one.c\
+		mx_ls_one_A.c\
 
 
 SRCS	=	$(addprefix $(SRCD)/, $(SRC))
