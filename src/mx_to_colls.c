@@ -17,15 +17,12 @@
 // 	return i;
 // }
 
-void mx_to_colls(int colls, char **s) {
+//используем в ф-ии mx_get_width и потом загоняем все в ф-ю с флагами
+void mx_to_colls(int colls, char **s, int spaces) {
 	char **res = NULL;
-	int i;
-	int j = 0;
 	int len = 0;
 	int r = 0;
-	int z;
-	//int count = 0;
-
+	
 	len = mx_len_arr(s);
 	res = (char**) malloc(len * sizeof(char**));
 	if ((len % colls) == 0) {
@@ -34,51 +31,36 @@ void mx_to_colls(int colls, char **s) {
 	else
 		r = (len / colls) + 1;
 
-	mx_printstr("Строки r: ");
-	mx_printint(r);
-	mx_printchar('\n');
+	// mx_printstr("Строки r: ");
+	// mx_printint(r);
+	// mx_printchar('\n');
 
-	mx_printstr("К-во файлов len: ");
-	mx_printint(len);
-	mx_printchar('\n');
+	// mx_printstr("К-во файлов len: ");
+	// mx_printint(len);
+	// mx_printchar('\n');
 
-	mx_printstr("К-во колонок colls: ");
-	mx_printint(colls);
-	mx_printchar('\n');
+	// mx_printstr("К-во колонок colls: ");
+	// mx_printint(colls);
+	// mx_printchar('\n');
 
-	for (i = 0; i < r; i++) {
-		z = i;
+	for (int i = 0; i < r; i++) {
+		int z = i;
+		int j = 0;
 
-		while (s[z] != NULL)
-		{
-			//int z = 0;
+		while (j < colls) {
+			if (z >= len)
+				break;
 			res[i] = s[z];
+			//mx_printint(z);
+			mx_printstr(res[i]);
+			mx_printspaces(spaces, mx_strlen(s[z]));
 			z += r;
 			j++;
-			//mx_printint(i);
-			mx_printstr(res[i]);
-			mx_printstr("		");
-			//mx_printint(z);
+			
 		}
-		// for (j = i; j <= colls; j += r) {
-		// 	res[i] = s[j];
-		// 	count ++;
-		// 	//mx_printint(j);
-		// 	//mx_printstr(res[i]);
-		// 	mx_printint(count);
-		// 	//mx_printchar('\n');
-		// 	// if (count > len)
-		// 	// 	break;
-		// }
-		//mx_printstr(res[i]);
-		//mx_printchar('\n');
-		//mx_printint(j);
 		mx_printchar('\n');
 		
 	}
-	//res[z] = NULL;
-	// //mx_printchar('\n');
-	// mx_printstr(res[3]);
-	//mx_printint(i);
+	//res[len] = NULL;
 	//return res;
 }

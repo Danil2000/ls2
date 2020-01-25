@@ -27,7 +27,7 @@ void mx_ls_A(DIR *dir, char **argv) {
 	ls->hres = mx_count_for_print(ls->s);
 	ls->count = mx_uls_len_name(ls->hres);
 
-	mx_get_width(ls->s);
+	mx_get_width(ls->s, ls->count); //вывод колонок
 	//mx_ls_print(ls->s, ls->count, ls->size_dir);
 	//free(ls->s);
 }

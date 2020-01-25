@@ -242,7 +242,7 @@ OBJO = ./obj/mx_binary_search.o \
     ./obj/mx_digit_count.o \
     ./obj/mx_strncmp.o\
     ./obj/mx_printerr.o
-CFLGS = -std=c11 -Wall -Wextra -Wpedantic -Werror 
+CFLGS = -std=c11 $(addprefix -W, all extra error pedantic) -g
 all: install uninstall
 install:
 	@cp $(INC) $(SRCS) .
