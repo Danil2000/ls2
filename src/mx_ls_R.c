@@ -8,6 +8,7 @@ void mx_ls_R(char *fn) {
 
 	dir = opendir(fn);
 	files = readdir(dir);
+	free(files);
 	files = readdir(dir);
 	while ((files = readdir(dir)) != NULL) {
 		if (mx_is_dir(files->d_name))
@@ -27,6 +28,5 @@ void mx_ls_R(char *fn) {
 				mx_printstr("       ");
 			}
 		}
-		
 	}
 }

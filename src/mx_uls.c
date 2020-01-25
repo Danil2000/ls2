@@ -11,6 +11,8 @@ static void mx_choose_flag(char *arg, char **args, DIR *dir) {
 		mx_lsa(dir, args);
 	if (!mx_strcmp(arg, "-A"))
 		mx_ls_A(dir, args);
+	if (!mx_strcmp(arg, "-1"))
+		mx_ls_flag_one(dir, args);
 }
 
 static void choose_wf_d(char **argv) {
@@ -42,5 +44,5 @@ int main(int argc, char **argv) {
 	mx_check_dir(dir, argv);
 	mx_choose_flag(argv[1], argv, dir);
 	closedir(dir);
-	// system("leaks -q uls");
+	//system("leaks -q uls");
 }
