@@ -7,8 +7,8 @@ char** mx_write_to_arr(DIR *dir, char **s) {
 	while ((entry = readdir(dir)) != NULL) {
 		if (entry->d_name[0] != '.')
 		{
-					s[i] = entry->d_name;
-					i++;
+			s[i] = entry->d_name;
+			i++;
 		}	
 	}
 	s[i] = NULL;
@@ -26,6 +26,7 @@ void mx_ls_wf(DIR *dir, char **argv) {
 	ls->s = mx_write_to_arr(dir1, ls->s);
 	ls->hres = mx_count_for_print(ls->s);
 	ls->count = mx_uls_len_name(ls->hres);
-	mx_ls_print(ls->s, ls->count, ls->size_dir);
+	//mx_ls_print(ls->s, ls->count, ls->size_dir);
+	mx_get_width(ls->s, ls->count);
 	//free(ls);
 }

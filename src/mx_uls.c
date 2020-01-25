@@ -31,9 +31,9 @@ static void choose_wf_d(char **argv) {
 int main(int argc, char **argv) {
 	DIR *dir;
 
-	if (argc == 1)
-	{
+	if (argc == 1) {
 		mx_ls_wd();
+		system("leaks -q uls");
 		return 0;
 	}
 	mx_check(argc, argv);
@@ -42,5 +42,5 @@ int main(int argc, char **argv) {
 	mx_check_dir(dir, argv);
 	mx_choose_flag(argv[1], argv, dir);
 	closedir(dir);
-	// system("leaks -q uls");
+	system("leaks -q uls");
 }
