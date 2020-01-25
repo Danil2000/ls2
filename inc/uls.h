@@ -31,7 +31,7 @@ void mx_to_colls(int colls, char **s);
 int mx_len_arr(char **s);
 bool mx_check_flags(char argv);
 void mx_get_width(char **s);
-
+char **mx_write_to_arr(DIR *dir, char **s);
     typedef struct s_ls
 {
     int size_dir;

@@ -1,6 +1,6 @@
 #include "uls.h"
 
-char** write_to_arr(DIR *dir, char **s) {
+char** mx_write_to_arr(DIR *dir, char **s) {
 	int i = 0;
 	struct dirent *entry;
 
@@ -23,7 +23,7 @@ void mx_ls_wf(DIR *dir, char **argv) {
 	ls->size_dir = mx_dir_size(dir);
 	dir1 = opendir(argv[1]);
 	ls->s = malloc(sizeof(char *) * ls->size_dir + 1);
-	ls->s = write_to_arr(dir1, ls->s);
+	ls->s = mx_write_to_arr(dir1, ls->s);
 	ls->hres = mx_count_for_print(ls->s);
 	ls->count = mx_uls_len_name(ls->hres);
 	mx_ls_print(ls->s, ls->count, ls->size_dir);
