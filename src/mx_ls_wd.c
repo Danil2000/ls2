@@ -5,6 +5,7 @@ void mx_ls_wd() {
 	DIR *dir1;
 	t_ls *ls;
 	
+	
 	dir = opendir(".");
 	ls = malloc(sizeof(ls));
 	ls->size_dir = mx_dir_size(dir);
