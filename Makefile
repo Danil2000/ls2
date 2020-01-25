@@ -18,7 +18,6 @@ SRC =	mx_uls.c\
 		mx_lsa.c\
 		mx_ls_d.c\
 		mx_ls_wd.c\
-		mx_ls_F.c\
 		mx_dir_size.c\
 		mx_ls_R.c\
 		mx_count_for_print.c\
