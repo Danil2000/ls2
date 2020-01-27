@@ -35,6 +35,7 @@ char **mx_write_to_arr_A(DIR *dir,char **s);
 void mx_ls_flag_one(DIR *dir, char **argv);
 void mx_ls_a_one(DIR *dir, char **argv);
 void mx_ls_A_one(DIR *dir);
+char **mx_write_to_arr_a(DIR *dir,char **s);
 
 typedef struct s_ls
 {

@@ -5,7 +5,6 @@ char **mx_write_to_arr_a(DIR *dir,char **s) {
 	int i =0;
 
 	while ((entry = readdir(dir)) != NULL) {
-
 		s[i] = entry->d_name;
 		i++;
 	}
