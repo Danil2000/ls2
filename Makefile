@@ -18,7 +18,6 @@ SRC =	mx_uls.c\
 		mx_lsa.c\
 		mx_ls_d.c\
 		mx_ls_wd.c\
-		mx_ls_F.c\
 		mx_dir_size.c\
 		mx_ls_R.c\
 		mx_count_for_print.c\
@@ -26,7 +25,10 @@ SRC =	mx_uls.c\
 		mx_print_spaces.c\
 		mx_to_colls.c\
 		mx_check_flags.c\
-		mx_get_width.c
+		mx_get_width.c\
+		mx_ls_flag_one.c\
+		mx_ls_a_one.c\
+		mx_ls_one_A.c\
 
 
 SRCS	=	$(addprefix $(SRCD)/, $(SRC))

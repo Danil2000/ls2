@@ -1,5 +1,15 @@
 #include "uls.h"
 
+bool mx_is_dir(char *fname)
+{
+	struct stat f;
+	stat(fname, &f);
+	if (S_ISDIR(f.st_mode)) {
+        return true;
+    }
+    return false;
+}
+
 void mx_ls_R(char *fn) {
 	DIR *dir;
 	struct dirent *files;
@@ -8,6 +18,7 @@ void mx_ls_R(char *fn) {
 
 	dir = opendir(fn);
 	files = readdir(dir);
+	free(files);
 	files = readdir(dir);
 	while ((files = readdir(dir)) != NULL) {
 		if (mx_is_dir(files->d_name))
@@ -27,6 +38,5 @@ void mx_ls_R(char *fn) {
 				mx_printstr("       ");
 			}
 		}
-		
 	}
 }

@@ -19,7 +19,6 @@ void mx_ls_A(DIR *dir, char **argv);
 void mx_lsa(DIR *dir, char **argv);
 void mx_ls_d(char **argv);
 void mx_ls_wd();
-void mx_ls_F(DIR* dir);
 int mx_dir_size(DIR *dir);
 bool mx_is_dir(char *fname);
 void mx_ls_R(char *fn);
@@ -33,6 +32,13 @@ bool mx_check_flags(char argv);
 void mx_get_width(char **s, int spaces);
 char **mx_write_to_arr(DIR *dir, char **s);
 int mx_len_arr(char **s);
+typedef struct s_ls
+char **mx_write_to_arr_A(DIR *dir,char **s);
+void mx_ls_flag_one(DIR *dir, char **argv);
+void mx_ls_a_one(DIR *dir, char **argv);
+void mx_ls_A_one(DIR *dir);
+char **mx_write_to_arr_a(DIR *dir,char **s);
+
 typedef struct s_ls
 {
     int size_dir;
