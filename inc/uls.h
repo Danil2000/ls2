@@ -38,8 +38,7 @@ void mx_ls_a_one(DIR *dir, char **argv);
 void mx_ls_A_one(DIR *dir);
 char **mx_write_to_arr_a(DIR *dir,char **s);
 
-typedef struct s_ls
-{
+typedef struct s_ls {
     int size_dir;
     int hres;
     int count;
