@@ -32,6 +32,5 @@ int mx_count_for_print(char **s) {
         if (lens[c] > lens[loc])
             loc = c;
     int res = lens[loc];
-    //free(lens);
     return res;
 }
