@@ -36,6 +36,7 @@ int main(int argc, char **argv) {
 		system("leaks -q uls");
 		return 0;
 	}
+	
 	mx_check(argc, argv);
 	choose_wf_d(argv);
 	dir = opendir(argv[2]);
