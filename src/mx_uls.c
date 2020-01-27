@@ -38,8 +38,7 @@ static void choose_wf_d(char **argv) {
 int main(int argc, char **argv) {
 	DIR *dir;
 
-	if (argc == 1)
-	{
+	if (argc == 1) {
 		mx_ls_wd();
 		return 0;
 	}

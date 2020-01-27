@@ -26,11 +26,13 @@ int mx_count_for_print(char **s);
 int mx_uls_len_name(int a);
 void mx_ls_print(char **s, int count, int size);
 void mx_printspaces(int count, int len);
-void mx_to_colls(int colls, char **s);
+void mx_to_colls(int colls, char **s, int spaces);
 int mx_len_arr(char **s);
 bool mx_check_flags(char argv);
-void mx_get_width(char **s);
+void mx_get_width(char **s, int spaces);
 char **mx_write_to_arr(DIR *dir, char **s);
+int mx_len_arr(char **s);
+typedef struct s_ls
 char **mx_write_to_arr_A(DIR *dir,char **s);
 void mx_ls_flag_one(DIR *dir, char **argv);
 void mx_ls_a_one(DIR *dir, char **argv);
