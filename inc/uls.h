@@ -32,7 +32,6 @@ bool mx_check_flags(char argv);
 void mx_get_width(char **s, int spaces);
 char **mx_write_to_arr(DIR *dir, char **s);
 int mx_len_arr(char **s);
-typedef struct s_ls
 char **mx_write_to_arr_A(DIR *dir,char **s);
 void mx_ls_flag_one(DIR *dir, char **argv);
 void mx_ls_a_one(DIR *dir, char **argv);
