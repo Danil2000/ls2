@@ -18,6 +18,7 @@ void mx_get_width(char **s, int spaces) {
 	// else
 	res = (size / mx_uls_len_name(count));
 	//is_need_colls = mx_is_need_colls(s, res);
+	
 	mx_bubble_sort(s, mx_len_arr(s));
 	mx_to_colls(res, s, spaces);
 	// while (ss[i]) {
@@ -25,5 +26,4 @@ void mx_get_width(char **s, int spaces) {
 	// 	i++;
 	// }
 
-	//return res;
 }

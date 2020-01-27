@@ -31,18 +31,6 @@ void mx_to_colls(int colls, char **s, int spaces) {
 	else
 		r = (len / colls) + 1;
 
-	// mx_printstr("Строки r: ");
-	// mx_printint(r);
-	// mx_printchar('\n');
-
-	// mx_printstr("К-во файлов len: ");
-	// mx_printint(len);
-	// mx_printchar('\n');
-
-	// mx_printstr("К-во колонок colls: ");
-	// mx_printint(colls);
-	// mx_printchar('\n');
-
 	for (int i = 0; i < r; i++) {
 		int z = i;
 		int j = 0;
