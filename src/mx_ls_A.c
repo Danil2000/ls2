@@ -8,6 +8,7 @@ char **mx_write_to_arr_A(DIR *dir,char **s) {
 		if (mx_strcmp(entry->d_name , ".") && mx_strcmp(entry->d_name , ".."))
 		{
 			s[i] = entry->d_name;
+			mx_ls_G(s[i]);
 			i++;
 		}
 	}

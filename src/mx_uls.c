@@ -42,12 +42,11 @@ int main(int argc, char **argv) {
 		mx_ls_wd();
 		return 0;
 	}
-	
 	mx_check(argc, argv);
 	choose_wf_d(argv);
 	dir = opendir(argv[2]);
 	mx_check_dir(dir, argv);
 	choose_combination(argv[1], argv, dir);
 	choose_flag(argv[1], argv, dir);
-	system("leaks -q uls");
+	//system("leaks -q uls");
 }

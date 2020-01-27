@@ -20,5 +20,12 @@ static char type_of_file(mode_t mode) {
 }
 
 void mx_ls_G(char *filename) {
-	
+	struct stat *fst;
+	mode_t type;
+	int st = 0;
+	char reztype;
+
+	st = stat(filename, &fst);
+	type = fst.st_mode;
+	char = type_of_file(type);
 }
