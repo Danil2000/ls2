@@ -22,13 +22,13 @@ static char type_of_file(mode_t mode) {
 static void choose_color(char type, char* filename) {
 	char *str;
 	if(type == 'd') {
-		str = mx_strjoin("\x1b[35m", filename);
+		str = mx_strjoin("\x1b[46,35m", filename);
 		str = mx_strjoin(str, "\x1b[0m");
 		mx_printstr(str);
 		mx_printchar('\n');
 	}
 	else if (type == 'l') {
-		str = mx_strjoin("\x1b[35m", filename);
+		str = mx_strjoin("\x1b[34m", filename);
 		str = mx_strjoin(str, "\x1b[0m");
 		mx_printstr(str);
 		mx_printchar('\n');
@@ -40,7 +40,13 @@ static void choose_color(char type, char* filename) {
 		mx_printchar('\n');
 	}
 	else if (type == 'p') {
-		str = mx_strjoin("\x1b[32m", filename);
+		str = mx_strjoin("\x1b[31m", filename);
+		str = mx_strjoin(str, "\x1b[0m");
+		mx_printstr(str);
+		mx_printchar('\n');
+	}
+	else if (type == 'b') {
+		str = mx_strjoin("\x1b[46,31m", filename);
 		str = mx_strjoin(str, "\x1b[0m");
 		mx_printstr(str);
 		mx_printchar('\n');
@@ -48,9 +54,9 @@ static void choose_color(char type, char* filename) {
 	else {
 		mx_printstr(filename);
 		mx_printchar('\n');
-	}
-} 
+	} 
 
+}
 void mx_ls_G(char *filename) {
 	struct stat fst;
 	mode_t type;
