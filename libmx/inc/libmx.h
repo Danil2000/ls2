@@ -18,7 +18,8 @@ typedef struct s_list {
 	struct s_list *next;
 }t_list;
 
-
+void mx_print_with_new_line(char *str);
+char *mx_itoa(int number);
 int mx_strcmp(const char *s1, const char *s2);
 int mx_binary_search(char **arr, int size, const char *s, int *count);
 int mx_bubble_sort(char **arr, int size);

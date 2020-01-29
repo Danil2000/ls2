@@ -38,6 +38,10 @@ void mx_ls_a_one(DIR *dir, char **argv);
 void mx_ls_A_one(DIR *dir);
 char **mx_write_to_arr_a(DIR *dir,char **s);
 void mx_ls_G(char *filename);
+char *mx_make_whithout_backround(char *scolor, char* filename);
+char *mx_make_backround(char *scolor, char *sbackground, char* filename);
+char* make_color_string(int color, int background, char* filename);
+void choose_color(char type, char* filename);
 
 typedef struct s_ls {
     int size_dir;
