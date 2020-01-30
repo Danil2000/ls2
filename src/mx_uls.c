@@ -12,7 +12,7 @@ static void choose_flag(char *arg, char **args, DIR *dir) {
 	if (!mx_strcmp(arg, "-1"))
 		mx_ls_flag_one(dir, args);
 	if (!mx_strcmp(arg, "-G"))
-		mx_ls_G(args[2]);
+		mx_ls_G("src");
 }
 
 static void choose_combination(char *arg, char **args, DIR *dir) {
@@ -44,12 +44,11 @@ int main(int argc, char **argv) {
 		mx_ls_wd();
 		return 0;
 	}
-	//mx_printchar(argv[1][1]);
-	mx_check(argc, argv);
 	choose_wf_d(argv);
+	mx_check(argc, argv);
 	dir = opendir(argv[2]);
 	mx_check_dir(dir, argv);
 	choose_combination(argv[1], argv, dir);
 	choose_flag(argv[1], argv, dir);
-	//system("leaks -q uls");
+	system("leaks -q uls");
 }
