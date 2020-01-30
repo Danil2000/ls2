@@ -21,6 +21,7 @@ int mx_count_for_print(char **s) {
     int i = 0;
     int loc = 0;
     int size = 0;
+    int res = 0;
 
     size = mx_len_arr(s);
     lens = malloc(sizeof(int *) * size);
@@ -31,6 +32,6 @@ int mx_count_for_print(char **s) {
     for (int c = 1; c < i; c++)
         if (lens[c] > lens[loc])
             loc = c;
-    int res = lens[loc];
+    res = lens[loc];
     return res;
 }

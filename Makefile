@@ -29,7 +29,9 @@ SRC =	mx_uls.c\
 		mx_ls_flag_one.c\
 		mx_ls_a_one.c\
 		mx_ls_one_A.c\
-
+		mx_ls_G.c\
+		mx_colors.c\
+		mx_print_with_new_line.c
 
 SRCS	=	$(addprefix $(SRCD)/, $(SRC))
 OBJS	=	$(addprefix $(OBJD)/, $(SRC:%.c=%.o))

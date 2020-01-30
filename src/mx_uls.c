@@ -11,6 +11,8 @@ static void choose_flag(char *arg, char **args, DIR *dir) {
 		mx_ls_A(dir, args);
 	if (!mx_strcmp(arg, "-1"))
 		mx_ls_flag_one(dir, args);
+	if (!mx_strcmp(arg, "-G"))
+		mx_ls_G(args[2]);
 }
 
 static void choose_combination(char *arg, char **args, DIR *dir) {
@@ -49,5 +51,5 @@ int main(int argc, char **argv) {
 	mx_check_dir(dir, argv);
 	choose_combination(argv[1], argv, dir);
 	choose_flag(argv[1], argv, dir);
-	system("leaks -q uls");
+	//system("leaks -q uls");
 }

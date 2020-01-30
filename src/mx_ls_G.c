@@ -3,29 +3,30 @@
 static char type_of_file(mode_t mode) {
     switch (mode & S_IFMT) {
     case S_IFCHR:
-        return "c";
+        return 'c';
     case S_IFBLK:
-        return "b";
+        return 'b';
     case S_IFIFO:
-        return "c";;
+        return 'p';
     case S_IFDIR:
-       return "d";
+       return 'd';
     case S_IFLNK:
-        return "c";
+        return 'l';
     case S_IFSOCK:
-       return "s";
+       return 's';
     default:
-        return;
+        return 0;
     }
 }
 
 void mx_ls_G(char *filename) {
-	struct stat *fst;
+	struct stat fst;
 	mode_t type;
 	int st = 0;
 	char reztype;
 
 	st = stat(filename, &fst);
 	type = fst.st_mode;
-	char = type_of_file(type);
+	reztype = type_of_file(type);
+	choose_color(reztype, filename);
 }

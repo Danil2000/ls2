@@ -8,8 +8,7 @@ void mx_ls_flag_one(DIR *dir, char **argv) {
 		{
 			if (argv[2][0] != '-')
 			{
-					mx_printstr(entry->d_name);
-					mx_printchar('\n');	
+					mx_print_with_new_line(entry->d_name);
 			}
 		}	
 	}
