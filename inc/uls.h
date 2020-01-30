@@ -29,7 +29,7 @@ void mx_printspaces(int count, int len);
 void mx_to_colls(int colls, char **s, int spaces);
 int mx_len_arr(char **s);
 bool mx_check_flags(char argv);
-void mx_get_width(char **s, int spaces);
+void mx_get_width(char **s, int spaces, int sf);
 char **mx_write_to_arr(DIR *dir, char **s);
 int mx_len_arr(char **s);
 char **mx_write_to_arr_A(DIR *dir,char **s);
@@ -42,6 +42,7 @@ char *mx_make_whithout_backround(char *scolor, char* filename);
 char *mx_make_backround(char *scolor, char *sbackground, char* filename);
 char* make_color_string(int color, int background, char* filename);
 void choose_color(char type, char* filename);
+void mx_ls_f(DIR *dir, char **argv);
 
 typedef struct s_ls {
     int size_dir;
