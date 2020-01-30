@@ -1,22 +1,5 @@
 #include "uls.h"
 
-// bool mx_is_need_colls(char **s, int colls) {
-// 	int res = mx_len_arr(s);
-// 	if (res > colls) {
-// 		return 1;
-// 	}
-// 	return 0;
-// }
-
-// int mx_len_arr(char **s) {
-// 	int i = 0;
-
-// 	while (s[i]) {
-// 		i++;
-// 	}
-// 	return i;
-// }
-
 //используем в ф-ии mx_get_width и потом загоняем все в ф-ю с флагами
 void mx_to_colls(int colls, char **s, int spaces) {
 	char **res = NULL;
@@ -30,7 +13,6 @@ void mx_to_colls(int colls, char **s, int spaces) {
 	}
 	else
 		r = (len / colls) + 1;
-
 	for (int i = 0; i < r; i++) {
 		int z = i;
 		int j = 0;
@@ -49,6 +31,4 @@ void mx_to_colls(int colls, char **s, int spaces) {
 		mx_printchar('\n');
 		
 	}
-	//res[len] = NULL;
-	//return res;
 }

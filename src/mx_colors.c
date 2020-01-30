@@ -21,7 +21,8 @@ char *mx_make_backround(char *scolor, char *sbackground, char* filename) {
 	return str;
 }
 
-char* make_color_string(int color, int background, char* filename) {
+char* make_color_string(int color, int background, 
+char* filename) {
 	char *str = NULL;
 	char* scolor;
 	char *sbackground;
