@@ -9,7 +9,7 @@ char **mx_write_to_arr_a(DIR *dir, char **s) {
 		s[i] = entry->d_name;
 		i++;
 	}
-	s[i] = 0;
+	s[i] = NULL;
 	return s;
 }
 

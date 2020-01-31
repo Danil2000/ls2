@@ -1,54 +1,35 @@
 #include "uls.h"
 
-// bool mx_is_need_colls(char **s, int colls) {
-// 	int res = mx_len_arr(s);
-// 	if (res > colls) {
-// 		return 1;
-// 	}
-// 	return 0;
-// }
+static int choose_size_of_rows(int len, int colls) {
+	int size = 0;
 
-// int mx_len_arr(char **s) {
-// 	int i = 0;
-
-// 	while (s[i]) {
-// 		i++;
-// 	}
-// 	return i;
-// }
-
-//используем в ф-ии mx_get_width и потом загоняем все в ф-ю с флагами
-void mx_to_colls(int colls, char **s, int spaces) {
-	char **res = NULL;
-	int len = 0;
-	int r = 0;
-	
-	len = mx_len_arr(s);
-	res = (char**) malloc(len * sizeof(char**));
 	if ((len % colls) == 0) {
-		r = len / colls;
+		size = len / colls;
 	}
 	else
-		r = (len / colls) + 1;
+		size = (len / colls) + 1;
+	return size;
+}
 
-	for (int i = 0; i < r; i++) {
+//используем в ф-ии mx_get_width и потом загоняем все в ф-ю с флагами
+void mx_to_colls(int colls, char **s, int spaces, t_ls_colls *c) {
+	c->len = mx_len_arr(s);
+	c->res = (char**) malloc(c->len * sizeof(char**));
+	c->r = choose_size_of_rows(c->len, colls);
+	for (int i = 0; i < c->r; i++) {
 		int z = i;
 		int j = 0;
-
 		while (j < colls) {
-			if (z >= len)
+			if (z >= c->len)
 				break;
-			res[i] = s[z];
-			//mx_printint(z);
-			mx_printstr(res[i]);
-			mx_printspaces(spaces, mx_strlen(s[z]));
-			z += r;
+			c->res[i] = s[z];
+			mx_printstr(c->res[i]);
+			if (s[z+c->r])
+				mx_printspaces(spaces, mx_strlen(s[z]));
+			z += c->r;
 			j++;
-			
 		}
 		mx_printchar('\n');
-		
 	}
-	//res[len] = NULL;
-	//return res;
+	free(c);
 }
