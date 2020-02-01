@@ -50,5 +50,5 @@ int main(int argc, char **argv) {
 	mx_check_dir(dir, argv);
 	choose_combination(argv[1], argv, dir);
 	choose_flag(argv[1], argv, dir);
-	system("leaks -q uls");
+	//system("leaks -q uls");
 }

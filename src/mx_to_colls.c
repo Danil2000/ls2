@@ -21,7 +21,6 @@ void mx_to_colls(int colls, char **s, int spaces) {
 			if (z >= len)
 				break;
 			res[i] = s[z];
-			//mx_printint(z);
 			mx_printstr(res[i]);
 			mx_printspaces(spaces, mx_strlen(s[z]));
 			z += r;
@@ -29,6 +28,5 @@ void mx_to_colls(int colls, char **s, int spaces) {
 			
 		}
 		mx_printchar('\n');
-		
 	}
 }
