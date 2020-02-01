@@ -29,6 +29,6 @@ void mx_ls_wf(DIR *dir, char **argv) {
 	ls->count = mx_uls_len_name(ls->hres);
 
 	//mx_ls_print(ls->s, ls->count, ls->size_dir);
-	mx_get_width(ls->s, ls->count);
+	mx_get_width(ls->s, ls->count, 0);
 	//free(ls);
 }

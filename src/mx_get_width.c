@@ -1,6 +1,6 @@
 #include "uls.h"
 //вывод колонок
-void mx_get_width(char **s, int spaces) {
+void mx_get_width(char **s, int spaces, int isf) {
 	struct winsize w;
 	int res = 0;
 	int count = 0;
@@ -18,8 +18,9 @@ void mx_get_width(char **s, int spaces) {
 	// else
 	res = (size / mx_uls_len_name(count));
 	//is_need_colls = mx_is_need_colls(s, res);
-	
-	mx_bubble_sort(s, mx_len_arr(s));
+	if (!isf) {
+		mx_bubble_sort(s, mx_len_arr(s));
+	}
 	mx_to_colls(res, s, spaces);
 	// while (ss[i]) {
 	// 	mx_printstr(ss[i]);
