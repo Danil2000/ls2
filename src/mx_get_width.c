@@ -1,30 +1,20 @@
 #include "uls.h"
+
 //вывод колонок
 void mx_get_width(char **s, int spaces, int isf) {
 	struct winsize w;
+	t_ls_colls *c = NULL;
 	int res = 0;
 	int count = 0;
-	// char **ss;
-	// int i = 0;
 
-	//bool is_need_colls;
-
+	c = malloc(sizeof(t_ls_colls));
 	int size = 0;
 	ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
 	size = w.ws_col;
 	count = mx_count_for_print(s); //длина максимального имени файла
-	// if ((size % mx_uls_len_name(count)) >= 5)
-	// 	res = (size / mx_uls_len_name(count)) - 1;
-	// else
 	res = (size / mx_uls_len_name(count));
-	//is_need_colls = mx_is_need_colls(s, res);
 	if (!isf) {
 		mx_bubble_sort(s, mx_len_arr(s));
 	}
-	mx_to_colls(res, s, spaces);
-	// while (ss[i]) {
-	// 	mx_printstr(ss[i]);
-	// 	i++;
-	// }
-
+	mx_to_colls(res, s, spaces, c);
 }

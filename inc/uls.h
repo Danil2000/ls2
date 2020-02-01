@@ -12,6 +12,19 @@
 
 DIR *dir;
 
+typedef struct s_ls {
+    int size_dir;
+    int hres;
+    int count;
+    char **s;
+} t_ls;
+
+typedef struct s_ls_colls {
+  char **res;
+	int len;
+	int r;
+} t_ls_colls;
+
 void mx_check(int argc, char **argv);
 void mx_check_dir(DIR *dir, char **argv);
 void mx_ls_wf(DIR *dir, char** argv);
@@ -26,7 +39,7 @@ int mx_count_for_print(char **s);
 int mx_uls_len_name(int a);
 void mx_ls_print(char **s, int count, int size);
 void mx_printspaces(int count, int len);
-void mx_to_colls(int colls, char **s, int spaces);
+void mx_to_colls(int colls, char **s, int spaces, t_ls_colls *c);
 int mx_len_arr(char **s);
 bool mx_check_flags(char argv);
 void mx_get_width(char **s, int spaces, int sf);
@@ -44,9 +57,4 @@ char* make_color_string(int color, int background, char* filename);
 void choose_color(char type, char* filename);
 void mx_ls_f(DIR *dir, char **argv);
 
-typedef struct s_ls {
-    int size_dir;
-    int hres;
-    int count;
-    char **s;
-} t_ls;
+
