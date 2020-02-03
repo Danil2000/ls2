@@ -11,7 +11,6 @@ static int choose_size_of_rows(int len, int colls) {
 	return size;
 }
 
-//используем в ф-ии mx_get_width и потом загоняем все в ф-ю с флагами
 void mx_to_colls(int colls, char **s, int spaces, t_ls_colls *c) {
 	c->len = mx_len_arr(s);
 	c->res = (char**) malloc(c->len * sizeof(char**));

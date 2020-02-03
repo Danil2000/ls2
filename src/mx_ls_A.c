@@ -21,7 +21,12 @@ void mx_ls_A(DIR *dir, char **argv) {
 
 	ls = malloc(sizeof(ls));
 	ls->size_dir = mx_dir_size(dir);
-	dir1 = opendir(argv[2]);
+	if (!argv[2]) {
+		dir1 = opendir(".");
+	}
+	else{
+		dir1 = opendir(argv[2]);
+	}
 	ls->s = malloc(sizeof(char *) * ls->size_dir + 1);
 	ls->s = mx_write_to_arr_A(dir1, ls->s);
 	ls->hres = mx_count_for_print(ls->s);

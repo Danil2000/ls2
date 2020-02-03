@@ -18,7 +18,12 @@ void mx_ls_a_one(DIR *dir, char **argv) {
 	int size = 0;
 	DIR *dir1;
 
-	dir1 = opendir(argv[2]);
+	if (!argv[2]) {
+		dir1 = opendir(".");
+	}
+	else{
+		dir1 = opendir(argv[2]);
+	}
 	size = mx_dir_size(dir);
 	//mx_printint(size);
 	s =  malloc((sizeof(char *) * size) + 1);
