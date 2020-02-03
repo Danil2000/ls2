@@ -6,8 +6,7 @@ void mx_print_flag_one(char **s, int size) {
 
 	mx_bubble_sort(s, size);
 	while (s[i]) {
-		mx_printstr(s[i]);
-		mx_printchar('\n');
+		mx_print_with_new_line(s[i]);
 		i++;
 	}
 

@@ -64,6 +64,7 @@ int main(int argc, char **argv) {
 	}
 	mx_check(argc, argv);
 	choose_wf_d(argv);
+	mx_check(argc, argv);
 	dir = opendir(argv[2]);
 	mx_check_dir(dir, argv);
 	choose_combination(argv[1], argv, dir);

@@ -2,24 +2,25 @@
 
 void mx_check_dir(DIR *dir, char **argv) {
 	char *str;
-	char *str_buf = NULL;
 
 	if (!dir) {
 		str = mx_strnew(1);
 		str = mx_strjoin("uls: ", &argv[1][0]);
-		str_buf = str;
+		mx_printerr(str);
+		mx_printerr(": No such file or directory");
+		mx_printerr("\n");
 		free(str);
-		perror(str_buf);
 		exit(1);
 	}
 }
-
+//вроде как работает, но ловит так же с флагами и папки
 void mx_check(int argc, char **argv) {
 	char *str;
 
 	if (mx_check_flags(argv[1][1]) == 0) {
 		str = mx_strnew(1);
 		str = mx_strjoin("uls: illegal option -- ", &argv[1][1]);
+		mx_check_flags(argv[1][1]);
 		mx_printerr(str);
 		free(str);
 		mx_printerr("\n");
