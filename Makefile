@@ -1,6 +1,6 @@
 NAME = uls
 
-CFLG	=	-std=c11 $(addprefix -W, all extra error pedantic) -g -fsanitize=address
+CFLG	=	-std=c11 $(addprefix -W, all extra error pedantic) -g
 SRCD	=	src
 INCD	=	inc
 OBJD	=	obj
@@ -34,7 +34,6 @@ SRC =	mx_uls.c\
 		mx_print_with_new_line.c\
 		mx_ls_f.c\
 		mx_few_dirs.c\
-		mx_ls_f.c
 
 SRCS	=	$(addprefix $(SRCD)/, $(SRC))
 OBJS	=	$(addprefix $(OBJD)/, $(SRC:%.c=%.o))
