@@ -18,13 +18,11 @@ typedef struct s_ls {
     int count;
     char **s;
 } t_ls;
-
 typedef struct s_ls_colls {
   char **res;
 	int len;
 	int r;
 } t_ls_colls;
-
 void mx_check(int argc, char **argv);
 void mx_check_dir(DIR *dir, char **argv);
 void mx_ls_wf(DIR *dir, char** argv);
@@ -56,5 +54,4 @@ char *mx_make_backround(char *scolor, char *sbackground, char* filename);
 char* make_color_string(int color, int background, char* filename);
 void choose_color(char type, char* filename);
 void mx_ls_f(DIR *dir, char **argv);
-
-
+DIR **mx_few_dirs(char **argv, char flag);
