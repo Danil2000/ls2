@@ -39,6 +39,12 @@ static void choose_wf_d(char **argv) {
 		mx_ls_wf(dir, argv);
 		exit(1);
 	}
+	if (argv[1][0] == '-' && argv[2] == NULL)
+	{
+		dir = opendir(".");
+		choose_flag(argv[1], argv, dir);
+		exit(1);
+	}
 	if(mx_strcmp(argv[2], "") == 0) {
 	 	mx_ls_d(argv);
 		exit(1);
@@ -52,11 +58,15 @@ int main(int argc, char **argv) {
 		mx_ls_wd();
 		return 0;
 	}
+	if (argc > 2) {
+		mx_few_dirs(argv, 'a');
+		return 0;
+	}
+	mx_check(argc, argv);
 	choose_wf_d(argv);
 	mx_check(argc, argv);
 	dir = opendir(argv[2]);
 	mx_check_dir(dir, argv);
 	choose_combination(argv[1], argv, dir);
 	choose_flag(argv[1], argv, dir);
-	//system("leaks -q uls");
 }
