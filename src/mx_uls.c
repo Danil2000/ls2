@@ -59,10 +59,9 @@ int main(int argc, char **argv) {
 		return 0;
 	}
 	if (argc > 2) {
-		mx_few_dirs(argv, 'a');
+		mx_few_dirs(argv);
 		return 0;
 	}
-	mx_check(argc, argv);
 	choose_wf_d(argv);
 	mx_check(argc, argv);
 	dir = opendir(argv[2]);
