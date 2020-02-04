@@ -13,6 +13,7 @@ void mx_check_dir(DIR *dir, char **argv) {
 		exit(1);
 	}
 }
+
 //вроде как работает, но ловит так же с флагами и папки
 void mx_check(int argc, char **argv) {
 	char *str;

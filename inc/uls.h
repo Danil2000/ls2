@@ -55,5 +55,5 @@ char *mx_make_backround(char *scolor, char *sbackground, char* filename);
 char* make_color_string(int color, int background, char* filename);
 void choose_color(char type, char* filename);
 void mx_ls_f(DIR *dir, char **argv);
-DIR **mx_few_dirs(char **argv, char flag);
+DIR **mx_few_dirs(char **argv);
 void mx_print_flag_one(char **s, int size);

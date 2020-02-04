@@ -14,8 +14,10 @@ char** mx_write_to_arr(DIR *dir, char **s) {
 	s[i] = NULL;
 	return s;
 }
+// тут написать ф-ю, которая будет принимать массив из названия папок
 
-void mx_ls_wf(DIR *dir, char **argv) {
+
+void mx_ls_wf(DIR *dir, char **argv) { //изменить двумерный массив на массив названия папок
 	DIR *dir1;
 	t_ls *ls;
 
@@ -30,4 +32,5 @@ void mx_ls_wf(DIR *dir, char **argv) {
 	//mx_ls_print(ls->s, ls->count, ls->size_dir);
 	mx_get_width(ls->s, ls->count, 0);
 	//free(ls);
+	mx_printstr(argv[1]);
 }
