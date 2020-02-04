@@ -63,10 +63,10 @@ int main(int argc, char **argv) {
 		mx_ls_wd();
 		return 0;
 	}
-	// if (argc > 2) {
-	// 	mx_few_dirs(argv, 'a');
-	// 	return 0;
-	// }
+	if (argc > 2) {
+		mx_few_dirs(argv);
+		return 0;
+	}
 	choose_wf_d(argv);
 	mx_check(argc, argv);
 	mx_check(argc, argv);
