@@ -1,6 +1,6 @@
 #include "uls.h"
 
-static char type_of_file(mode_t mode) {
+char mx_type_of_file(mode_t mode) {
     switch (mode & S_IFMT) {
     case S_IFCHR:
         return 'c';
@@ -19,14 +19,22 @@ static char type_of_file(mode_t mode) {
     }
 }
 
-void mx_ls_G(char *filename) {
+void mx_ls_G(DIR *dir, int size_dir) {
 	struct stat fst;
 	mode_t type;
 	int st = 0;
 	char reztype;
+    char** s = NULL;
+    int i = 0;
 
-	st = stat(filename, &fst);
-	type = fst.st_mode;
-	reztype = type_of_file(type);
-	choose_color(reztype, filename);
+    s = malloc(sizeof(char *) * size_dir + 1);
+    s = mx_write_to_arr(dir, s);
+    mx_printstr(s[0]);
+    while (s[i]) {
+        st = stat(s[i], &fst);
+        type = fst.st_mode;
+        reztype = mx_type_of_file(type);
+        choose_color(reztype, s[i]);
+        i++;
+    }
 }
