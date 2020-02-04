@@ -1,8 +1,8 @@
 #include "uls.h"
 
 static void choose_flag(char *arg, char **args, DIR *dir) {
-	if (!mx_strcmp(arg, "-R"))
-		mx_ls_R(args[2]);
+	// if (!mx_strcmp(arg, "-R"))
+	// 	mx_ls_R(args[2]);
 	if (!mx_strcmp(arg, "-d"))
 		mx_ls_d(args);
 	if (!mx_strcmp(arg, "-a"))
@@ -10,9 +10,9 @@ static void choose_flag(char *arg, char **args, DIR *dir) {
 	if (!mx_strcmp(arg, "-A"))
 		mx_ls_A(dir, args);
 	if (!mx_strcmp(arg, "-1"))
-		mx_ls_flag_one(dir, args);
-	if (!mx_strcmp(arg, "-G"))
-		mx_ls_G(args[2]);
+		mx_ls_flag_one(dir);
+	// if (!mx_strcmp(arg, "-G"))
+	// 	mx_ls_G(args[2]);
 	if (!mx_strcmp(arg, "-f"))
 		mx_ls_f(dir, args);
 }
@@ -21,7 +21,7 @@ static void choose_combination(char *arg, char **args, DIR *dir) {
 	if (!mx_strcmp(arg, "-a1") || !mx_strcmp(arg, "-1a"))
 		mx_ls_a_one(dir, args);
 	if (!mx_strcmp(arg, "-A1") || !mx_strcmp(arg, "-1A"))
-		mx_ls_A_one(dir);
+		mx_ls_A_one(dir, args);
 	if (!mx_strcmp(arg, "-fa") || !mx_strcmp(arg, "-af"))
 		mx_ls_f(dir, args);
 	if (!mx_strcmp(arg, "-fA") || !mx_strcmp(arg, "-Af"))
@@ -53,7 +53,12 @@ static void choose_wf_d(char **argv) {
 
 int main(int argc, char **argv) {
 	DIR *dir;
+	int atty = 0;
 
+	atty = isatty(1);
+	if (atty == 0) {
+		mx_printstr(argv[1]);
+	} 
 	if (argc == 1) {
 		mx_ls_wd();
 		return 0;
@@ -63,6 +68,7 @@ int main(int argc, char **argv) {
 		return 0;
 	}
 	choose_wf_d(argv);
+	mx_check(argc, argv);
 	mx_check(argc, argv);
 	dir = opendir(argv[2]);
 	mx_check_dir(dir, argv);

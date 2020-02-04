@@ -9,6 +9,7 @@
 #include <sys/stat.h>
 #include <time.h>
 #include <pwd.h>
+#include <time.h>
 
 DIR *dir;
 
@@ -44,9 +45,9 @@ void mx_get_width(char **s, int spaces, int sf);
 char **mx_write_to_arr(DIR *dir, char **s);
 int mx_len_arr(char **s);
 char **mx_write_to_arr_A(DIR *dir,char **s);
-void mx_ls_flag_one(DIR *dir, char **argv);
+void mx_ls_flag_one(DIR *dir);
 void mx_ls_a_one(DIR *dir, char **argv);
-void mx_ls_A_one(DIR *dir);
+void mx_ls_A_one(DIR *dir, char **argv);
 char **mx_write_to_arr_a(DIR *dir,char **s);
 void mx_ls_G(char *filename);
 char *mx_make_whithout_backround(char *scolor, char* filename);
@@ -54,4 +55,5 @@ char *mx_make_backround(char *scolor, char *sbackground, char* filename);
 char* make_color_string(int color, int background, char* filename);
 void choose_color(char type, char* filename);
 void mx_ls_f(DIR *dir, char **argv);
-DIR **mx_few_dirs(char **argv);
+DIR **mx_few_dirs(char **argv, char flag);
+void mx_print_flag_one(char **s, int size);
