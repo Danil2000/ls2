@@ -1,6 +1,6 @@
 NAME = uls
 
-CFLG	=	-std=c11 $(addprefix -W, all extra error pedantic) -g -fsanitize=address
+CFLG	=	-std=c11 $(addprefix -W, all extra error pedantic) -g
 SRCD	=	src
 INCD	=	inc
 OBJD	=	obj
