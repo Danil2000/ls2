@@ -26,7 +26,7 @@ typedef struct s_ls_colls {
 } t_ls_colls;
 void mx_check(int argc, char **argv);
 void mx_check_dir(DIR *dir, char **argv);
-void mx_ls_wf(DIR *dir, char** argv);
+void mx_ls_wf(DIR *dir, char *argv);
 void mx_ls_A(DIR *dir, char **argv);
 void mx_lsa(DIR *dir, char **argv);
 void mx_ls_d(char **argv);

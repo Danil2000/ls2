@@ -40,7 +40,7 @@ static char **check_dirs(char **s, char** argv, int size) {
 	//mx_printstr(s[1]);
 	return s;
 }
-
+//какого то хрена выводит название папки даже с 1 папкой, те срабатывает всегда
 static void mx_print_few_dir(char **s) {
 	int i = 1;
 	
@@ -51,15 +51,14 @@ static void mx_print_few_dir(char **s) {
 	//s = (char **)malloc((size + 1) * sizeof(char **));
 	//dir = opendir(s[i]);
 	//mx_ls_wf(dir, argv);
-	while (s[i]) {
+	while (s[i + 1]) {
 		//mx_printint(i);
 		DIR *dir;
-		//mx_printstr(s[i]);
-		//mx_printstr(":");
+		mx_printstr(s[i]);
+		mx_printstr(":");
 		mx_printchar('\n');
 		dir = opendir(s[i]);
-		//closedir(dir);
-		mx_ls_wf(dir, s);
+		mx_ls_wf(dir, s[i]);
 		i++;
 	}
 }

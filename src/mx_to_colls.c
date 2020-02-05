@@ -2,8 +2,8 @@
 
 static int choose_size_of_rows(int len, int colls) {
 	int size = 0;
-
-	if ((len % colls) == 0) {
+	//mx_printint(colls);
+	if ((len % colls) == 0) { 
 		size = len / colls;
 	}
 	else

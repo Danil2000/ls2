@@ -11,19 +11,20 @@ char** mx_write_to_arr(DIR *dir, char **s) {
 			i++;
 		}	
 	}
-	s[i] = NULL;
-	return s;
+	//s[i] = NULL;
+	//mx_printstr(s[i]);
+	return s; //массив с названиями файлов
 }
-// тут написать ф-ю, которая будет принимать массив из названия папок
+// тут написать ф-ю, которая будет принимать массив из названия папок ????
 
 
-void mx_ls_wf(DIR *dir, char **argv) { //изменить двумерный массив на массив названия папок
+void mx_ls_wf(DIR *dir, char *argv) {
 	DIR *dir1;
 	t_ls *ls;
 
 	ls = malloc(sizeof(ls));
 	ls->size_dir = mx_dir_size(dir);
-	dir1 = opendir(argv[1]);
+	dir1 = opendir(argv);
 	ls->s = malloc(sizeof(char *) * ls->size_dir + 1);
 	ls->s = mx_write_to_arr(dir1, ls->s);
 	ls->hres = mx_count_for_print(ls->s);
@@ -32,5 +33,5 @@ void mx_ls_wf(DIR *dir, char **argv) { //изменить двумерный м�
 	//mx_ls_print(ls->s, ls->count, ls->size_dir);
 	mx_get_width(ls->s, ls->count, 0);
 	//free(ls);
-	mx_printstr(argv[1]);
+	//mx_printstr(argv[1]);
 }

@@ -4,12 +4,13 @@
     // Для получения дополнительной информации посетите: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+
         {
             "name": "clang build and debug active file",
             "type": "cppdbg",
             "request": "launch",
             "program": "/Users/vynchuk/Desktop/ls2/uls",
-            "args": ["src","inc"],
+            "args": ["inc"],
             "stopAtEntry": true,
             "cwd": "/Users/vynchuk/Desktop/ls2",
             "environment": [],

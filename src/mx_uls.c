@@ -36,7 +36,7 @@ static void choose_wf_d(char **argv) {
 	if (argv[1][0] != '-') 	{
 		dir = opendir(argv[1]);
 		mx_check_dir(dir, argv);
-		mx_ls_wf(dir, argv);
+		mx_ls_wf(dir, argv[1]);
 		exit(1);
 	}
 	if (argv[1][0] == '-' && argv[2] == NULL)
