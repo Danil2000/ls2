@@ -1,13 +1,16 @@
 #include "uls.h"
 
-static void mx_print_m(char **s) {
+static void mx_print_m(char **s, int winsize) {
 	int i = 0;
 
 	while (s[i]) {
 		mx_printstr(s[i]);
-		mx_printstr(", ");
+		if (s[i+1]) {
+			mx_printstr(", ");
+		}
 		i++;
 	}
+	mx_printchar('\n');
 }
 
 void mx_ls_m(DIR* dir, char **argv) {
