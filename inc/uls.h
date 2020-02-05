@@ -11,8 +11,6 @@
 #include <pwd.h>
 #include <time.h>
 
-DIR *dir;
-
 typedef struct s_ls {
     int size_dir;
     int hres;
@@ -58,3 +56,4 @@ void mx_ls_f(DIR *dir, char **argv);
 DIR **mx_few_dirs(char **argv);
 void mx_print_flag_one(char **s, int size);
 char mx_type_of_file(mode_t mode);
+void mx_ls_wf_few(DIR *dir, char **argv, int count);

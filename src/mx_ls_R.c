@@ -2,15 +2,9 @@
 
 bool mx_is_dir(char *fname)
 {
-	struct stat fst;
-	mode_t type;
-	int st = 0;
-	char reztype;
-
-	st = stat(fname, &fst);
-	type = fst.st_mode;
-	reztype = mx_type_of_file(type);
-	if (reztype == 'd') {
+	struct stat f;
+	stat(fname, &f);
+	if (S_ISDIR(f.st_mode)) {
         return true;
     }
     return false;
