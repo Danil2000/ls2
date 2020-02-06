@@ -59,3 +59,6 @@ char mx_type_of_file(mode_t mode);
 void mx_ls_wf_few(DIR *dir, char **argv, int count);
 void mx_ls_m(DIR* dir, char **argv);
 int mx_size_win(char **s);
+void mx_ls_p(DIR *dir, char **argv);
+mode_t mx_get_mode(char *dirname);
+
