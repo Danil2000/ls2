@@ -1,5 +1,6 @@
 #include "uls.h"
 
+//она не срабатывает
 bool mx_is_dir(char *fname)
 {
 	struct stat f;
@@ -7,7 +8,7 @@ bool mx_is_dir(char *fname)
 	if (S_ISDIR(f.st_mode)) {
         return true;
     }
-    return false;
+	return false;
 }
 
 void mx_ls_R(char *fn) {

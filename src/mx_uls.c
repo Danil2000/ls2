@@ -67,6 +67,7 @@ int main(int argc, char **argv) {
 		mx_few_dirs(argv);
 		return 0;
 	}
+
 	choose_wf_d(argv);
 	mx_check(argc, argv);
 	mx_check(argc, argv);
