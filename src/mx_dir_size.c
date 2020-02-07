@@ -10,6 +10,6 @@ int mx_dir_size(DIR *dir) {
 			count++;
 		}
 	}
-	closedir(dir);
+	//closedir(dir);
 	return count;
 }

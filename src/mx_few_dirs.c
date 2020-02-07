@@ -28,8 +28,9 @@ static char **check_dirs(char **s_dir, char** argv) {
 			j++;
 		}
 		i++;
-		s_dir[j] = NULL;
+		//s_dir[j] = NULL;
 	}
+	s_dir[j] = NULL;
 	return s_dir; //возвращаем только массив папок
 }
 
@@ -37,10 +38,10 @@ static char **check_dirs(char **s_dir, char** argv) {
 
 static void mx_print_few_dir(char **s_dir) {
 	int i = 0;
-	DIR *dir;
+	//DIR *dir;
 
 	while (s_dir[i]) {
-//		DIR *dir;
+		DIR *dir;
 		mx_printstr(s_dir[i]);
 		mx_printstr(":");
 		mx_printchar('\n');
@@ -48,7 +49,7 @@ static void mx_print_few_dir(char **s_dir) {
 		mx_ls_wf(dir, s_dir[i]);
 		i++;
 	}
-	closedir(dir);
+	//closedir(dir);
 }
 
 void mx_few_dirs(char** argv) {

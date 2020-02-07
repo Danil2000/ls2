@@ -18,12 +18,12 @@ int mx_len_arr(char **s) {
     return i;
 }
 
-//длина максимального имени файла
+//длина максимального имени файла, т.е столько символов будет в нашем столбце
 int mx_count_for_print(char **s) {
     int i = 0;
     int loc = 0;
     int size = mx_len_arr(s); //кол-во файлов в дирректории
-    //mx_printint(size);
+    mx_printint(size);
     int res = 0;
     int lens[size];
 

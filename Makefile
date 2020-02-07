@@ -1,6 +1,6 @@
 NAME = uls
 
-CFLG	=	-std=c11 $(addprefix -W, all extra error pedantic) -g
+CFLG	=	-std=c11 $(addprefix -W, all extra error pedantic) -g #-fsanitize=address
 SRCD	=	src
 INCD	=	inc
 OBJD	=	obj
@@ -66,4 +66,4 @@ uninstall:
 	@make -sC $(LMXD) $@
 
 	
-reinstall: uninstall install
+reinstall: uninstall clean install
