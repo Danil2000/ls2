@@ -1,3 +1,6 @@
+#ifndef ULS_H
+#define ULS_H
+
 #include <dirent.h>
 #include <sys/types.h>
 #include <stdio.h>
@@ -10,6 +13,10 @@
 #include <time.h>
 #include <pwd.h>
 #include <time.h>
+#include <sys/xattr.h>
+#include <sys/types.h>
+#include <sys/acl.h>
+#include <sys/xattr.h>
 
 typedef struct s_ls {
     int size_dir;
@@ -22,6 +29,7 @@ typedef struct s_ls_colls {
 	int len;
 	int r;
 } t_ls_colls;
+
 void mx_check(int argc, char **argv);
 void mx_check_dir(DIR *dir, char **argv);
 void mx_ls_wf(DIR *dir, char** argv);
@@ -61,4 +69,10 @@ void mx_ls_m(DIR* dir, char **argv);
 int mx_size_win(char **s);
 void mx_ls_p(DIR *dir, char **argv);
 mode_t mx_get_mode(char *dirname);
+void mx_ls_l(char *dirname);
+void mx_dir_type(mode_t mode, char *dirname);
+mode_t* mx_f_m(mode_t *mode);
+void mx_take_ogp(mode_t mode, mode_t *modes, char *str);
+char mx_tacl(char *dirname);
 
+#endif

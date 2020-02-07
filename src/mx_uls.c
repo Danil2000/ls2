@@ -19,6 +19,8 @@ static void choose_flag(char *arg, char **args, DIR *dir) {
 		mx_ls_f(dir, args);
 	if (!mx_strcmp(arg, "-p"))
 		mx_ls_p(dir, args);
+	if (!mx_strcmp(arg, "-l"))
+		mx_ls_l(arg);
 }
 
 static void choose_combination(char *arg, char **args, DIR *dir) {
