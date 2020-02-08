@@ -35,18 +35,18 @@ static char **check_dirs(char **s_dir, char** argv) {
 }
 
 //печатаем название папки и ее содержимое
-
 static void mx_print_few_dir(char **s_dir) {
 	int i = 0;
-	//DIR *dir;
+	DIR *dir;
 
-	while (s_dir[i]) {
-		DIR *dir;
+	while (s_dir[i] != NULL) {
+		//DIR *dir;
 		mx_printstr(s_dir[i]);
 		mx_printstr(":");
 		mx_printchar('\n');
-		dir = opendir(s_dir[i]);
+		dir = opendir(s_dir[i]); //разобраться и написать ф-ю, кроторая будет записывать
 		mx_ls_wf(dir, s_dir[i]);
+		closedir(dir);
 		i++;
 	}
 	//closedir(dir);

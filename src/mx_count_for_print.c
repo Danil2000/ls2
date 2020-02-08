@@ -23,7 +23,7 @@ int mx_count_for_print(char **s) {
     int i = 0;
     int loc = 0;
     int size = mx_len_arr(s); //кол-во файлов в дирректории
-    mx_printint(size);
+    //mx_printint(size);
     int res = 0;
     int lens[size];
 

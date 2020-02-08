@@ -7,7 +7,8 @@ char** mx_write_to_arr(DIR *dir, char **s) {
 	while ((entry = readdir(dir)) != NULL) {
 		if (entry->d_name[0] != '.') //если первый символ названия файла не равен . (т.е. не скрытый файл)
 		{
-			s[i] = entry->d_name;
+
+			s[i] = mx_strdup(entry->d_name);
 			i++;
 		}
 		//mx_printint(i);

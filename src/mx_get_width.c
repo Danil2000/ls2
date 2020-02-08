@@ -17,7 +17,7 @@ void mx_get_width(char **s, int spaces, int isf) {
 		mx_bubble_sort(s, mx_len_arr(s)); //сортируем название файлов в папке
 	}
 	// !!!!!!!!!!
-	res = 2; //!!!!! удалить это после дебаггинга!!!!!
+	//res = 2; //!!!!! удалить это после дебаггинга!!!!!
 	//mx_printint(res);
 	//mx_printstr("\n");
 	mx_to_colls(res, s, spaces, c);
