@@ -31,22 +31,25 @@ static char **check_dirs(char **s_dir, char** argv) {
 		//s_dir[j] = NULL;
 	}
 	s_dir[j] = NULL;
+	mx_bubble_sort(s_dir, count_all_dir(s_dir));
 	return s_dir; //возвращаем только массив папок
 }
 
 //печатаем название папки и ее содержимое
 static void mx_print_few_dir(char **s_dir) {
 	int i = 0;
-	DIR *dir;
-
+	//DIR *dir;
+	//char *arr;
+	
 	while (s_dir[i] != NULL) {
-		//DIR *dir;
+		DIR *dir;
 		mx_printstr(s_dir[i]);
 		mx_printstr(":");
 		mx_printchar('\n');
-		dir = opendir(s_dir[i]); //разобраться и написать ф-ю, кроторая будет записывать
+		dir = opendir(s_dir[i]);
 		mx_ls_wf(dir, s_dir[i]);
-		closedir(dir);
+		if (s_dir[i + 1] != NULL)
+			mx_printchar('\n');
 		i++;
 	}
 	//closedir(dir);

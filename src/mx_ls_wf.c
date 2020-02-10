@@ -21,21 +21,24 @@ char** mx_write_to_arr(DIR *dir, char **s) {
 
 void mx_ls_wf(DIR *dir, char *argv) {
 	DIR *dir1;
-	t_ls *ls = NULL;
+	int size_dir = 0;
+	char **s = NULL;
+	int hres = 0;
+	int count = 0;
 
-	ls = malloc(sizeof(ls));
-	ls->size_dir = mx_dir_size(dir);
+	size_dir = mx_dir_size(dir);
 	dir1 = opendir(argv);
-	ls->s = malloc(sizeof(char *) * ls->size_dir + 1);
-	ls->s = mx_write_to_arr(dir1, ls->s);
-	ls->hres = mx_count_for_print(ls->s);
-	ls->count = mx_uls_len_name(ls->hres);//тут выдает разные значения
+	s = (char**)malloc(sizeof(char *) * (size_dir + 1));
+	s = mx_write_to_arr(dir1, s);
+	hres = mx_count_for_print(s);
+	count = mx_uls_len_name(hres);//тут выдает разные значения
 	//mx_printint(ls->count);
 
 	//mx_ls_print(ls->s, ls->count, ls->size_dir);
-	mx_get_width(ls->s, ls->count, 0);
+	mx_get_width(s, count, 0);
 
-	//free(ls->s);
+	free(s);
 	//free(ls);
 	//mx_printstr(argv[1]);
+	closedir(dir1);
 }
