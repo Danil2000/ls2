@@ -65,10 +65,11 @@ $(LMXA):
 clean: uninstall
 	@make -sC $(LMXD) $@
 	@rm -rf $(NAME)
+	@rm -rf $(OBJD)
 	
 uninstall:
 
 	@make -sC $(LMXD) $@
-	@rm -rf $(OBJD)
+
 	
-reinstall: uninstall install
+reinstall: uninstall clean install

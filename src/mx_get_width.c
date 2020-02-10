@@ -18,7 +18,7 @@ void mx_get_width(char **s, int spaces, int isf) {
 	c = malloc(sizeof(t_ls_colls));
 	size = mx_size_win();
 	if (!isf) {
-		mx_bubble_sort(s, mx_len_arr(s));
+		mx_bubble_sort(s, mx_len_arr(s)); //сортируем название файлов в папке
 	}
 	count = mx_count_for_print(s);
 	size = (size / mx_uls_len_name(count));

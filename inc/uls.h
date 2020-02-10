@@ -17,6 +17,10 @@
 #include <sys/types.h>
 #include <sys/acl.h>
 #include <sys/xattr.h>
+#include <sys/ttycom.h>
+#include <sys/dirent.h>
+
+DIR *dir;
 
 typedef struct s_ls {
     int size_dir;
@@ -53,7 +57,7 @@ typedef struct 			s_lens {
 
 void mx_check(int argc, char **argv);
 void mx_check_dir(DIR *dir, char **argv);
-void mx_ls_wf(DIR *dir, char** argv);
+void mx_ls_wf(DIR *dir, char *argv);
 void mx_ls_A(DIR *dir, char **argv);
 void mx_lsa(DIR *dir, char **argv);
 void mx_ls_d(char **argv);
@@ -82,12 +86,11 @@ char *mx_make_backround(char *scolor, char *sbackground, char* filename);
 char* make_color_string(int color, int background, char* filename);
 void choose_color(char type, char* filename);
 void mx_ls_f(DIR *dir, char **argv);
-DIR **mx_few_dirs(char **argv);
+void mx_few_dirs(char **argv);
 void mx_print_flag_one(char **s, int size);
 char mx_type_of_file(mode_t mode);
 void mx_ls_wf_few(DIR *dir, char **argv, int count);
 void mx_ls_m(DIR* dir, char **argv);
-int mx_size_win();
 void mx_ls_p(DIR *dir, char **argv);
 mode_t mx_get_mode(char *dirname);
 void mx_ls_l(char *dirname);

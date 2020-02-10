@@ -1,5 +1,7 @@
 #include "uls.h"
 
+int mx_strlen(const char *s);
+
 int mx_uls_len_name(int a) {
     int max_len = 0;
 
@@ -10,21 +12,21 @@ int mx_uls_len_name(int a) {
 int mx_len_arr(char **s) {
     int i = 0;
 
-    while (s[i]) {
+    while (s[i] != NULL) {
         i++;
     }
     return i;
 }
-//длина максимального имени файла
+
+//длина максимального имени файла, т.е столько символов будет в нашем столбце
 int mx_count_for_print(char **s) {
     int i = 0;
     int loc = 0;
-    int size = mx_len_arr(s);
+    int size = mx_len_arr(s); //кол-во файлов в дирректории
+    //mx_printint(size);
     int res = 0;
     int lens[size];
 
-    //size = mx_len_arr(s);
-    //lens = (int *)malloc(sizeof(int) * 300);
     while(s[i]) {
         lens[i] = mx_strlen(s[i]);
         i++;
