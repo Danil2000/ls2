@@ -11,10 +11,16 @@ static void choose_flag(char *arg, char **args, DIR *dir) {
 		mx_ls_A(dir, args);
 	if (!mx_strcmp(arg, "-1"))
 		mx_ls_flag_one(dir);
+	// if (!mx_strcmp(arg, "-m"))
+	// 	mx_ls_m(dir, args);
 	// if (!mx_strcmp(arg, "-G"))
 	// 	mx_ls_G(args[2]);
 	if (!mx_strcmp(arg, "-f"))
 		mx_ls_f(dir, args);
+	if (!mx_strcmp(arg, "-p"))
+		mx_ls_p(dir, args);
+	if (!mx_strcmp(arg, "-l"))
+		mx_ls_l(arg);
 }
 
 static void choose_combination(char *arg, char **args, DIR *dir) {
@@ -28,6 +34,8 @@ static void choose_combination(char *arg, char **args, DIR *dir) {
 		mx_ls_f(dir, args);
 	if (!mx_strcmp(arg, "-aA") || !mx_strcmp(arg, "-Aa"))
 		mx_lsa(dir, args);
+	if (!mx_strcmp(arg, "-lm"))
+		mx_ls_m(dir, args);
 }
 
 static void choose_wf_d(char **argv) {
@@ -70,7 +78,6 @@ int main(int argc, char **argv) {
 	}
 
 	choose_wf_d(argv);
-	mx_check(argc, argv);
 	mx_check(argc, argv);
 	dir = opendir(argv[2]);
 	mx_check_dir(dir, argv);

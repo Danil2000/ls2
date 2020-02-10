@@ -9,7 +9,6 @@ void mx_print_flag_one(char **s, int size) {
 		mx_print_with_new_line(s[i]);
 		i++;
 	}
-
 }
 
 void mx_ls_a_one(DIR *dir, char **argv) {
