@@ -30,6 +30,27 @@ typedef struct s_ls_colls {
 	int r;
 } t_ls_colls;
 
+typedef enum 			e_lena {
+	LENINO,
+	LENLINKS,
+	LENUSER,
+	LENGROUP,
+	LENSIZE,
+	LENSIZE_OTHER,
+	LENNAME
+}						t_lena;
+
+typedef struct 			s_lens {
+	int					len_filename;
+	int					len_links;
+	int					len_user;
+	int					len_group;
+	int					len_size;
+	int					len_ino;
+	int					chosen;
+	int					blocks;
+}						t_lens;
+
 void mx_check(int argc, char **argv);
 void mx_check_dir(DIR *dir, char **argv);
 void mx_ls_wf(DIR *dir, char** argv);
@@ -66,7 +87,7 @@ void mx_print_flag_one(char **s, int size);
 char mx_type_of_file(mode_t mode);
 void mx_ls_wf_few(DIR *dir, char **argv, int count);
 void mx_ls_m(DIR* dir, char **argv);
-int mx_size_win(char **s);
+int mx_size_win();
 void mx_ls_p(DIR *dir, char **argv);
 mode_t mx_get_mode(char *dirname);
 void mx_ls_l(char *dirname);
@@ -74,5 +95,7 @@ void mx_dir_type(mode_t mode, char *dirname);
 mode_t* mx_f_m(mode_t *mode);
 void mx_take_ogp(mode_t mode, mode_t *modes, char *str);
 char mx_tacl(char *dirname);
+void mx_ls_ma(DIR* dir, char **argv);
+void mx_print_m(char **s, int winsize);
 
 #endif
