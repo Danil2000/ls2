@@ -1,3 +1,6 @@
+#ifndef ULS_H
+#define ULS_H
+
 #include <dirent.h>
 #include <sys/types.h>
 #include <stdio.h>
@@ -10,6 +13,10 @@
 #include <time.h>
 #include <pwd.h>
 #include <time.h>
+#include <sys/xattr.h>
+#include <sys/types.h>
+#include <sys/acl.h>
+#include <sys/xattr.h>
 #include <sys/ttycom.h>
 #include <sys/dirent.h>
 
@@ -26,6 +33,28 @@ typedef struct s_ls_colls {
 	int len;
 	int r;
 } t_ls_colls;
+
+typedef enum 			e_lena {
+	LENINO,
+	LENLINKS,
+	LENUSER,
+	LENGROUP,
+	LENSIZE,
+	LENSIZE_OTHER,
+	LENNAME
+}						t_lena;
+
+typedef struct 			s_lens {
+	int					len_filename;
+	int					len_links;
+	int					len_user;
+	int					len_group;
+	int					len_size;
+	int					len_ino;
+	int					chosen;
+	int					blocks;
+}						t_lens;
+
 void mx_check(int argc, char **argv);
 void mx_check_dir(DIR *dir, char **argv);
 void mx_ls_wf(DIR *dir, char *argv);
@@ -51,7 +80,7 @@ void mx_ls_flag_one(DIR *dir);
 void mx_ls_a_one(DIR *dir, char **argv);
 void mx_ls_A_one(DIR *dir, char **argv);
 char **mx_write_to_arr_a(DIR *dir,char **s);
-void mx_ls_G(char *filename);
+void mx_ls_G(DIR *dir, int size_dir);
 char *mx_make_whithout_backround(char *scolor, char* filename);
 char *mx_make_backround(char *scolor, char *sbackground, char* filename);
 char* make_color_string(int color, int background, char* filename);
@@ -59,3 +88,17 @@ void choose_color(char type, char* filename);
 void mx_ls_f(DIR *dir, char **argv);
 void mx_few_dirs(char **argv);
 void mx_print_flag_one(char **s, int size);
+char mx_type_of_file(mode_t mode);
+void mx_ls_wf_few(DIR *dir, char **argv, int count);
+void mx_ls_m(DIR* dir, char **argv);
+void mx_ls_p(DIR *dir, char **argv);
+mode_t mx_get_mode(char *dirname);
+void mx_ls_l(char *dirname);
+void mx_dir_type(mode_t mode, char *dirname);
+mode_t* mx_f_m(mode_t *mode);
+void mx_take_ogp(mode_t mode, mode_t *modes, char *str);
+char mx_tacl(char *dirname);
+void mx_ls_ma(DIR* dir, char **argv);
+void mx_print_m(char **s, int winsize);
+
+#endif
