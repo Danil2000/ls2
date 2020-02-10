@@ -22,7 +22,7 @@ static char *mx_take_fm(struct stat stats, char *dirname) {
 }
 
 // static void mx_links() {
-	
+// 	mx_
 // }
 
 void mx_ls_l(char *dirname) {

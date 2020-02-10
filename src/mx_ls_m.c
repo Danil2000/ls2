@@ -1,21 +1,16 @@
 #include "uls.h"
 
-static void m_to_big(int len, int winsize) {
-	int hres = 0;
-
-	hres = len - winsize;
-	mx_printint(hres);
-}
-
-static void mx_print_m(char **s, int winsize) {
+void mx_print_m(char **s, int winsize) {
 	int i = 0;
 	int len = 0;
+	// int size = 0;
 
-	len = mx_len_arr(s);
-	if(len > winsize) {
-		m_to_big(len, winsize);
-	}
 	while (s[i]) {
+		if ((len + mx_strlen(s[i]) + 2) >= winsize) {
+			mx_printchar('\n');
+			len = 0;
+		}
+		len += mx_strlen(s[i]) + 2;
 		mx_printstr(s[i]);
 		if (s[i+1]) {
 			mx_printstr(", ");
@@ -40,7 +35,8 @@ void mx_ls_m(DIR* dir, char **argv) {
 	}
 	s = malloc(sizeof(char *) * size_dir + 1);
 	s = mx_write_to_arr(dir, s);
-	winsize = mx_size_win(s);
+	winsize = mx_size_win();
+	//mx_printint(winsize);
 	mx_bubble_sort(s, size_dir);
 	mx_print_m(s, winsize);
 }

@@ -39,6 +39,7 @@ SRC =	mx_uls.c\
 		mx_ls_p.c\
 		mx_ls_l.c\
 		mx_get_mode.c\
+		mx_ls_ma.c
 
 SRCS	=	$(addprefix $(SRCD)/, $(SRC))
 OBJS	=	$(addprefix $(OBJD)/, $(SRC:%.c=%.o))
