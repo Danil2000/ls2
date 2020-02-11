@@ -26,7 +26,7 @@ void mx_ls_m(DIR* dir, char **argv) {
 	int size_dir = 0;
 	int winsize = 0;
 
-	size_dir = mx_dir_size(dir);
+	size_dir = mx_dir_size(dir, 0);
 	if (!argv[2]) {
 		dir1 = opendir(".");
 	}

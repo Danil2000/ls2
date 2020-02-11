@@ -31,5 +31,6 @@ void mx_to_colls(int colls, char **s, int spaces, t_ls_colls *c) {
 		}
 		mx_printchar('\n');
 	}
+	free(c->res);
 	free(c);
 }

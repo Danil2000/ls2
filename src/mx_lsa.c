@@ -6,7 +6,7 @@ char **mx_write_to_arr_a(DIR *dir, char **s) {
 	int i =0;
 
 	while ((entry = readdir(dir)) != NULL) {
-		s[i] = entry->d_name;
+		s[i] = mx_strdup(entry->d_name);
 		i++;
 	}
 	s[i] = NULL;
@@ -15,19 +15,26 @@ char **mx_write_to_arr_a(DIR *dir, char **s) {
 
 void mx_lsa(DIR *dir, char **argv) {
 	DIR *dir1;
-	t_ls *ls = NULL;
+	int size_dir = 0;
+	char **s = NULL;
+	int hres = 0;
+	int count = 0;
 
-	ls = malloc(sizeof(ls));
-	ls->size_dir = mx_dir_size(dir);
+	size_dir = mx_dir_size(dir, 1); //количество папок и файлов в дирректории
+	//mx_printint(size_dir);
 	if (!argv[2]) {
 		dir1 = opendir(".");
 	}
 	else{
 		dir1 = opendir(argv[2]);
 	}
-	ls->s = malloc(sizeof(char *) * ls->size_dir + 1);
-	ls->s = mx_write_to_arr_a(dir1, ls->s);
-	ls->hres = mx_count_for_print(ls->s);
-	ls->count = mx_uls_len_name(ls->hres);
-	mx_get_width(ls->s, ls->count, 0);
+	s = malloc(sizeof(char *) * (size_dir + 1));
+	s = mx_write_to_arr_a(dir1, s);
+	hres = mx_count_for_print(s);//длина максимального файла 
+	//mx_printint(hres);
+	count = mx_uls_len_name(hres);// кол-во название плюс пробелы
+	//mx_printint(count);
+	mx_get_width(s, count, 0);
+	mx_del_strarr(&s);
+	closedir(dir1);
 }
