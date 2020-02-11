@@ -11,35 +11,35 @@ LMBX = libmx.a
 INC = uls.h
 INCS	=	$(addprefix $(INCD)/, $(INC))
 
-SRC =	mx_uls.c\
-		mx_check.c\
-		mx_ls_wf.c\
-		mx_ls_A.c\
-		mx_lsa.c\
-		mx_ls_d.c\
-		mx_ls_wd.c\
-		mx_dir_size.c\
-		mx_ls_R.c\
-		mx_count_for_print.c\
-		mx_ls_print.c\
-		mx_print_spaces.c\
-		mx_to_colls.c\
+SRC =	mx_wf_few.c\
 		mx_check_flags.c\
-		mx_get_width.c\
-		mx_ls_flag_one.c\
-		mx_ls_a_one.c\
-		mx_ls_one_A.c\
-		mx_ls_G.c\
+		mx_check.c\
 		mx_colors.c\
-		mx_print_with_new_line.c\
-		mx_ls_f.c\
+		mx_count_for_print.c\
+		mx_dir_size.c\
 		mx_few_dirs.c\
-		mx_wf_few.c\
-		mx_ls_m.c\
-		mx_ls_p.c\
-		mx_ls_l.c\
 		mx_get_mode.c\
-		mx_ls_ma.c
+		mx_get_width.c\
+		mx_ls_a_one.c\
+		mx_ls_A.c\
+		mx_ls_d.c\
+		mx_ls_f.c\
+		mx_ls_flag_one.c\
+		mx_ls_G.c\
+		mx_ls_l.c\
+		mx_ls_m.c\
+		mx_ls_ma.c\
+		mx_ls_one_A.c\
+		mx_ls_p.c\
+		mx_ls_print.c\
+		mx_ls_R.c\
+		mx_ls_wd.c\
+		mx_ls_wf.c\
+		mx_lsa.c\
+		mx_print_spaces.c\
+		mx_print_with_new_line.c\
+		mx_to_colls.c\
+		mx_uls.c
 
 SRCS	=	$(addprefix $(SRCD)/, $(SRC))
 OBJS	=	$(addprefix $(OBJD)/, $(SRC:%.c=%.o))

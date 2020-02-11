@@ -22,7 +22,7 @@ void mx_ls_a_one(DIR *dir, char **argv) {
 	else{
 		dir1 = opendir(argv[2]);
 	}
-	size = mx_dir_size(dir);
+	size = mx_dir_size(dir, 1);
 	//mx_printint(size);
 	s =  malloc((sizeof(char *) * size) + 1);
 	s = mx_write_to_arr_a(dir1, s);
