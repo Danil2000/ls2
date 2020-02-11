@@ -100,5 +100,6 @@ void mx_take_ogp(mode_t mode, mode_t *modes, char *str);
 char mx_tacl(char *dirname);
 void mx_ls_ma(DIR* dir, char **argv);
 void mx_print_m(char **s, int winsize);
+int mx_size_win();
 
 #endif
