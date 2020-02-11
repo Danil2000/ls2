@@ -9,7 +9,12 @@ void mx_ls_wd() {
 	int count  = 0;
 
 	dir = opendir(".");
+<<<<<<< HEAD
 	size_dir = mx_dir_size(dir);
+=======
+	ls = malloc(sizeof(ls));
+	ls->size_dir = mx_dir_size(dir, 0);
+>>>>>>> 454e57ebee3522b9c05b6dac31e6f058ce59a1e4
 	dir1 = opendir(".");
 	s = malloc(sizeof(char *) * size_dir + 1);
 	s = mx_write_to_arr(dir1, s);

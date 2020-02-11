@@ -11,7 +11,7 @@ void mx_ls_A_one(DIR *dir, char **argv) {
 	else{
 		dir1 = opendir(argv[2]);
 	}
-	size = mx_dir_size(dir);
+	size = mx_dir_size(dir, 1) - 2;
 	s =  malloc((sizeof(char *) * size) + 1);
 	s = mx_write_to_arr_A(dir1, s);
 	mx_print_flag_one(s, size);

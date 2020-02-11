@@ -22,19 +22,21 @@ void mx_lsa(DIR *dir, char **argv) {
 	int hres = 0;
 	int count = 0;
 
-	size_dir = mx_dir_size(dir);
-	dir1 = opendir(argv[2]);
-	s = (char**)malloc(sizeof(char *) * (size_dir + 1));
+	size_dir = mx_dir_size(dir, 1); //количество папок и файлов в дирректории
+	//mx_printint(size_dir);
+	if (!argv[2]) {
+		dir1 = opendir(".");
+	}
+	else{
+		dir1 = opendir(argv[2]);
+	}
+	s = malloc(sizeof(char *) * (size_dir + 1));
 	s = mx_write_to_arr_a(dir1, s);
-	hres = mx_count_for_print(s);
-	count = mx_uls_len_name(hres);//тут выдает разные значения
-	//mx_printint(ls->count);
-
-	//mx_ls_print(ls->s, ls->count, ls->size_dir);
+	hres = mx_count_for_print(s);//длина максимального файла 
+	//mx_printint(hres);
+	count = mx_uls_len_name(hres);// кол-во название плюс пробелы
+	//mx_printint(count);
 	mx_get_width(s, count, 0);
-
-	free(s);
-	//free(ls);
-	//mx_printstr(argv[1]);
+	mx_del_strarr(&s);
 	closedir(dir1);
 }

@@ -32,6 +32,9 @@ void mx_ls_l(char *dirname) {
 	int st;
 
 	st = stat(dirname, &fst);
+	mx_printint(st);
 	mode = mx_get_mode(dirname);
+	//mx_printstr(mode);
 	str = mx_take_fm(fst, dirname);
+	//mx_printstr(str);
 }

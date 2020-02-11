@@ -62,7 +62,7 @@ void mx_ls_A(DIR *dir, char **argv);
 void mx_lsa(DIR *dir, char **argv);
 void mx_ls_d(char **argv);
 void mx_ls_wd();
-int mx_dir_size(DIR *dir);
+int mx_dir_size(DIR *dir, int is_a);
 bool mx_is_dir(char *fname);
 void mx_ls_R(char *fn);
 int mx_count_for_print(char **s);

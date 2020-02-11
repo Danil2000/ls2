@@ -40,7 +40,7 @@ void mx_ls_p(DIR *dir, char **argv) {
 	t_ls *ls = NULL;
 
 	ls = malloc(sizeof(ls));
-	ls->size_dir = mx_dir_size(dir);
+	ls->size_dir = mx_dir_size(dir, 0);
 	if (!argv[2]) {
 		dir1 = opendir(".");
 	}
