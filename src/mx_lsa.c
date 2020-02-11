@@ -1,17 +1,19 @@
-
 #include "uls.h"
-	
-char **mx_write_to_arr_a(DIR *dir, char **s) {
+
+char** mx_write_to_arr_a(DIR *dir, char **s) {
+	int i = 0;
 	struct dirent *entry;
-	int i =0;
 
 	while ((entry = readdir(dir)) != NULL) {
 		s[i] = mx_strdup(entry->d_name);
 		i++;
+		//mx_printint(i);
 	}
 	s[i] = NULL;
-	return s;
+	//free(entry);
+	return s; //массив с названиями файлов
 }
+
 
 void mx_lsa(DIR *dir, char **argv) {
 	DIR *dir1;

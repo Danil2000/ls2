@@ -1,8 +1,8 @@
 #include "uls.h"
 
 static void choose_flag(char *arg, char **args, DIR *dir) {
-	// if (!mx_strcmp(arg, "-R"))
-	// 	mx_ls_R(args[2]);
+	if (!mx_strcmp(arg, "-R"))
+		mx_ls_R(args[2]);
 	if (!mx_strcmp(arg, "-d"))
 		mx_ls_d(args);
 	if (!mx_strcmp(arg, "-a"))
@@ -75,12 +75,11 @@ int main(int argc, char **argv) {
 		mx_ls_wd();
 		return 0;
 	}
-	// if (argc > 2) {
-	// 	mx_few_dirs(argv);
-	// 	//system("leaks -q uls");
-	// 	return 0;
-	// }
-
+	if (argc > 2 && argv[1][0] != '-') {
+		mx_few_dirs(argv);
+		system("leaks -q uls");
+		return 0;
+	}
 	choose_wf_d(argv);
 	mx_check(argc, argv);
 	dir = opendir(argv[2]);

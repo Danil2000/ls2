@@ -40,4 +40,5 @@ void mx_ls_R(char *fn) {
 			}
 		}
 	}
+	mx_printchar('\n');
 }
