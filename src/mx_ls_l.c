@@ -18,7 +18,8 @@ static char *mx_take_fm(struct stat stats, char *dirname) {
 		str[3] = ((int) modes & S_IXOTH) ? 't' : 'T';
 	str[10] = mx_tacl(dirname);
 	str[11] = '\0';
-	return str;
+	//mx_printstr(str);
+	return str;  //возвращаем строку с правами доступа
 }
 
 // static void mx_links() {
@@ -36,5 +37,5 @@ void mx_ls_l(char *dirname) {
 	mode = mx_get_mode(dirname);
 	//mx_printstr(mode);
 	str = mx_take_fm(fst, dirname);
-	//mx_printstr(str);
+	mx_printstr(str);
 }

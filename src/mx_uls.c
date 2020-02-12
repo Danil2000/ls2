@@ -38,7 +38,7 @@ static void choose_combination(char *arg, char **args, DIR *dir) {
 		mx_ls_m(dir, args);
 	if (!mx_strcmp(arg, "-ma"))
 		mx_ls_ma(dir, args);
-	system("leaks -q uls");
+	//system("leaks -q uls");
 }
 
 static void choose_wf_d(char **argv) {
@@ -48,7 +48,7 @@ static void choose_wf_d(char **argv) {
 		dir = opendir(argv[1]);
 		mx_check_dir(dir, argv);
 		mx_ls_wf(dir, argv[1]);
-		system("leaks -q uls");
+		//system("leaks -q uls");
 		exit(1);
 	}
 	if (argv[1][0] == '-' && argv[2] == NULL)
@@ -73,11 +73,12 @@ int main(int argc, char **argv) {
 	} 
 	if (argc == 1) {
 		mx_ls_wd();
+		//system("leaks -q uls");
 		return 0;
 	}
 	if (argc > 2 && argv[1][0] != '-') {
 		mx_few_dirs(argv);
-		system("leaks -q uls");
+		//system("leaks -q uls");
 		return 0;
 	}
 	choose_wf_d(argv);
