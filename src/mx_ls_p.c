@@ -44,7 +44,7 @@ void mx_ls_p(DIR *dir, char **argv) {
 	if (!argv[2]) {
 		dir1 = opendir(".");
 	}
-	else{
+	else {
 		dir1 = opendir(argv[2]);
 	}
 	ls->s = (char**)malloc(sizeof(char **) * (ls->size_dir + 1));
