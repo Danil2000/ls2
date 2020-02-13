@@ -14,6 +14,24 @@ static int count_all_dir(char **argv) {
 	return cout_dir;
 }
 
+static char **check_files(char **s_file, char **argv)
+{
+	int i = 1;
+	int j = 0;
+
+	s_file = (char **)malloc((count_all_dir(argv) + 1) * sizeof(char **)); //выделяем память под все переменные
+	while (argv[i]) {
+		if (!mx_is_dir(argv[i])) { //проверяем если папка, то записываем в переменную
+			s_file[j] = argv[i];
+			j++;
+		}
+		i++;
+	}
+	s_file[j] = NULL;
+	mx_bubble_sort(s_file, count_all_dir(s_file));
+	return s_file; //возвращаем только массив папок
+}
+
 // берет аргумент из терминала (все, включая название проги и флаги) char** argv
 // отсекает все, что не папки (название программы и флаги)
 // и передает в массив s_dir только название папок
@@ -28,7 +46,6 @@ static char **check_dirs(char **s_dir, char** argv) {
 			j++;
 		}
 		i++;
-		//s_dir[j] = NULL;
 	}
 	s_dir[j] = NULL;
 	mx_bubble_sort(s_dir, count_all_dir(s_dir));
@@ -42,11 +59,19 @@ static void is_flags(char **argv, char *fname, DIR *dir) {
 }
 
 //печатаем название папки и ее содержимое
+<<<<<<< HEAD
 static void mx_print_few_dir(char **s_dir, char **argv) {
+=======
+static void mx_print_few_dir(char **s_dir, char **s_file) {
+>>>>>>> f7e428dfe5af956e19c158e54b798ae977fe6b54
 	int i = 0;
-	//DIR *dir;
-	//char *arr;
-	
+	int hres = 0;
+	int count = 0;
+
+	hres = mx_count_for_print(s_file);
+	count = mx_uls_len_name(hres);
+	mx_get_width(s_file, count, 0);
+	mx_printchar('\n');
 	while (s_dir[i] != NULL) {
 		DIR *dir;
 		mx_printstr(s_dir[i]);
@@ -58,13 +83,18 @@ static void mx_print_few_dir(char **s_dir, char **argv) {
 			mx_printchar('\n');
 		i++;
 	}
-	//closedir(dir);
 }
 
 
 void mx_few_dirs(char** argv) {
 	char **s = NULL;
+	char **f = NULL;
 	s = check_dirs(s, argv);
+<<<<<<< HEAD
 
 	mx_print_few_dir(s, argv);
+=======
+	f = check_files(f, argv);
+	mx_print_few_dir(s, f);
+>>>>>>> f7e428dfe5af956e19c158e54b798ae977fe6b54
 }

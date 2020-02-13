@@ -15,14 +15,12 @@ char** mx_write_to_arr(DIR *dir, char **s) {
 			//s[i] = mx_strdup(entry->d_name);
 			i++;
 		}
-		//mx_printint(i);
 	}
 	s[i] = NULL;
 	closedir(dir);
 	//free(entry);
 	return s; //массив с названиями файлов
 }
-
 
 void mx_ls_wf(DIR *dir, char *argv) {
 	DIR *dir1;
@@ -32,15 +30,11 @@ void mx_ls_wf(DIR *dir, char *argv) {
 	int count = 0;
 
 	size_dir = mx_dir_size(dir, 0);
-	mx_printint(size_dir);
 	dir1 = opendir(argv);
 	s = (char**)malloc(sizeof(char **) * (size_dir + 1));
 	s = mx_write_to_arr(dir1, s);
 	hres = mx_count_for_print(s);
-	count = mx_uls_len_name(hres);//тут выдает разные значения
-	//mx_printint(ls->count);
-
-	//mx_ls_print(ls->s, ls->count, ls->size_dir);
+	count = mx_uls_len_name(hres);
 	mx_get_width(s, count, 0);
 	mx_del_strarr(&s);
 }
