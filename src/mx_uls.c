@@ -1,6 +1,6 @@
 #include "uls.h"
 
-static void choose_flag(char *arg, char **args, DIR *dir) {
+void mx_choose_flag(char *arg, char **args, DIR *dir) {
 	if (!mx_strcmp(arg, "-R"))
 		mx_ls_R(args[2]);
 	if (!mx_strcmp(arg, "-d"))
@@ -17,10 +17,10 @@ static void choose_flag(char *arg, char **args, DIR *dir) {
 	// 	mx_ls_G(args[2]);
 	if (!mx_strcmp(arg, "-f"))
 		mx_ls_f(dir, args);
-	if (!mx_strcmp(arg, "-p"))
-		mx_ls_p(dir, args);
+	// if (!mx_strcmp(arg, "-p"))
+	// 	mx_ls_p(dir, args);
 	if (!mx_strcmp(arg, "-l"))
-		mx_ls_l(arg);
+		mx_ls_l(dir, args[2]);
 }
 
 static void choose_combination(char *arg, char **args, DIR *dir) {
@@ -36,9 +36,11 @@ static void choose_combination(char *arg, char **args, DIR *dir) {
 		mx_lsa(dir, args);
 	if (!mx_strcmp(arg, "-lm"))
 		mx_ls_m(dir, args);
-	if (!mx_strcmp(arg, "-ma"))
+	if (!mx_strcmp(arg, "-ma")) {
 		mx_ls_ma(dir, args);
-	system("leaks -q uls");
+		//system("leaks -q uls");
+	}
+	////system("leaks -q uls");
 }
 
 static void choose_wf_d(char **argv) {
@@ -48,13 +50,12 @@ static void choose_wf_d(char **argv) {
 		dir = opendir(argv[1]);
 		mx_check_dir(dir, argv);
 		mx_ls_wf(dir, argv[1]);
-		system("leaks -q uls");
 		exit(1);
 	}
 	if (argv[1][0] == '-' && argv[2] == NULL)
 	{
 		dir = opendir(".");
-		choose_flag(argv[1], argv, dir);
+		mx_choose_flag(argv[1], argv, dir);
 		exit(1);
 	}
 	if(mx_strcmp(argv[2], "") == 0) {
@@ -73,11 +74,12 @@ int main(int argc, char **argv) {
 	} 
 	if (argc == 1) {
 		mx_ls_wd();
+		//system("leaks -q uls");
 		return 0;
 	}
 	if (argc > 2 && argv[1][0] != '-') {
 		mx_few_dirs(argv);
-		system("leaks -q uls");
+		//system("leaks -q uls");
 		return 0;
 	}
 	choose_wf_d(argv);
@@ -85,6 +87,6 @@ int main(int argc, char **argv) {
 	dir = opendir(argv[2]);
 	mx_check_dir(dir, argv);
 	choose_combination(argv[1], argv, dir);
-	choose_flag(argv[1], argv, dir);
+	mx_choose_flag(argv[1], argv, dir);
 	//system("leaks -q uls");
 }

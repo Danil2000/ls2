@@ -92,14 +92,15 @@ char mx_type_of_file(mode_t mode);
 void mx_ls_wf_few(DIR *dir, char **argv, int count);
 void mx_ls_m(DIR* dir, char **argv);
 void mx_ls_p(DIR *dir, char **argv);
-mode_t mx_get_mode(char *dirname);
-void mx_ls_l(char *dirname);
-void mx_dir_type(mode_t mode, char *dirname);
+mode_t mx_get_mode(struct stat fst);
+void mx_ls_l(DIR *dir, char *dirname);
+void mx_dir_type(mode_t mode, char *str);
 mode_t* mx_f_m(mode_t *mode);
 void mx_take_ogp(mode_t mode, mode_t *modes, char *str);
-char mx_tacl(char *dirname);
+//char mx_tacl(char *dirname);
 void mx_ls_ma(DIR* dir, char **argv);
 void mx_print_m(char **s, int winsize);
 int mx_size_win();
+void mx_choose_flag(char *arg, char **args, DIR *dir);
 
 #endif

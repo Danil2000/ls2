@@ -18,4 +18,5 @@ void mx_ls_wd() {
 	
 	//mx_ls_print(ls->s, ls->count, ls->size_dir);
 	mx_get_width(s, count, 0);
+	mx_del_strarr(&s);
 }

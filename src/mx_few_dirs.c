@@ -35,8 +35,14 @@ static char **check_dirs(char **s_dir, char** argv) {
 	return s_dir; //возвращаем только массив папок
 }
 
+static void is_flags(char **argv, char *fname, DIR *dir) {
+	if (argv[1][0] != '-')
+		mx_ls_wf(dir, fname);
+
+}
+
 //печатаем название папки и ее содержимое
-static void mx_print_few_dir(char **s_dir) {
+static void mx_print_few_dir(char **s_dir, char **argv) {
 	int i = 0;
 	//DIR *dir;
 	//char *arr;
@@ -47,7 +53,7 @@ static void mx_print_few_dir(char **s_dir) {
 		mx_printstr(":");
 		mx_printchar('\n');
 		dir = opendir(s_dir[i]);
-		mx_ls_wf(dir, s_dir[i]);
+		is_flags(argv, s_dir[i], dir);
 		if (s_dir[i + 1] != NULL)
 			mx_printchar('\n');
 		i++;
@@ -55,8 +61,10 @@ static void mx_print_few_dir(char **s_dir) {
 	//closedir(dir);
 }
 
+
 void mx_few_dirs(char** argv) {
 	char **s = NULL;
 	s = check_dirs(s, argv);
-	mx_print_few_dir(s);
+
+	mx_print_few_dir(s, argv);
 }

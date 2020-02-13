@@ -18,12 +18,12 @@ static char **write_p(DIR *dir, char** s) {
 			{
 				if (restype != 'd')
 				{
-					s[i] = entry->d_name;
+					s[i] = mx_strdup(entry->d_name);
 					i++;
 				}
 				else if (restype == 'd')
 				{
-					s[i] = entry->d_name;
+					s[i] = mx_strdup(entry->d_name);
 					s[i] = mx_strjoin(s[i], "/");
 					i++;
 				}
@@ -37,19 +37,21 @@ static char **write_p(DIR *dir, char** s) {
 
 void mx_ls_p(DIR *dir, char **argv) {
 	DIR *dir1;
-	t_ls *ls = NULL;
+	int size_dir = 0;
+	char **s = NULL;
+	int hres = 0;
+	int count = 0;
 
-	ls = malloc(sizeof(ls));
-	ls->size_dir = mx_dir_size(dir, 0);
+	size_dir = mx_dir_size(dir, 0);
 	if (!argv[2]) {
 		dir1 = opendir(".");
 	}
 	else{
 		dir1 = opendir(argv[2]);
 	}
-	ls->s = (char**)malloc(sizeof(char **) * (ls->size_dir + 1));
-	ls->s = write_p(dir1, ls->s);
-	ls->hres = mx_count_for_print(ls->s);
-	ls->count = mx_uls_len_name(ls->hres);
-	mx_get_width(ls->s, ls->count, 0);
+	s = (char**)malloc(sizeof(char **) * (size_dir + 1));
+	s = write_p(dir1, s);
+	hres = mx_count_for_print(s);
+	count = mx_uls_len_name(hres);
+	mx_get_width(s, count, 0);
 }
