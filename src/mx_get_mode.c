@@ -3,28 +3,28 @@
 void mx_dir_type(mode_t mode, char *str) {
     switch (mode & S_IFMT) {
     case S_IFCHR:
-        mx_strcat(str, "c");
+        mx_strjoin(str, "c");
         break;
     case S_IFBLK:
-        mx_strcat(str, "b");
+        mx_strjoin(str, "b");
         break;
     case S_IFIFO:
-        mx_strcat(str, "p");
+        mx_strjoin(str, "p");
         break;
     case S_IFDIR:
-        mx_strcat(str, "d");
+        mx_strjoin(str, "d");
         break;
     case S_IFLNK:
-        mx_strcat(str, "l");
+        mx_strjoin(str, "l");
         break;
     case S_IFSOCK:
-        mx_strcat(str, "s");
+        mx_strjoin(str, "s");
         break;
     case S_IFREG:
-        mx_strcat(str, "-");
+        mx_strjoin(str, "-");
         break;
     default:
-        mx_strcat(str, " ");
+        mx_strjoin(str, " ");
         break;
     }
 }
@@ -50,36 +50,36 @@ void mx_take_ogp(mode_t mode, mode_t *modes, char *str) {
             case S_IRUSR:
             case S_IRGRP:
             case S_IROTH:
-                mx_strcat(str, "r");
+                mx_strjoin(str, "r");
                 break;
             case S_IWUSR:
             case S_IWGRP:
             case S_IWOTH:
-                mx_strcat(str, "w");
+                mx_strjoin(str, "w");
                 break;
             case S_IXUSR:
             case S_IXGRP:
             case S_IXOTH:
-                mx_strcat(str, "x");
+                mx_strjoin(str, "x");
             default:
-                mx_strcat(str, "-");
+                mx_strjoin(str, "-");
                 break;
-            }
+        }
        
 		// if ((modes[i] & mode) == S_IRUSR
   //           || (modes[i] & mode) == S_IRGRP
   //           || (modes[i] & mode) == S_IROTH)
-  //           mx_strcat(str, "r");
+  //           mx_strjoin(str, "r");
 		// else if ((modes[i] & mode) == S_IWUSR
   //           || (modes[i] & mode) == S_IWGRP
   //           || (modes[i] & mode) == S_IWOTH)
-  //           mx_strcat(str, "w");
+  //           mx_strjoin(str, "w");
 		// else if ((modes[i] & mode) == S_IXUSR
   //           || (modes[i] & mode) == S_IXGRP
   //           || (modes[i] & mode) == S_IXOTH)
-  //           mx_strcat(str, "x");
+  //           mx_strjoin(str, "x");
   //       else {
-  //       	mx_strcat(str, "-");
+  //       	mx_strjoin(str, "-");
   //       }
 	}
 }

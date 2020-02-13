@@ -5,7 +5,7 @@ static void mx_take_fm(struct stat stats, char *str) {
 	mode_t *modes = NULL;
 	// char *str;
 
-	str = mx_strnew(10);
+	str = (char *)malloc(12); 
 	//if(!(str = (char *)malloc(sizeof(char) * 12))) 
 		// return NULL;
 	modes = mx_f_m(modes);
@@ -18,7 +18,7 @@ static void mx_take_fm(struct stat stats, char *str) {
 	if (mode & S_ISVTX)
 		str[9] = ((int)modes & S_IXOTH) ? 't' : 'T';
 	//str[10] = mx_tacl(path);
-	//str[11] = '\0';
+	str[11] = '\0';
 	// return str;
 }
 
@@ -38,7 +38,7 @@ void mx_ls_l(DIR *dir, char *dirname) {
 			mode = mx_get_mode(fst);
 		//mx_printstr(mode);
 			mx_take_fm(fst, str);
-			mx_printstr(str);
+			//mx_printstr(str);
 			mx_strdel(&str);
 		}
 	}

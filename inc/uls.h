@@ -13,12 +13,19 @@
 #include <time.h>
 #include <pwd.h>
 #include <time.h>
-#include <sys/xattr.h>
 #include <sys/types.h>
 #include <sys/acl.h>
 #include <sys/xattr.h>
 #include <sys/ttycom.h>
-#include <sys/dirent.h>
+
+ #define S_IFMT    0170000//__S_IFMT
+ #define S_IFDIR	0040000//__S_IFDIR
+ #define S_IFCHR	0020000//__S_IFCHR
+ #define S_IFBLK	0060000//__S_IFBLK
+ #define S_IFREG	0100000//__S_IFREG
+ #define S_IFIFO	0010000//__S_IFIFO
+ #define S_IFLNK 	0120000//__S_IFLNK
+ #define S_IFSOCK   0140000//__S_IFSOCK
 
 DIR *dir;
 
@@ -54,6 +61,10 @@ typedef struct 			s_lens {
 	int					chosen;
 	int					blocks;
 }						t_lens;
+typedef struct s_lst {
+    void *data;
+    struct s_lst *next;
+}   t_lst;
 
 void mx_check(int argc, char **argv);
 void mx_check_dir(DIR *dir, char **argv);
@@ -101,6 +112,7 @@ void mx_take_ogp(mode_t mode, mode_t *modes, char *str);
 void mx_ls_ma(DIR* dir, char **argv);
 void mx_print_m(char **s, int winsize);
 int mx_size_win();
-void mx_choose_flag(char *arg, char **args, DIR *dir);
+void mx_choose_flag(char *arg, char **args, DIR *dir, int argc);
+void mx_ls_l2(char **argv, int argc);
 
 #endif
