@@ -52,7 +52,14 @@ static char **check_dirs(char **s_dir, char** argv) {
 	return s_dir; //возвращаем только массив папок
 }
 
+// static void is_flags(char **argv, char *fname, DIR *dir) {
+// 	if (argv[1][0] != '-')
+// 		mx_ls_wf(dir, fname);
+
+// }
+
 //печатаем название папки и ее содержимое
+
 static void mx_print_few_dir(char **s_dir, char **s_file) {
 	int i = 0;
 	int hres = 0;
@@ -74,6 +81,7 @@ static void mx_print_few_dir(char **s_dir, char **s_file) {
 		i++;
 	}
 }
+
 
 void mx_few_dirs(char** argv) {
 	char **s = NULL;

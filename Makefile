@@ -40,7 +40,8 @@ SRC =	mx_wf_few.c\
 		mx_print_with_new_line.c\
 		mx_to_colls.c\
 		mx_uls.c\
-		mx_is_dir.c
+		mx_l2.c\
+		mx_ls_atty.c
 
 SRCS	=	$(addprefix $(SRCD)/, $(SRC))
 OBJS	=	$(addprefix $(OBJD)/, $(SRC:%.c=%.o))

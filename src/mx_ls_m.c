@@ -34,9 +34,10 @@ void mx_ls_m(DIR* dir, char **argv) {
 		dir1 = opendir(argv[2]);
 	}
 	s = malloc(sizeof(char *) * size_dir + 1);
-	s = mx_write_to_arr(dir, s);
+	s = mx_write_to_arr(dir1, s);
 	winsize = mx_size_win();
 	//mx_printint(winsize);
 	mx_bubble_sort(s, size_dir);
 	mx_print_m(s, winsize);
+	mx_del_strarr(&s);
 }
