@@ -87,7 +87,7 @@ void mx_get_width(char **s, int spaces, int sf);
 char **mx_write_to_arr(DIR *dir, char **s);
 int mx_len_arr(char **s);
 char **mx_write_to_arr_A(DIR *dir,char **s);
-void mx_ls_flag_one(DIR *dir);
+void mx_ls_flag_one(DIR *dir, char **argv);
 void mx_ls_a_one(DIR *dir, char **argv);
 void mx_ls_A_one(DIR *dir, char **argv);
 char **mx_write_to_arr_a(DIR *dir,char **s);
@@ -114,5 +114,6 @@ void mx_print_m(char **s, int winsize);
 int mx_size_win();
 void mx_choose_flag(char *arg, char **args, DIR *dir, int argc);
 void mx_ls_l2(char **argv, int argc);
+void mx_ls_atty(char **argv);
 
 #endif

@@ -118,7 +118,7 @@ void mx_ls_l2(char **argv, int argc) {
     int t = 0;
     int fd = 0;
 
-    yy = (char **)malloc(sizeof(char*) *(argc + 1));
+    yy = (char **)malloc(sizeof(char**) *(argc + 1));
 
     if(argv == NULL) {
       r = opendir(".");
