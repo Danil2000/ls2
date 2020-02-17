@@ -84,10 +84,5 @@ int main(int argc, char **argv) {
 	dir = opendir(argv[2]);
 	mx_check_dir(dir, argv);
 	choose_combination(argv[1], argv, dir);
-<<<<<<< HEAD
 	mx_choose_flag(argv[1], argv, dir, argc);
-=======
-	choose_flag(argv[1], argv, dir);
-	system("leaks -q uls");
->>>>>>> db1912edbccfb88b1395edceb306c8252f808f4f
 }
