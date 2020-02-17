@@ -10,7 +10,7 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "/Users/vynchuk/Desktop/ls2/uls",
-            "args": ["-R", "."],
+            "args": ["|", "cat", "-e"],
             "stopAtEntry": true,
             "cwd": "/Users/vynchuk/Desktop/ls2",
             "environment": [],
