@@ -11,8 +11,7 @@ LMBX = libmx.a
 INC = uls.h
 INCS	=	$(addprefix $(INCD)/, $(INC))
 
-SRC =	mx_wf_few.c\
-		mx_check_flags.c\
+SRC =	mx_check_flags.c\
 		mx_check.c\
 		mx_colors.c\
 		mx_count_for_print.c\
@@ -41,7 +40,8 @@ SRC =	mx_wf_few.c\
 		mx_to_colls.c\
 		mx_uls.c\
 		mx_l2.c\
-		mx_ls_atty.c
+		mx_ls_atty.c\
+		mx_is_dir.c
 
 SRCS	=	$(addprefix $(SRCD)/, $(SRC))
 OBJS	=	$(addprefix $(OBJD)/, $(SRC:%.c=%.o))
@@ -70,8 +70,6 @@ clean: uninstall
 	@rm -rf $(OBJD)
 	
 uninstall:
-
 	@make -sC $(LMXD) $@
 
-	
 reinstall: uninstall clean install
