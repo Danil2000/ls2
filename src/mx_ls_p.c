@@ -23,8 +23,7 @@ static char **write_p(DIR *dir, char** s) {
 				}
 				else if (restype == 'd')
 				{
-					s[i] = mx_strdup(entry->d_name);
-					s[i] = mx_strjoin(s[i], "/");
+					s[i] = mx_strjoin(entry->d_name, "/");
 					i++;
 				}
 			}
@@ -54,4 +53,6 @@ void mx_ls_p(DIR *dir, char **argv) {
 	hres = mx_count_for_print(s);
 	count = mx_uls_len_name(hres);
 	mx_get_width(s, count, 0);
+	closedir(dir1);
+	mx_del_strarr(&s);
 }

@@ -26,7 +26,7 @@ void mx_ls_A(DIR *dir, char **argv) {
 	if (!argv[2]) {
 		dir1 = opendir(".");
 	}
-	else{
+	else {
 		dir1 = opendir(argv[2]);
 	}
 	s = malloc(sizeof(char *) * (size_dir + 1));

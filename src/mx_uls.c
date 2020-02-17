@@ -17,8 +17,8 @@ void mx_choose_flag(char *arg, char **args, DIR *dir, int argc) {
 	// 	mx_ls_G(args[2]);
 	if (!mx_strcmp(arg, "-f"))
 		mx_ls_f(dir, args);
-	// if (!mx_strcmp(arg, "-p"))
-	// 	mx_ls_p(dir, args);
+	if (!mx_strcmp(arg, "-p"))
+		mx_ls_p(dir, args);
 	if (!mx_strcmp(arg, "-l"))
 		mx_ls_l2(args, argc);
 }
