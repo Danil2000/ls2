@@ -2,7 +2,7 @@
 
 void mx_choose_flag(char *arg, char **args, DIR *dir, int argc) {
 	if (!mx_strcmp(arg, "-R"))
-		mx_ls_R(args[2]);
+		mx_ls_R(args[2], args);
 	if (!mx_strcmp(arg, "-d"))
 		mx_ls_d(args);
 	if (!mx_strcmp(arg, "-a"))
@@ -36,11 +36,10 @@ static void choose_combination(char *arg, char **args, DIR *dir) {
 		mx_lsa(dir, args);
 	if (!mx_strcmp(arg, "-lm"))
 		mx_ls_m(dir, args);
-	if (!mx_strcmp(arg, "-ma")) {
+	if (!mx_strcmp(arg, "-ma"))
 		mx_ls_ma(dir, args);
-		//system("leaks -q uls");
-	}
-	////system("leaks -q uls");
+	if (!mx_strcmp(arg, "-Ra"))
+		mx_ls_R(args[2], args);
 }
 
 static void choose_wf_d(char **argv, int argc) {

@@ -7,11 +7,16 @@ static void print_name_dir(char *s1) {
 	mx_printchar('\n');
 }
 
-static void open_dir1_print_fl(char *fn) {
+static void open_dir1_print_fl(char *fn, char **argv) {
 	DIR *dir1;
 
 	dir1 = opendir(fn);
-	mx_ls_wf(dir1, fn);
+	if(argv[1][1] == 'a') {
+		mx_lsa
+	}
+	else {
+		mx_ls_wf(dir1, fn);
+	}
 }
 
 static void open_dubble_read_dir(DIR *dir) {
@@ -31,13 +36,13 @@ static char* make_R_str(char *fn, char *filename) {
 	return s1;
 }
 
-void mx_ls_R(char *fn) {
+void mx_ls_R(char *fn, char** argv) {
 	DIR *dir;
 	struct dirent *files;
 	char *s1 = NULL;
 	
 	dir = opendir(fn);
-	open_dir1_print_fl(fn);
+	open_dir1_print_fl(fn, argv);
 	open_dubble_read_dir(dir);
 	while ((files = readdir(dir)) != NULL) {
 		if (mx_is_dir(files->d_name)) {
