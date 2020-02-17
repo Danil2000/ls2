@@ -24,7 +24,6 @@ void mx_dir_type(mode_t mode, char *str) {
         mx_strjoin(str, "-");
         break;
     default:
-        mx_strjoin(str, " ");
         break;
     }
 }
@@ -65,22 +64,6 @@ void mx_take_ogp(mode_t mode, mode_t *modes, char *str) {
                 mx_strjoin(str, "-");
                 break;
         }
-       
-		// if ((modes[i] & mode) == S_IRUSR
-  //           || (modes[i] & mode) == S_IRGRP
-  //           || (modes[i] & mode) == S_IROTH)
-  //           mx_strjoin(str, "r");
-		// else if ((modes[i] & mode) == S_IWUSR
-  //           || (modes[i] & mode) == S_IWGRP
-  //           || (modes[i] & mode) == S_IWOTH)
-  //           mx_strjoin(str, "w");
-		// else if ((modes[i] & mode) == S_IXUSR
-  //           || (modes[i] & mode) == S_IXGRP
-  //           || (modes[i] & mode) == S_IXOTH)
-  //           mx_strjoin(str, "x");
-  //       else {
-  //       	mx_strjoin(str, "-");
-  //       }
 	}
 }
 

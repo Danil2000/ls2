@@ -1,6 +1,6 @@
 NAME = uls
 
-CFLG	=	-std=c11 $(addprefix -W, all extra error pedantic) -g -fsanitize=address
+CFLG	=	-std=c11 $(addprefix -W, all extra error pedantic) -g #-fsanitize=address
 SRCD	=	src
 INCD	=	inc
 OBJD	=	obj
@@ -11,8 +11,7 @@ LMBX = libmx.a
 INC = uls.h
 INCS	=	$(addprefix $(INCD)/, $(INC))
 
-SRC =	mx_wf_few.c\
-		mx_check_flags.c\
+SRC =	mx_check_flags.c\
 		mx_check.c\
 		mx_colors.c\
 		mx_count_for_print.c\
@@ -71,8 +70,6 @@ clean: uninstall
 	@rm -rf $(OBJD)
 	
 uninstall:
-
 	@make -sC $(LMXD) $@
 
-	
 reinstall: uninstall clean install
