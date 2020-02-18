@@ -5,7 +5,7 @@ static DIR* check(DIR *dir1, char **argv) {
 		if(isatty(1) == 0 && argv[1]) {
 			dir1 = opendir(argv[1]);
 		}
-		else{
+		else {
 			dir1 = opendir(".");
 		}
 	}
