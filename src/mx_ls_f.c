@@ -18,9 +18,7 @@ void mx_ls_f(DIR *dir, char **argv) {
 	s = malloc(sizeof(char *) * (size_dir + 1));
 	s = mx_write_to_arr_a(dir1, s);
 	hres = mx_count_for_print(s);//длина максимального файла 
-	//mx_printint(hres);
 	count = mx_uls_len_name(hres);// кол-во название плюс пробелы
-	//mx_printint(count);
 	mx_get_width(s, count, 1);
 	mx_del_strarr(&s);
 	closedir(dir1);

@@ -11,8 +11,8 @@ static void open_dir1_print_fl(char *fn, char **argv) {
 	DIR *dir1;
 
 	dir1 = opendir(fn);
-	if(argv[1][1] == 'a') {
-		mx_lsa
+	if(!mx_strcmp(argv[1], "-Ra")) {
+		mx_lsa(dir, argv[2]);
 	}
 	else {
 		mx_ls_wf(dir1, fn);
@@ -50,7 +50,7 @@ void mx_ls_R(char *fn, char** argv) {
 				mx_printchar('\n');
 				s1 = make_R_str(fn, files->d_name);
 				print_name_dir(s1);
-				mx_ls_R(s1);
+				mx_ls_R(s1, argv);
 				free(s1);
 			}
 		}
