@@ -21,7 +21,6 @@ void mx_ls_flag_one(DIR *dir, char **argv) {
 	DIR *dir1 = NULL;
 
 	size = mx_dir_size(dir, 1);
-
 	dir1 = check(dir1, argv);
 	s =  malloc((sizeof(char *) * size) + 1);
 	s = mx_write_to_arr(dir1, s);
