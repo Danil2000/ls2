@@ -17,6 +17,11 @@
 #include <sys/acl.h>
 #include <sys/xattr.h>
 #include <sys/ttycom.h>
+#include <grp.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include <fcntl.h>
+
 
  #define S_IFMT    0170000//__S_IFMT
  #define S_IFDIR	0040000//__S_IFDIR

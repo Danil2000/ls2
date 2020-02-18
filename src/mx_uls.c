@@ -20,7 +20,7 @@ void mx_choose_flag(char *arg, char **args, DIR *dir, int argc) {
 	if (!mx_strcmp(arg, "-p"))
 		mx_ls_p(dir, args);
 	if (!mx_strcmp(arg, "-l"))
-		mx_ls_l2(args, argc);
+		mx_ls_l2(NULL, argc);
 }
 
 static void choose_combination(char *arg, char **args, DIR *dir) {
@@ -71,6 +71,7 @@ int main(int argc, char **argv) {
 
 	if (isatty(1) == 0) {
 		mx_ls_atty(argv);
+		system("leaks -q uls");
 		return 0;
 	} 
 	if (argc == 1) {
@@ -87,5 +88,5 @@ int main(int argc, char **argv) {
 	mx_check_dir(dir, argv);
 	choose_combination(argv[1], argv, dir);
 	mx_choose_flag(argv[1], argv, dir, argc);
-	system("leaks -q uls");
+	//system("leaks -q uls");
 }
