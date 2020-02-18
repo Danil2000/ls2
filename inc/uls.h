@@ -17,6 +17,11 @@
 #include <sys/acl.h>
 #include <sys/xattr.h>
 #include <sys/ttycom.h>
+#include <grp.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include <fcntl.h>
+
 
  #define S_IFMT    0170000//__S_IFMT
  #define S_IFDIR	0040000//__S_IFDIR
@@ -70,12 +75,12 @@ void mx_check(int argc, char **argv);
 void mx_check_dir(DIR *dir, char **argv);
 void mx_ls_wf(DIR *dir, char *argv);
 void mx_ls_A(DIR *dir, char **argv);
-void mx_lsa(DIR *dir, char **argv);
+void mx_lsa(DIR *dir, char *argv);
 void mx_ls_d(char **argv);
 void mx_ls_wd();
 int mx_dir_size(DIR *dir, int is_a);
 bool mx_is_dir(char *fname);
-void mx_ls_R(char *fn);
+void mx_ls_R(char *fn, char** argv);
 int mx_count_for_print(char **s);
 int mx_uls_len_name(int a);
 void mx_ls_print(char **s, int count, int size);

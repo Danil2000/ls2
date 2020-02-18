@@ -3,22 +3,19 @@
 static char **write_p(DIR *dir, char** s) {
 	int i = 0;
 	struct dirent *entry;
-	struct stat fst;
-    mode_t type;
-    int st = 0;
-    char restype;
 
 	while ((entry = readdir(dir)) != NULL) {
-		st = stat(entry->d_name, &fst);
-        type = fst.st_mode;
-        restype = mx_type_of_file(type);
-		if (entry->d_name[0] != '.' ) {
-			if (entry->d_name[i+1]) {
-				if (restype != 'd') {
+		if (entry->d_name[0] != '.')
+		{
+			if (entry->d_name[i+1])
+			{
+				if (!mx_is_dir(entry->d_name))
+				{
 					s[i] = mx_strdup(entry->d_name);
 					i++;
 				}
-				else if (restype == 'd') {
+				else
+				{
 					s[i] = mx_strjoin(entry->d_name, "/");
 					i++;
 				}
