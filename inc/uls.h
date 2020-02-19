@@ -45,31 +45,31 @@ typedef struct s_ls_colls {
 	int len;
 	int r;
 } t_ls_colls;
-
-typedef enum 			e_lena {
-	LENINO,
-	LENLINKS,
-	LENUSER,
-	LENGROUP,
-	LENSIZE,
-	LENSIZE_OTHER,
-	LENNAME
-}						t_lena;
-
-typedef struct 			s_lens {
-	int					len_filename;
-	int					len_links;
-	int					len_user;
-	int					len_group;
-	int					len_size;
-	int					len_ino;
-	int					chosen;
-	int					blocks;
-}						t_lens;
 typedef struct s_lst {
     void *data;
     struct s_lst *next;
 }   t_lst;
+
+typedef struct s_l 
+{
+	struct stat u;
+    struct passwd *t;
+    struct group *i;
+    char *times;
+    mode_t var;
+    int b;
+    int bb;
+    ssize_t xat;
+    acl_t acl;
+    int total;
+    int max_links;
+    int max_size;
+    int max_user;
+    int max_group;
+    int d;
+    char *buf;
+    int res;
+} t_l;
 
 void mx_check(int argc, char **argv);
 void mx_check_dir(DIR *dir, char **argv);
