@@ -12,13 +12,11 @@ char** mx_write_to_arr(DIR *dir, char **s) {
 			help_v = mx_strdup(entry->d_name);
 			s[i] = mx_strdup(help_v);
 			mx_strdel(&help_v);
-			//s[i] = mx_strdup(entry->d_name);
 			i++;
 		}
 	}
 	s[i] = NULL;
 	closedir(dir);
-	//free(entry);
 	return s; //массив с названиями файлов
 }
 

@@ -71,7 +71,7 @@ int main(int argc, char **argv) {
 
 	if (isatty(1) == 0) {
 		mx_ls_atty(argv);
-		system("leaks -q uls");
+		//system("leaks -q uls");
 		return 0;
 	} 
 	if (argc == 1) {

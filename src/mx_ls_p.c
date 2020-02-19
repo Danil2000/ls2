@@ -1,6 +1,6 @@
 #include "uls.h"
 
-static char **write_p(DIR *dir, char** s) {
+char **mx_write_p(DIR *dir, char** s) {
 	int i = 0;
 	struct dirent *entry;
 
@@ -39,7 +39,7 @@ void mx_ls_p(DIR *dir, char **argv) {
 	else
 		dir1 = opendir(argv[2]);
 	s = (char**)malloc(sizeof(char **) * (size_dir + 1));
-	s = write_p(dir1, s);
+	s = mx_write_p(dir1, s);
 	hres = mx_count_for_print(s);
 	count = mx_uls_len_name(hres);
 	mx_get_width(s, count, 0);
