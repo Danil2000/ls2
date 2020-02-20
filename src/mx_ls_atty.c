@@ -52,7 +52,7 @@ void mx_ls_atty(char **argv) {
 	size_dir = mx_dir_size(dir, ls_is_flg_aAf(argv));
 	if (ls_is_flg_A(argv))
 		size_dir -= 2;
-	//mx_printint(size_dir);
+	mx_printint(size_dir);
 	s = malloc((sizeof(char *) * size_dir) + 1);
 	//s = mx_write_to_arr_a(dir1, s);
 	s = ls_chs_sm_flg(dir1, s, argv);

@@ -54,8 +54,7 @@ static void choose_wf_d(char **argv, int argc) {
 		mx_ls_wf(dir, argv[1]);
 		exit(1);
 	}
-	if (argv[1][0] == '-' && argv[2] == NULL)
-	{
+	if (argv[1][0] == '-' && argv[2] == NULL) {
 		dir = opendir(".");
 		mx_choose_flag(argv[1], argv, dir, argc);
 		exit(1);
@@ -69,6 +68,8 @@ static void choose_wf_d(char **argv, int argc) {
 int main(int argc, char **argv) {
 	DIR *dir;
 
+	choose_wf_d(argv, argc);
+	mx_check(argc, argv);
 	if (isatty(1) == 0) {
 		mx_ls_atty(argv);
 		//system("leaks -q uls");
@@ -82,8 +83,8 @@ int main(int argc, char **argv) {
 		mx_few_dirs(argv);
 		return 0;
 	}
-	choose_wf_d(argv, argc);
-	mx_check(argc, argv);
+	//choose_wf_d(argv, argc);
+	//mx_check(argc, argv);
 	dir = opendir(argv[2]);
 	mx_check_dir(dir, argv);
 	choose_combination(argv[1], argv, dir);
