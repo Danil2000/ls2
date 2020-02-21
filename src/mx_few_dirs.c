@@ -68,12 +68,16 @@ static void mx_print_few_dir(char **s_dir, char **s_file, char **argv) {
 		hres = mx_count_for_print(s_file);
 		count = mx_uls_len_name(hres);
 		mx_get_width(s_file, count, 0);
-		mx_printchar('\n');
+
+		//это типа выводит пустую строчку, проверить и прописать, чтобы без файлов не выводило !!!!!!
+		if (s_file != NULL)
+			mx_printchar('\n');
+                                                    
 	}
 	i = 0;
 	while (s_dir[i] != NULL) {
 		DIR *dir;
-		mx_printint(i);
+		//mx_printint(i);
 		//mx_check_dir(dir, s_dir[i]);
 		mx_printstr(s_dir[i]); // название папки
 		mx_printstr(":");
