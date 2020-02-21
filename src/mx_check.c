@@ -25,7 +25,6 @@ void mx_check(int argc, char **argv) {
 		str = mx_strjoin("uls: illegal option -- ", &argv[1][1]);
 		mx_check_flags(argv[1][1]);
 		mx_printerr(str);
-		//free(str);
 		mx_printerr("\n");
 		mx_printerr("usage uls [-l] [file ...]");
 		mx_printerr("\n");
