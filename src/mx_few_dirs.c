@@ -14,8 +14,7 @@ static int count_all_dir(char **argv) {
 	return cout_dir;
 }
 
-static char **check_files(char **s_file, char **argv)
-{
+static char **check_files(char **s_file, char **argv) {
 	int i = 1;
 	int j = 0;
 
@@ -52,41 +51,54 @@ static char **check_dirs(char **s_dir, char** argv) {
 	return s_dir; //возвращаем только массив папок
 }
 
-// static void is_flags(char **argv, char *fname, DIR *dir) {
-// 	if (argv[1][0] != '-')
-// 		mx_ls_wf(dir, fname);
-
-// }
-
 //печатаем название папки и ее содержимое
-
-static void mx_print_few_dir(char **s_dir, char **s_file) {
+static void mx_print_few_dir(char **s_dir, char **s_file, char **argv) {
 	int i = 0;
 	int hres = 0;
 	int count = 0;
+	DIR *dir1;
 
-	hres = mx_count_for_print(s_file);
-	count = mx_uls_len_name(hres);
-	mx_get_width(s_file, count, 0);
-	mx_printchar('\n');
+	if (!isatty(1)) {
+		while(s_file[i]) {
+			mx_print_with_new_line(s_file[i]);
+			i++;
+		}
+	}
+	else {
+		hres = mx_count_for_print(s_file);
+		count = mx_uls_len_name(hres);
+		mx_get_width(s_file, count, 0);
+		mx_printchar('\n');
+	}
+	i = 0;
 	while (s_dir[i] != NULL) {
 		DIR *dir;
-		mx_printstr(s_dir[i]);
+		mx_printint(i);
+		//mx_check_dir(dir, s_dir[i]);
+		mx_printstr(s_dir[i]); // название папки
 		mx_printstr(":");
 		mx_printchar('\n');
-		dir = opendir(s_dir[i]);
-		mx_ls_wf(dir, s_dir[i]);
-		if (s_dir[i + 1] != NULL)
-			mx_printchar('\n');
-		i++;
+		if (!(dir = opendir(s_dir[i]))) {
+			mx_check_dir(dir, argv);
+		};
+		if (!isatty(1)) {
+			dir1 = opendir(s_dir[i]);
+			mx_ls_flag_one(dir1, argv, s_dir[i]);
+			i++;
+		}
+		else {
+			mx_ls_wf(dir, s_dir[i]);
+			if (s_dir[i + 1] != NULL)
+				mx_printchar('\n');
+			i++;
+		}
 	}
 }
-
 
 void mx_few_dirs(char** argv) {
 	char **s = NULL;
 	char **f = NULL;
 	s = check_dirs(s, argv);
 	f = check_files(f, argv);
-	mx_print_few_dir(s, f);
+	mx_print_few_dir(s, f, argv);
 }

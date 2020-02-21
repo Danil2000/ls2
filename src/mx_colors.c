@@ -9,6 +9,7 @@ char *mx_make_whithout_backround(char *scolor, char* filename) {
 	str = mx_strjoin(str, "\x1b[0m");
 	return str;
 }
+
 char *mx_make_backround(char *scolor, char *sbackground, char* filename) {
 	char *str;
 

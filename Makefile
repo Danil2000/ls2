@@ -47,7 +47,7 @@ SRCS	=	$(addprefix $(SRCD)/, $(SRC))
 OBJS	=	$(addprefix $(OBJD)/, $(SRC:%.c=%.o))
 
 all: install uninstall
-	
+
 install: $(LMXA) $(NAME)
 
 $(NAME): $(OBJS)
@@ -55,7 +55,7 @@ $(NAME): $(OBJS)
 
 $(OBJD)/%.o: $(SRCD)/%.c $(INCS)
 	@clang $(CFLG) -c $< -o $@ -I$(INCD) -I$(LMXI)
-	
+
 $(OBJS): | $(OBJD)
 
 $(OBJD):
@@ -68,7 +68,7 @@ clean: uninstall
 	@make -sC $(LMXD) $@
 	@rm -rf $(NAME)
 	@rm -rf $(OBJD)
-	
+
 uninstall:
 	@make -sC $(LMXD) $@
 
