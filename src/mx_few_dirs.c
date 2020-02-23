@@ -57,7 +57,8 @@ static void mx_print_few_dir(char **s_dir, char **s_file, char **argv) {
 	int hres = 0;
 	int count = 0;
 	DIR *dir1;
-
+	
+	mx_print_err_few(s_file);
 	if (!isatty(1)) {
 		while(s_file[i]) {
 			mx_print_with_new_line(s_file[i]);
@@ -70,8 +71,11 @@ static void mx_print_few_dir(char **s_dir, char **s_file, char **argv) {
 		mx_get_width(s_file, count, 0);
 
 		//это типа выводит пустую строчку, проверить и прописать, чтобы без файлов не выводило !!!!!!
-		if (s_file != NULL)
+		if (s_file) {
+			mx_printstr("kuuuuuuuuuu");
 			mx_printchar('\n');
+			//mx_printstr("kuuuuuuuuuu");
+		}
                                                     
 	}
 	i = 0;

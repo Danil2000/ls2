@@ -32,14 +32,6 @@
  #define S_IFLNK 	0120000//__S_IFLNK
  #define S_IFSOCK   0140000//__S_IFSOCK
 
-DIR *dir;
-
-typedef struct s_ls {
-    int size_dir;
-    int hres;
-    int count;
-    char **s;
-} t_ls;
 typedef struct s_ls_colls {
   char **res;
 	int len;
@@ -56,16 +48,6 @@ typedef enum 			e_lena {
 	LENNAME
 }						t_lena;
 
-typedef struct 			s_lens {
-	int					len_filename;
-	int					len_links;
-	int					len_user;
-	int					len_group;
-	int					len_size;
-	int					len_ino;
-	int					chosen;
-	int					blocks;
-}						t_lens;
 typedef struct s_lst {
     void *data;
     struct s_lst *next;
@@ -121,5 +103,6 @@ void mx_choose_flag(char *arg, char **args, DIR *dir, int argc);
 void mx_ls_l2(char **argv, int argc);
 void mx_ls_atty(char **argv);
 char **mx_write_p(DIR *dir, char **s);
-
+bool mx_check_files(char *file);
+void mx_print_err_few(char **files);
 #endif
