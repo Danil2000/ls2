@@ -31,22 +31,22 @@ static char **check_files(char **s_file, char **argv) {
 	return s_file; //возвращаем только массив файлов
 }
 
-static char **check_dirs(char **s_dir, char** argv) {
-	int i = 0;
-	int j = 0;
+// static char **check_dirs(char **s_dir, char** argv) {
+// 	int i = 0;
+// 	int j = 0;
 
-	s_dir = (char **)malloc((count_all_dir(argv) + 1) * sizeof(char **)); //выделяем память под все переменные
-	while (argv[i]) {
-		if (mx_is_dir(argv[i])) {//проверяем если папка
-			s_dir[j] = argv[i];
-			j++;
-		}
-		i++;
-	}
-	s_dir[j] = NULL;
-	mx_bubble_sort(s_dir, count_all_dir(s_dir));
-	return s_dir; //возвращаем только массив папок
-}
+// 	s_dir = (char **)malloc((count_all_dir(argv) + 1) * sizeof(char **)); //выделяем память под все переменные
+// 	while (argv[i]) {
+// 		if (mx_is_dir(argv[i])) {//проверяем если папка
+// 			s_dir[j] = argv[i];
+// 			j++;
+// 		}
+// 		i++;
+// 	}
+// 	s_dir[j] = NULL;
+// 	mx_bubble_sort(s_dir, count_all_dir(s_dir));
+// 	return s_dir; //возвращаем только массив папок
+// }
 
 //печатаем название папки и ее содержимое
 static void mx_print_few_dir(char **s_dir, char **s_file, char **argv) {
@@ -64,7 +64,7 @@ static void mx_print_few_dir(char **s_dir, char **s_file, char **argv) {
 				i++;
 			}
 			else{
-				mx_print_with_new_line(s_file[i]);
+				//mx_print_with_new_line(s_file[i]);
 				i++;
 			}
 		}
@@ -74,18 +74,20 @@ static void mx_print_few_dir(char **s_dir, char **s_file, char **argv) {
 			mx_check_files(s_file[i]);
 			i++;
 		}
+		// if (errno == 2) {
+
+		// }
 		hres = mx_count_for_print(s_file);
 		count = mx_uls_len_name(hres);
 		mx_get_width(s_file, count, 0);
 		if (count < 15823877)
 			mx_printchar('\n'); //выводит пустую строчку после файла
-		//mx_wrong_files(s_file);
 	}
 	i = 0;
 	while (s_dir[i] != NULL) {
 		DIR *dir;
 		//mx_printint(hres);
-		mx_printstr(s_file[0]);
+		//mx_printstr(s_file[0]);
 		//mx_check_dir(dir, s_dir[i]);
 		mx_printstr(s_dir[i]); // название папки
 		mx_printstr(":");
@@ -106,11 +108,37 @@ static void mx_print_few_dir(char **s_dir, char **s_file, char **argv) {
 		}
 	}
 }
+static char** chk(char **argv, char **ss) {
+	int i =1;
+	int j = 0;
+	int size  = 0;
+
+	size = mx_len_arr(argv);
+	ss = malloc(sizeof(char *) * (mx_len_arr(argv) + 1));
+	while(argv[i])
+	{
+		mx_check_files(argv[i]);
+		if (errno != 2)
+		{
+			ss[j]= argv[i];
+			j++;
+		}
+		
+		i++;
+	}
+	ss[j] = NULL;
+	return ss;
+}
 
 void mx_few_dirs(char** argv) {
-	char **s = NULL;
 	char **f = NULL;
-	s = check_dirs(s, argv);
+	char **ss = NULL;
+
+	ss = chk(argv, ss);
+	// mx_print_strarr(ss, "\n");
+	//s = check_dirs(s, argv);
 	f = check_files(f, argv);
-	mx_print_few_dir(s, f, argv);
+	mx_bubble_sort(ss, mx_len_arr(ss));
+	mx_bubble_sort(f, mx_len_arr(f));
+	mx_print_few_dir(ss, f, argv);
 }
