@@ -77,5 +77,4 @@ void mx_ls_atty(char **argv) {
 		mx_print_flag_one(s, size_dir);
 	}
 	mx_del_strarr(&s);
-	
 }
