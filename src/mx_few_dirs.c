@@ -28,12 +28,9 @@ static char **check_files(char **s_file, char **argv) {
 	}
 	s_file[j] = NULL;
 	mx_bubble_sort(s_file, count_all_dir(s_file));
-	return s_file; //возвращаем только массив папок
+	return s_file; //возвращаем только массив файлов
 }
 
-// берет аргумент из терминала (все, включая название проги и флаги) char** argv
-// отсекает все, что не папки (название программы и флаги)
-// и передает в массив s_dir только название папок
 static char **check_dirs(char **s_dir, char** argv) {
 	int i = 0;
 	int j = 0;
@@ -50,6 +47,31 @@ static char **check_dirs(char **s_dir, char** argv) {
 	mx_bubble_sort(s_dir, count_all_dir(s_dir));
 	return s_dir; //возвращаем только массив папок
 }
+
+// static char **mx_wrong_files(char **s_file) {
+// 	int i = 1;
+// 	int j = 0;
+// 	int count_fl = 0;
+// 	char **wr_fls = NULL;
+
+// 	while (s_file[i]) {
+// 		if (mx_check_files(s_file[i]) == 0) {
+// 			count_fl++;
+// 		}
+// 	}
+
+// 	wr_fls = (char **)malloc((count_fl + 1) * sizeof(char **));
+// 	while (s_file[i]) {
+// 		if (mx_check_files(s_file[i]) == 0) {
+// 			wr_fls[j] = s_file[i];
+// 			j++;
+// 		}
+// 		i++;
+// 	}
+// 	wr_fls[j] = NULL;
+// 	mx_bubble_sort(wr_fls, count_all_dir(wr_fls));
+// 	return wr_fls; //возвращаем массив неверных файлов и папок
+// }
 
 //печатаем название папки и ее содержимое
 static void mx_print_few_dir(char **s_dir, char **s_file, char **argv) {
@@ -80,14 +102,9 @@ static void mx_print_few_dir(char **s_dir, char **s_file, char **argv) {
 		hres = mx_count_for_print(s_file);
 		count = mx_uls_len_name(hres);
 		mx_get_width(s_file, count, 0);
-
-		//это типа выводит пустую строчку, проверить и прописать, чтобы без файлов не выводило !!!!!!
-		if (s_file) {
-			mx_printstr("kuuuuuuuuuu");
-			mx_printchar('\n');
-			//mx_printstr("kuuuuuuuuuu");
-		}
-                                                    
+		if (count < 15823877)
+			mx_printchar('\n'); //выводит пустую строчку после файла
+		//mx_wrong_files(s_file);
 	}
 	i = 0;
 	while (s_dir[i] != NULL) {
