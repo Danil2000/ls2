@@ -103,6 +103,6 @@ void mx_choose_flag(char *arg, char **args, DIR *dir, int argc);
 void mx_ls_l2(char **argv, int argc);
 void mx_ls_atty(char **argv);
 char **mx_write_p(DIR *dir, char **s);
-bool mx_check_files(char *file);
+void mx_check_files(char *file);
 void mx_print_err_few(char **files);
 #endif

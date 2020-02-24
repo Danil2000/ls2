@@ -85,7 +85,6 @@ int main(int argc, char **argv) {
 		mx_few_dirs(argv);
 		return 0;
 	}
-	// mx_printint(mx_check_files("Makefile"));
 	choose_wf_d(argv, argc);
 	mx_check(argc, argv);
 	dir = opendir(argv[2]);

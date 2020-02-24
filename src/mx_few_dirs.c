@@ -58,14 +58,25 @@ static void mx_print_few_dir(char **s_dir, char **s_file, char **argv) {
 	int count = 0;
 	DIR *dir1;
 	
-	mx_print_err_few(s_file);
+	//mx_print_err_few(s_file);
 	if (!isatty(1)) {
 		while(s_file[i]) {
-			mx_print_with_new_line(s_file[i]);
-			i++;
+			mx_check_files(s_file[i]);
+			if (errno == 2)
+			{
+				i++;
+			}
+			else{
+				mx_print_with_new_line(s_file[i]);
+				i++;
+			}
 		}
 	}
 	else {
+		while (s_file[i]) {
+			mx_check_files(s_file[i]);
+			i++;
+		}
 		hres = mx_count_for_print(s_file);
 		count = mx_uls_len_name(hres);
 		mx_get_width(s_file, count, 0);
