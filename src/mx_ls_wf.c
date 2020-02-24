@@ -4,19 +4,14 @@ char** mx_write_to_arr(DIR *dir, char **s) {
 	int i = 0;
 	struct dirent *entry;
 
-	while ((entry = readdir(dir)) != NULL) {
-		char *help_v = NULL;
-	
-		if (entry->d_name[0] != '.') //если первый символ названия файла не равен . (т.е. не скрытый файл)
-		{
-			help_v = mx_strdup(entry->d_name);
-			s[i] = mx_strdup(help_v);
-			mx_strdel(&help_v);
+	while ((entry = readdir(dir)) != NULL)
+	{
+		if (entry->d_name[0] != '.') {
+			s[i] = mx_strdup(entry->d_name);
 			i++;
 		}
 	}
 	s[i] = NULL;
-	closedir(dir);
 	return s; //массив с названиями файлов
 }
 
