@@ -44,21 +44,19 @@ void mx_ls_atty(char **argv) {
 	DIR *dir1 = NULL;
 	char *c;
 
-
-	//mx_printchar(argv[1][0]);
-
 	c = ls_choose(argv);
 	dir = opendir(c);
 	dir1 = opendir(c);
 	if (!argv[1]) { //вывод с кат -е без папок и флагов
 		size_dir = mx_dir_size(dir, 0);
-		s = malloc((sizeof(char *) * size_dir) + 1);
+		s = malloc(sizeof(char *) * (size_dir + 1));
 		s = mx_write_to_arr(dir1, s);
 		mx_bubble_sort(s, size_dir);
 		mx_print_flag_one(s, size_dir);
 		closedir(dir1);
+		mx_del_strarr(&s);
+		return;
 	}
-	//отрабатываем флаги аАф
 	if (ls_is_flg_aAf(argv) == 1) {
 		size_dir = mx_dir_size(dir, ls_is_flg_aAf(argv));
 		if (ls_is_flg_A(argv))
@@ -68,6 +66,8 @@ void mx_ls_atty(char **argv) {
 		mx_bubble_sort(s, size_dir);
 		mx_print_flag_one(s, size_dir);
 		closedir(dir1);
+		mx_del_strarr(&s);
+		return;
 	}
 	if (argv[1][0] != '-') {
 		size_dir = mx_dir_size(dir, 0);
@@ -75,6 +75,7 @@ void mx_ls_atty(char **argv) {
 		s = mx_write_to_arr(dir1, s);
 		mx_bubble_sort(s, size_dir);
 		mx_print_flag_one(s, size_dir);
+		mx_del_strarr(&s);
+		return;
 	}
-	mx_del_strarr(&s);
 }
