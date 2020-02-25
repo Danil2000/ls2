@@ -5,7 +5,7 @@ int mx_dir_size(DIR *dir, int is_a) {
 	int count = 0;
 
 	while ((entry = readdir(dir)) != NULL) {
-		if(!is_a) {
+		if (!is_a) {
 			if (entry->d_name[0] != '.') {
 				count++;
 			}

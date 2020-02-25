@@ -1,6 +1,6 @@
 #include "uls.h"
 
-//считаем количество ТОЛЬКО одних папок (не учитываем название проги и название файлов)
+//считаем количество ТОЛЬКО одних папок (не учитываем проги и файлы)
 static int count_all_dir(char **argv) {
 	int i = 0;
 	int cout_dir = 0;
@@ -15,28 +15,27 @@ static int count_all_dir(char **argv) {
 }
 
 static char **check_files(char **s_file, char **argv) {
-	int i = 1;
+	int i = 0;
 	int j = 0;
 
-	s_file = (char **)malloc((count_all_dir(argv) + 1) * sizeof(char **)); //выделяем память под все переменные
+	s_file = (char **)malloc((count_all_dir(argv) + 1) * sizeof(char **));
 	while (argv[i]) {
-		if (!mx_is_dir(argv[i])) { //проверяем если папка
+		if (mx_is_dir(argv[i]) == 0) { //проверяем если не папка, то файл
 			s_file[j] = argv[i];
 			j++;
 		}
 		i++;
 	}
 	s_file[j] = NULL;
-	mx_print_strarr(s_file, "\n");
 	mx_bubble_sort(s_file, count_all_dir(s_file));
-	return s_file; //возвращаем только массив файлов
+	return s_file; //массив файлов
 }
 
 static char **check_dirs(char **s_dir, char** argv) {
 	int i = 0;
 	int j = 0;
 
-	s_dir = (char **)malloc((count_all_dir(argv) + 1) * sizeof(char **)); //выделяем память под все переменные
+	s_dir = (char **)malloc((count_all_dir(argv) + 1) * sizeof(char **));
 	while (argv[i]) {
 		if (mx_is_dir(argv[i])) {//проверяем если папка
 			s_dir[j] = argv[i];
@@ -46,7 +45,7 @@ static char **check_dirs(char **s_dir, char** argv) {
 	}
 	s_dir[j] = NULL;
 	mx_bubble_sort(s_dir, count_all_dir(s_dir));
-	return s_dir; //возвращаем только массив папок
+	return s_dir; //массив папок
 }
 
 //печатаем название папки и ее содержимое
@@ -56,7 +55,6 @@ static void mx_print_few_dir(char **s_dir, char **s_file, char **argv) {
 	int count = 0;
 	DIR *dir1;
 	
-	//mx_print_err_few(s_file);
 	if (!isatty(1)) {
 		// while(s_file[i]) {
 		// 	mx_check_files(s_file[i]);
@@ -79,15 +77,11 @@ static void mx_print_few_dir(char **s_dir, char **s_file, char **argv) {
 	i = 0;
 	while (s_dir[i] != NULL) {
 		DIR *dir;
-		//mx_printint(hres);
-		//mx_printstr(s_file[0]);
-		//mx_check_dir(dir, s_dir[i]);
 		mx_printstr(s_dir[i]); // название папки
 		mx_printstr(":");
 		mx_printchar('\n');
-		if (!(dir = opendir(s_dir[i]))) {
+		if (!(dir = opendir(s_dir[i])))
 			mx_check_dir(dir, argv);
-		};
 		if (!isatty(1)) {
 			dir1 = opendir(s_dir[i]);
 			mx_ls_flag_one(dir1, argv, s_dir[i]);
@@ -109,13 +103,12 @@ static char** chk(char **argv, char **ss) {
 
 	size = mx_len_arr(argv);
 	ss = malloc(sizeof(char *) * (mx_len_arr(argv) + 1));
-	while(argv[i]) {
+	while (argv[i]) {
 		mx_check_files(argv[i]);
 		if (errno != 2) {
 			ss[j]= argv[i];
 			j++;
 		}
-		
 		i++;
 	}
 	ss[j] = NULL;
@@ -127,7 +120,8 @@ void mx_few_dirs(char** argv) {
 	char **ss = NULL;
 	char **s = NULL;
 	ss = chk(argv, ss);//вывод ошибок и папок
-	// mx_print_strarr(ss, "\n");
+	//mx_print_strarr(ss, "\n");
+
 	s = check_dirs(s, ss);
 	f = check_files(f, ss);
 	mx_bubble_sort(ss, mx_len_arr(ss));
