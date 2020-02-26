@@ -2,21 +2,16 @@
 
 static DIR* check(DIR *dir1, char **argv, char *arg) {
 	if (!argv[2]) {
-		if(isatty(1) == 0 && argv[1]) {
+		if(isatty(1) == 0 && argv[1])
 			dir1 = opendir(argv[1]);
-		}
-		else {
+		else
 			dir1 = opendir(".");
-		}
 	}
 	else {
 		if (argv[3])
-		{
 			dir1 = opendir(arg);
-		}
-		else {
+		else
 			dir1 = opendir(argv[2]);
-		}
 	}
 	return dir1;
 }

@@ -3,17 +3,12 @@
 static int choose_size_of_rows(int len, int colls) {
 	int size = 0;
 	
-	if ((len % colls) == 0) { 
+	if ((len % colls) == 0)
 		size = len / colls;
-	}
 	else
 		size = (len / colls) + 1;
 	return size;
 }
-
-// static bool check_char(char **s) {
-
-// }
 
 //печатаем содержимое папки
 void mx_to_colls(int colls, char **s, int spaces, t_ls_colls *c) {

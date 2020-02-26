@@ -1,7 +1,6 @@
 #include "uls.h"
 
 static void print_name_dir(char *s1) {
-
 	mx_printstr(s1);
 	mx_printchar(':');
 	mx_printchar('\n');
@@ -11,12 +10,10 @@ static void open_dir1_print_fl(char *fn, char **argv) {
 	DIR *dir1;
 
 	dir1 = opendir(fn);
-	if(!mx_strcmp(argv[1], "-Ra")) {
+	if (!mx_strcmp(argv[1], "-Ra"))
 		mx_lsa(dir1, argv[2]);
-	}
-	else {
+	else
 		mx_ls_wf(dir1, fn);
-	}
 }
 
 static void open_dubble_read_dir(DIR *dir) {
