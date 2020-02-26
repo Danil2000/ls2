@@ -43,8 +43,7 @@ mode_t* mx_f_m(mode_t *mode) {
 }
 
 void mx_take_ogp(mode_t mode, mode_t *modes, char *str) {
-	for (int i = 0; i < 9; i++)
-	{
+	for (int i = 0; i < 9; i++) {
         switch (modes[i] & mode) {
             case S_IRUSR:
             case S_IRGRP:

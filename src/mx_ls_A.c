@@ -5,7 +5,8 @@ char **mx_write_to_arr_A(DIR *dir,char **s) {
 	int i =0;
 
 	while ((entry = readdir(dir)) != NULL) {
-		if (mx_strcmp(entry->d_name , ".") && mx_strcmp(entry->d_name , ".."))
+		if (mx_strcmp(entry->d_name , ".")
+		&& mx_strcmp(entry->d_name , ".."))
 		{
 			s[i] = mx_strdup(entry->d_name);
 			i++;

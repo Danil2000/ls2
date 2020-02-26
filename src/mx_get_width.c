@@ -9,6 +9,26 @@ int mx_size_win() {
 	return size;
 }
 
+bool mx_min_size(char **s, int width) {
+	int i = 0;
+    int loc = 0;
+    int size = mx_len_arr(s); //кол-во файлов в дирректории
+    int res = 0;
+    int lens[size];
+
+	while(s[i]) {
+        lens[i] = mx_strlen(s[i]);
+        i++;
+    }
+    for (int c = 1; c < i; c++)
+        if (lens[c] < lens[loc])
+            loc = c;
+    res = lens[loc];
+    if (width < res)
+    	return true;
+    return false;
+}
+
 //вывод колонок
 void mx_get_width(char **s, int spaces, int isf) {
 	t_ls_colls *c = NULL;
@@ -22,6 +42,13 @@ void mx_get_width(char **s, int spaces, int isf) {
 	}
 	count = mx_count_for_print(s);
 	size = (size / mx_uls_len_name(count));
+
+	//тут проблема с выводом минимальной длины экрана
+	
+	// if (mx_min_size(s, size)) {
+	// 	mx_print_flag_one(s, size);
+	// 	return;
+	// }
 
 	mx_to_colls(size, s, spaces, c);
 }

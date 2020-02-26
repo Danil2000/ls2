@@ -25,7 +25,6 @@ SRC =	mx_check_flags.c\
 		mx_ls_f.c\
 		mx_ls_flag_one.c\
 		mx_ls_G.c\
-		mx_ls_l.c\
 		mx_ls_m.c\
 		mx_ls_ma.c\
 		mx_ls_one_A.c\
@@ -41,7 +40,8 @@ SRC =	mx_check_flags.c\
 		mx_uls.c\
 		mx_l2.c\
 		mx_ls_atty.c\
-		mx_is_dir.c
+		mx_is_dir.c\
+		mx_check_dirs.c
 
 SRCS	=	$(addprefix $(SRCD)/, $(SRC))
 OBJS	=	$(addprefix $(OBJD)/, $(SRC:%.c=%.o))

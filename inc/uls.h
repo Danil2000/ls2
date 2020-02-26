@@ -32,14 +32,6 @@
  #define S_IFLNK 	0120000//__S_IFLNK
  #define S_IFSOCK   0140000//__S_IFSOCK
 
-DIR *dir;
-
-typedef struct s_ls {
-    int size_dir;
-    int hres;
-    int count;
-    char **s;
-} t_ls;
 typedef struct s_ls_colls {
   char **res;
 	int len;
@@ -49,27 +41,6 @@ typedef struct s_lst {
     void *data;
     struct s_lst *next;
 }   t_lst;
-
-typedef struct s_l 
-{
-	struct stat u;
-    struct passwd *t;
-    struct group *i;
-    char *times;
-    mode_t var;
-    int b;
-    int bb;
-    ssize_t xat;
-    acl_t acl;
-    int total;
-    int max_links;
-    int max_size;
-    int max_user;
-    int max_group;
-    int d;
-    char *buf;
-    int res;
-} t_l;
 
 void mx_check(int argc, char **argv);
 void mx_check_dir(DIR *dir, char **argv);
@@ -121,5 +92,6 @@ void mx_choose_flag(char *arg, char **args, DIR *dir, int argc);
 void mx_ls_l2(char **argv, int argc);
 void mx_ls_atty(char **argv);
 char **mx_write_p(DIR *dir, char **s);
-
+void mx_check_files(char *file);
+void mx_print_err_few(char **files);
 #endif

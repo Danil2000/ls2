@@ -1,5 +1,5 @@
 #include "uls.h"
-//если флаг есть - возвращает 1
+
 bool mx_check_flags(char argv) {
     char *all_flags;
     int i = 0;

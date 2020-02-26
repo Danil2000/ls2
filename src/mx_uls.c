@@ -70,11 +70,12 @@ int main(int argc, char **argv) {
 
 	//isatty если перенаправляет в терминал, то единица, иначе ноль
 	if (isatty(1) == 0) {
-		if (argc > 2)
+		if (argc > 2 && argv[1][0] != '-')
 			mx_few_dirs(argv);
 		else
 			mx_ls_atty(argv);
-		//system("leaks -q uls");
+			//mx_printstr("Kuuuuuuuu");
+		system("leaks -q uls");
 		return 0;
 	}
 	if (argc == 1) {
