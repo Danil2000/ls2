@@ -5,17 +5,13 @@ char **mx_write_p(DIR *dir, char** s) {
 	struct dirent *entry;
 
 	while ((entry = readdir(dir)) != NULL) {
-		if (entry->d_name[0] != '.')
-		{
-			if (entry->d_name[i+1])
-			{
-				if (!mx_is_dir(entry->d_name))
-				{
+		if (entry->d_name[0] != '.') {
+			if (entry->d_name[i+1])	{
+				if (!mx_is_dir(entry->d_name)) {
 					s[i] = mx_strdup(entry->d_name);
 					i++;
 				}
-				else
-				{
+				else {
 					s[i] = mx_strjoin(entry->d_name, "/");
 					i++;
 				}

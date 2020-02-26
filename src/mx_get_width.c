@@ -12,10 +12,11 @@ int mx_size_win() {
 bool mx_min_size(char **s, int width) {
 	int i = 0;
     int loc = 0;
-    int size = mx_len_arr(s); //кол-во файлов в дирректории
+    int size = 0; //кол-во файлов в дирректории
     int res = 0;
     int lens[size];
 
+	size = mx_len_arr(s);
 	while(s[i]) {
         lens[i] = mx_strlen(s[i]);
         i++;

@@ -13,7 +13,7 @@ void mx_choose_flag(char *arg, char **args, DIR *dir, int argc) {
 		mx_ls_flag_one(dir, args, args[2]);
 	if (!mx_strcmp(arg, "-m"))
 		mx_ls_m(dir, args);
-	// if (!mx_strcmp(arg, "-G"))
+	//  if (!mx_strcmp(arg, "-G"))
 	// 	mx_ls_G(args[2]);
 	if (!mx_strcmp(arg, "-f"))
 		mx_ls_f(dir, args);
@@ -65,27 +65,29 @@ static void choose_wf_d(char **argv, int argc) {
 	}
 }
 
-int main(int argc, char **argv) {
-	DIR *dir;
-
+static void ls_isatty_prnt_1_clm(char **argv, int argc) {
 	//isatty если перенаправляет в терминал, то единица, иначе ноль
 	if (isatty(1) == 0) {
 		if (argc > 2 && argv[1][0] != '-')
 			mx_few_dirs(argv);
 		else
 			mx_ls_atty(argv);
-			//mx_printstr("Kuuuuuuuu");
-		system("leaks -q uls");
-		return 0;
+		exit(1);
 	}
 	if (argc == 1) {
 		mx_ls_wd();
-		return 0;
+		exit(1);
 	}
 	if (argc > 2 && argv[1][0] != '-') {
 		mx_few_dirs(argv);
-		return 0;
+		exit(1);
 	}
+}
+
+int main(int argc, char **argv) {
+	DIR *dir;
+
+	ls_isatty_prnt_1_clm(argv, argc);
 	choose_wf_d(argv, argc);
 	mx_check(argc, argv);
 	dir = opendir(argv[2]);

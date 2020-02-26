@@ -1,6 +1,6 @@
 #include "uls.h"
 
-//считаем количество ТОЛЬКО одних папок (не учитываем проги и файлы)
+//считаем количество ТОЛЬКО одних папок (без прог и файлов)
 static int count_all_dir(char **argv) {
 	int i = 0;
 	int cout_dir = 0;
@@ -48,54 +48,6 @@ static char **check_dirs(char **s_dir, char** argv) {
 	return s_dir; //массив папок
 }
 
-//печатаем название папки и ее содержимое
-static void mx_print_few_dir(char **s_dir, char **s_file, char **argv) {
-	int i = 0;
-	int hres = 0;
-	int count = 0;
-	DIR *dir1;
-	
-	if (!isatty(1)) {
-		// while(s_file[i]) {
-		// 	mx_check_files(s_file[i]);
-		// 	if (errno == 2)
-		// 	{
-		// 		i++;
-		// 	}
-		// 	else{
-		// 		i++;
-		// 	}
-		// }
-	}
-	else {
-		hres = mx_count_for_print(s_file);
-		count = mx_uls_len_name(hres);
-		mx_get_width(s_file, count, 0);
-		if (count < 15823877)
-			mx_printchar('\n'); //выводит пустую строчку после файла
-	}
-	i = 0;
-	while (s_dir[i] != NULL) {
-		DIR *dir;
-		mx_printstr(s_dir[i]); // название папки
-		mx_printstr(":");
-		mx_printchar('\n');
-		if (!(dir = opendir(s_dir[i])))
-			mx_check_dir(dir, argv);
-		if (!isatty(1)) {
-			dir1 = opendir(s_dir[i]);
-			mx_ls_flag_one(dir1, argv, s_dir[i]);
-			i++;
-		}
-		else {
-			mx_ls_wf(dir, s_dir[i]);
-			if (s_dir[i + 1] != NULL)
-				mx_printchar('\n');
-			i++;
-		}
-	}
-}
-
 static char** chk(char **argv, char **ss) {
 	int i =1;
 	int j = 0;
@@ -119,12 +71,10 @@ void mx_few_dirs(char** argv) {
 	char **f = NULL;
 	char **ss = NULL;
 	char **s = NULL;
-	ss = chk(argv, ss);//вывод ошибок и папок
-	//mx_print_strarr(ss, "\n");
 
+	ss = chk(argv, ss);//вывод ошибок и папок
 	s = check_dirs(s, ss);
 	f = check_files(f, ss);
 	mx_bubble_sort(ss, mx_len_arr(ss));
-	//mx_bubble_sort(f, mx_len_arr(f));
 	mx_print_few_dir(s, f, argv);
 }
