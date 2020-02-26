@@ -24,9 +24,8 @@ bool mx_min_size(char **s, int width) {
         if (lens[c] < lens[loc])
             loc = c;
     res = lens[loc];
-    if (width < res) {
+    if (width < res)
     	return true;
-    }
     return false;
 }
 
@@ -43,10 +42,13 @@ void mx_get_width(char **s, int spaces, int isf) {
 	}
 	count = mx_count_for_print(s);
 	size = (size / mx_uls_len_name(count));
-	if (mx_min_size(s, size)) {
-		mx_print_flag_one(s, size);
-		return;
-	}
+
+	//тут проблема с выводом минимальной длины экрана
+	
+	// if (mx_min_size(s, size)) {
+	// 	mx_print_flag_one(s, size);
+	// 	return;
+	// }
 
 	mx_to_colls(size, s, spaces, c);
 }

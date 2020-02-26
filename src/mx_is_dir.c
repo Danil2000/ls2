@@ -10,8 +10,7 @@ bool mx_is_dir(char *fname) {
     type = fst.st_mode;
     restype = mx_type_of_file(type);
 
-    if (restype == 'd') {
+    if (restype == 'd')
     	return 1;
-    }
     return 0;
 }
