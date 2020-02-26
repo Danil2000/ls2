@@ -38,10 +38,17 @@ SRC =	mx_check_flags.c\
 		mx_print_with_new_line.c\
 		mx_to_colls.c\
 		mx_uls.c\
-		mx_l2.c\
+		mx_l_flag.c\
 		mx_ls_atty.c\
 		mx_is_dir.c\
-		mx_check_dirs.c
+		mx_check_dirs.c\
+		mx_total.c\
+		mx_permissions.c\
+		mx_ogt_perms.c\
+		mx_group_permissions.c\
+		mx_other_permissions.c\
+		mx_links.c\
+		mx_dop_links.c
 
 SRCS	=	$(addprefix $(SRCD)/, $(SRC))
 OBJS	=	$(addprefix $(OBJD)/, $(SRC:%.c=%.o))

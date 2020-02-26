@@ -14,7 +14,7 @@ static int count_all_dir(char **argv) {
 	return cout_dir;
 }
 
-static char **check_files(char **s_file, char **argv) {
+char **check_files(char **s_file, char **argv) {
 	int i = 0;
 	int j = 0;
 

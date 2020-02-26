@@ -26,7 +26,7 @@ static void open_dubble_read_dir(DIR *dir) {
 	files = readdir(dir);
 }
 
-static char* make_R_str(char *fn, char *filename) {
+char* make_R_str(char *fn, char *filename) {
 	char *s1;
 	char *s;
 
