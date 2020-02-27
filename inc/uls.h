@@ -31,6 +31,7 @@
  #define S_IFIFO	0010000//__S_IFIFO
  #define S_IFLNK 	0120000//__S_IFLNK
  #define S_IFSOCK   0140000//__S_IFSOCK
+#define MX_HALF_YEAR 15724800
 
 typedef struct s_ls_colls {
   char **res;
@@ -95,12 +96,19 @@ void mx_ls_l(DIR *dir, char **argv);
 int mx_total(char **s, int count);
 char* make_R_str(char *fn, char *filename);
 char **check_files(char **s_file, char **argv);
-void mx_permissions(char **arrs, int count, char **fls);
-char *make_perms(char *file);
-void mx_owner_perm(struct stat file, char **str);
+char * mx_permissions(char *f);
+void mx_add_permissions(char **mas_for_print, int count_of_row, char **files);
+void mx_owner_permissions(struct stat file, char **str);
 void mx_group_permissions(struct stat file, char **str);
 void mx_other_permissions(struct stat file, char **str);
 void mx_add_count_link_help(char **arr_print, int count, char **links_arr);
 void mx_count_link(char **arrs, int count, char **fls);
-
+char *spaces(char** files, char *file, int counter);
+void mx_owner_names(char **arr_print, int count, char **files);
+void mx_add_group_name_help(char **mas_for_print, int count_of_row, char **help_arr);
+void mx_add_group_name(char **mas_for_print, int count_of_row, char **files);
+char *mx_group_name(struct stat file);
+void mx_get_file_size(char **arr_print, int count, char **files);
+void mx_add_time(char **mas_for_print, int count_of_row, char **files);
+void mx_add_name(char **mas_for_print, int count_of_row, char **name, char **files);
 #endif

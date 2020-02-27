@@ -18,23 +18,23 @@ char *spaces(char** files, char *file, int counter) {
     return space;
 }
 
-void mx_add_count_link_help(char **arr_print, int count, char **links_arr) {
+void mx_add_count_link_help(char **mas_for_print, int count_of_row, char **links_arr) {
     int i;
     char *space;
     char *help_v1;
     char *help_v2;
 
-    for (i = 0; i < count; i++) {
-        space = spaces(links_arr, links_arr[i], count);
-        help_v1 = mx_strcat(space, links_arr[i]);
-        //mx_strdel(spaces);
-        help_v2 = mx_strcat(help_v1, " ");
-        mx_strdel(&help_v1);
-        help_v1 = mx_strcat(arr_print[i], help_v2);
-        mx_strdel(&arr_print[i]);
-        arr_print[i] = mx_strdup(help_v1);
-        mx_strdel(&help_v1);
-        mx_strdel(&help_v2);
+    for (i = 0; i < count_of_row; i++) {
+        space = spaces(links_arr, links_arr[i], count_of_row);
+        help_v1 = mx_strjoin(space, links_arr[i]);
+        //mx_strdel(&space);
+        help_v2 = mx_strjoin(help_v1, " ");
+        //mx_strdel(&help_v1);
+        help_v1 = mx_strjoin(mas_for_print[i], help_v2);
+        //mx_strdel(&mas_for_print[i]);
+        mas_for_print[i] = mx_strdup(help_v1);
+        //mx_strdel(&help_v1);
+        //mx_strdel(&help_v2);
     }
     mx_del_strarr(&links_arr);
     return;

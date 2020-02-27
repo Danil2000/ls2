@@ -42,6 +42,7 @@ void mx_count_link(char **arrs, int count, char **fls) {
 	}
 	links_arr[count] = NULL;
 	mx_add_count_link_help(arrs, count, links_arr);
+    //mx_del_strarr(&links_arr);
 	return;
 }
 

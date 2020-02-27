@@ -1,23 +1,23 @@
 #include "uls.h"
 
-static void type(struct stat file, char **str) {
-	char *tmp = NULL;
+static void type_of_file(struct stat file, char **str) {
+    char *tmp = *str;
 
-	if ((file.st_mode & S_IFMT) == S_IFSOCK)
-        *str = mx_strjoin(tmp, "s");
+    if ((file.st_mode & S_IFMT) == S_IFSOCK)
+        *str = mx_strcat(tmp, "s");
     if ((file.st_mode & S_IFMT) == S_IFLNK)
-        *str = mx_strjoin(tmp, "l");
+        *str = mx_strcat(tmp, "l");
     if ((file.st_mode & S_IFMT) == S_IFREG)
-        *str = mx_strjoin(tmp, "-");
+        *str = mx_strcat(tmp, "-");
     if ((file.st_mode & S_IFMT) == S_IFBLK)
-        *str = mx_strjoin(tmp, "b");
+        *str = mx_strcat(tmp, "b");
     if ((file.st_mode & S_IFMT) == S_IFDIR)
-        *str = mx_strjoin(tmp, "d");
+        *str = mx_strcat(tmp, "d");
     if ((file.st_mode & S_IFMT) == S_IFCHR)
-        *str = mx_strjoin(tmp, "c");
+        *str = mx_strcat(tmp, "c");
     if ((file.st_mode & S_IFMT) == S_IFIFO)
-        *str = mx_strjoin(tmp, "p");
-    mx_strdel(&tmp);
+        *str = mx_strcat(tmp, "p");
+    ////mx_strdel(&tmp);
 }
 
 void mx_attr_or_acl(char *file, char **permissions) {
@@ -26,41 +26,40 @@ void mx_attr_or_acl(char *file, char **permissions) {
 
     tmp = *permissions;
     if (listxattr(file, NULL, 0, XATTR_NOFOLLOW) > 0)
-        *permissions = mx_strjoin(tmp, "@");
+        *permissions = mx_strcat(tmp, "@");
     else {
         if ((acl = acl_get_file(file, ACL_TYPE_EXTENDED)) != NULL)
-            *permissions = mx_strjoin(tmp, "+");
+            *permissions = mx_strcat(tmp, "+");
         else
-            *permissions = mx_strjoin(tmp, " ");
+            *permissions = mx_strcat(tmp, " ");
         acl_free(acl);
     }
-    mx_strdel(&tmp);
+    //mx_strdel(&tmp);
 }
 
-void mx_permissions(char **arrs, int count, char **fls) {
-	int i;
-	char *help_v = NULL;
-	struct stat file;
+char * mx_permissions(char *f) {
+    char * permissions = mx_strnew(0);
+    struct stat file;
 
-	for (i = 0; i < count; i++)
-	{
-		lstat(fls[i], &file);
-        help_v = make_perms(fls[i]);
-        arrs[i] = mx_strjoin(help_v, " ");
-        mx_strdel(&help_v);
-	}
+    lstat(f, &file);
+    type_of_file(file, &permissions);
+    mx_owner_permissions(file, &permissions);
+    //mx_printstr(permissions);
+    mx_group_permissions(file, &permissions);
+    mx_other_permissions(file, &permissions);
+    mx_attr_or_acl(f, &permissions);
+    return permissions;
 }
 
-char *make_perms(char *file) {
-	char *perms = NULL;
-	struct stat fl;
+void mx_add_permissions(char **mas_for_print, int count_of_row, char **files) {
+    int i;
+    char *help_v;
+    struct stat file;
 
-	perms = mx_strnew(0);
-	lstat(file, &fl);
-	type(fl, &perms);
-	mx_owner_perm(fl, &perms);
-	mx_group_permissions(fl, &perms);
-	mx_other_permissions(fl, &perms);
-	mx_attr_or_acl(file, &perms);
-	return perms;
+    for (i = 0; i < count_of_row; i++) {
+        lstat(files[i], &file);
+        help_v = mx_permissions(files[i]);
+        mas_for_print[i] = mx_strjoin(help_v, " ");
+    }
 }
+
