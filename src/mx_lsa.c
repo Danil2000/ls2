@@ -12,7 +12,6 @@ char** mx_write_to_arr_a(DIR *dir, char **s) {
 	return s; //массив с названиями файлов
 }
 
-
 void mx_lsa(DIR *dir, char *argv) {
 	DIR *dir1;
 	int size_dir = 0;
@@ -21,12 +20,10 @@ void mx_lsa(DIR *dir, char *argv) {
 	int count = 0;
 
 	size_dir = mx_dir_size(dir, 1);
-	if (!argv[2]) {
+	if (!argv[2])
 		dir1 = opendir(".");
-	}
-	else {
+	else
 		dir1 = opendir(argv);
-	}
 	s = malloc(sizeof(char *) * (size_dir + 1));
 	s = mx_write_to_arr_a(dir1, s);
 	hres = mx_count_for_print(s);

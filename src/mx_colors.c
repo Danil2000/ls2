@@ -29,12 +29,10 @@ char* make_color_string(int color, int background, char* filename) {
 	
 	scolor = mx_itoa(color);
 	sbackground = mx_itoa(background);
-	if (!background) {
+	if (!background)
 		str = mx_make_whithout_backround(scolor, sbackground);
-	}
-	else {
+	else
 		str = mx_make_backround(scolor, sbackground, filename);
-	}
 	return str;
 }
 

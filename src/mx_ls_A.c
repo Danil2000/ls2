@@ -24,12 +24,10 @@ void mx_ls_A(DIR *dir, char **argv) {
 	int count = 0;
 
 	size_dir = mx_dir_size(dir, 1); //количество папок и файлов в дирректории
-	if (!argv[2]) {
+	if (!argv[2])
 		dir1 = opendir(".");
-	}
-	else {
+	else
 		dir1 = opendir(argv[2]);
-	}
 	s = malloc(sizeof(char *) * (size_dir + 1));
 	s = mx_write_to_arr_A(dir1, s);
 	hres = mx_count_for_print(s);//длина максимального файла 

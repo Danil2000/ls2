@@ -111,4 +111,11 @@ char *mx_group_name(struct stat file);
 void mx_get_file_size(char **arr_print, int count, char **files);
 void mx_add_time(char **mas_for_print, int count_of_row, char **files);
 void mx_add_name(char **mas_for_print, int count_of_row, char **name, char **files);
+void mx_print_few_dir(char **s_dir, char **s_file, char **argv);
+void mx_ls_prnt_cat_e_no_dir(int size_dir, char **s, DIR *dir, DIR *dir1);
+void mx_prnt_aAf(int size_dir, char **s, DIR *dir, DIR *dir1, char **argv);
+void mx_ls_prnt_flg_one(int size_dir, char **s, DIR *dir, DIR *dir1);
+char **mx_ls_chs_sm_flg(DIR *dir, char **s, char **argv);
+bool ls_is_flg_A(char **argv);
+bool ls_is_flg_aAf(char **argv);
 #endif

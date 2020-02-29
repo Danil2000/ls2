@@ -54,7 +54,10 @@ SRC =	mx_check_flags.c\
 		mx_file_size.c\
 		mx_times.c\
 		mx_l_name.c\
-
+		mx_check_dirs.c\
+		mx_ls_prnt_few_dirs.c\
+		mx_ls_atty_prnt.c\
+		mx_ls_atty_bool.c
 
 SRCS	=	$(addprefix $(SRCD)/, $(SRC))
 OBJS	=	$(addprefix $(OBJD)/, $(SRC:%.c=%.o))

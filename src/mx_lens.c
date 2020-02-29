@@ -29,8 +29,7 @@ static void set_m(t_lens *lens, int l, long n, int i) {
 int mx_len_l(t_lens *lens, char *str, long n, int i) {
 	int l = 0;
 
-	if ((l = 1) && str)
-	{
+	if ((l = 1) && str) {
 		if (i == LENGROUP)
 			return lens->len_group - mx_strlen(str);
 		if (i == LENUSER)
