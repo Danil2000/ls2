@@ -16,7 +16,7 @@ static void S_x_s(struct stat file, char **str) {
         else
             *str = mx_strjoin(tmp, "-");
     }
-    //mx_strdel(&tmp);
+    mx_strdel(&tmp);
 }
 
 void mx_other_permissions(struct stat file, char **str) {
@@ -28,10 +28,11 @@ void mx_other_permissions(struct stat file, char **str) {
         *str = mx_strjoin(tmp, "-");
     //mx_strdel(&tmp);
     tmp = *str;
+    //mx_strdel(str);
     if ((file.st_mode & S_IWOTH) == S_IWOTH)
         *str = mx_strjoin(tmp, "w");
     else
         *str = mx_strjoin(tmp, "-");
-    //mx_strdel(&tmp);
+    mx_strdel(&tmp);
     S_x_s(file, str);
 }

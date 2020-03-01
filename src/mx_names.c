@@ -20,12 +20,13 @@ void mx_dop_owner_name(char **arr_print, int count, char **dop_arr) {
 		spcs = spaces(dop_arr, dop_arr[i], count);
 		help1 = mx_strjoin(dop_arr[i], spcs);
 		help2 = mx_strjoin(help1, " ");
+        mx_strdel(&help1);
 		help1 = mx_strjoin(arr_print[i], help2);
 		arr_print[i] = mx_strdup(help1);
+        mx_strdel(&spcs);
+        mx_strdel(&help1);
+        mx_strdel(&help2);
 	}
-    mx_strdel(&spcs);
-    mx_strdel(&help1);
-    mx_strdel(&help2);
 	return;
 }
 

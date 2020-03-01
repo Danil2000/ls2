@@ -17,7 +17,7 @@ static void type_of_file(struct stat file, char **str) {
         *str = mx_strcat(tmp, "c");
     if ((file.st_mode & S_IFMT) == S_IFIFO)
         *str = mx_strcat(tmp, "p");
-    ////mx_strdel(&tmp);
+    mx_strdel(&tmp);
 }
 
 void mx_attr_or_acl(char *file, char **permissions) {
@@ -25,16 +25,19 @@ void mx_attr_or_acl(char *file, char **permissions) {
     char *tmp;
 
     tmp = *permissions;
-    if (listxattr(file, NULL, 0, XATTR_NOFOLLOW) > 0)
+    if (listxattr(file, NULL, 0, XATTR_NOFOLLOW) > 0){
         *permissions = mx_strcat(tmp, "@");
+    }
     else {
-        if ((acl = acl_get_file(file, ACL_TYPE_EXTENDED)) != NULL)
+        if ((acl = acl_get_file(file, ACL_TYPE_EXTENDED)) != NULL) {
             *permissions = mx_strcat(tmp, "+");
+            mx_strdel(&tmp);
+        }
         else
             *permissions = mx_strcat(tmp, " ");
         acl_free(acl);
     }
-    //mx_strdel(&tmp);
+    
 }
 
 char * mx_permissions(char *f) {
@@ -60,6 +63,7 @@ void mx_add_permissions(char **mas_for_print, int count_of_row, char **files) {
         lstat(files[i], &file);
         help_v = mx_permissions(files[i]);
         mas_for_print[i] = mx_strjoin(help_v, " ");
+        mx_strdel(&help_v);
     }
 }
 

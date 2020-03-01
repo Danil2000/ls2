@@ -12,10 +12,10 @@ void mx_add_time_help(char **mas_for_print, int count_of_row, char **help_arr) {
         help_v2 = mx_strjoin(help_v1, " ");
         help_v1 = mx_strjoin(mas_for_print[i], help_v2);
         mas_for_print[i] = mx_strdup(help_v1);
+        mx_strdel(&space);
+        mx_strdel(&help_v1);
+        mx_strdel(&help_v2);
     }
-    mx_strdel(&space);
-    mx_strdel(&help_v1);
-    mx_strdel(&help_v2);
     return;
 }
 static void add_hours(char **date, char *hours) {
@@ -24,10 +24,13 @@ static void add_hours(char **date, char *hours) {
 
     *date = mx_strjoin(tmp, " ");
     tmp = *date;
+    mx_strdel(date);
     *date = mx_strjoin(tmp, arr[0]);
     tmp = *date;
+    mx_strdel(date);
     *date = mx_strjoin(tmp, ":");
     tmp = *date;
+    mx_strdel(date);
     *date = mx_strjoin(tmp, arr[1]);
     mx_del_strarr(&arr);
 }
@@ -40,6 +43,7 @@ static void add_day(char **date, char *day) {
     while (mx_strlen(day) < 2) {
         day_tmp = day;
         day = mx_strjoin(" ", day_tmp);
+       // mx_strdel(&day);
     }
     *date = mx_strjoin(tmp, day);
     mx_strdel(&day_tmp);
@@ -56,10 +60,13 @@ char *mx_time(struct stat file) {
         add_hours(&date, date_arr[3]);
     else {
         tmp = date;
+        mx_strdel(&date);
         date = mx_strjoin(tmp, "  ");
         tmp = date;
+        mx_strdel(&tmp);
         date_arr[4][4] = '\0';
         date = mx_strjoin(tmp, date_arr[4]);
+        //mx_strdel(&tmp);
     }
     mx_del_strarr(&date_arr);
     return date;

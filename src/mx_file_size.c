@@ -19,13 +19,14 @@ static char *find_minor(struct stat file) {
         while (mx_strlen(minor) < 8) {
             tmp = minor;
             minor = mx_strjoin("0", tmp);
+            mx_strdel(&tmp);
         }
         tmp = minor;
         minor = mx_strjoin(" 0x", tmp);
+        //mx_strdel(&tmp);
     }
     else
         minor = mx_itoa(file.st_rdev & 0xffffff);
-    mx_strdel(&tmp);
     return minor;
 }
 
@@ -40,12 +41,18 @@ char *mx_file_size(struct stat file) {
         add_spaces(&file_size, 5);
         minor = find_minor(file);
         add_spaces(&minor, 4);
+        free(&tmp);
         tmp = file_size;
+        mx_strdel(&file_size);
         file_size = mx_strjoin(tmp, minor);
+        mx_strdel(&tmp);
+        mx_strdel(&file_size);
+        mx_strdel(&minor);
     }
     else
         file_size = mx_itoa((int)file.st_size);
-    //mx_strdel(&tmp);
+        //mx_strdel(&file_size);
+    //
     //mx_strdel(&minor);
     return file_size;
 }
@@ -62,10 +69,10 @@ void mx_add_file_size_help(char **mas_for_print, int count_of_row, char **help_a
         help_v2 = mx_strjoin(help_v1, " ");
         help_v1 = mx_strjoin(mas_for_print[i], help_v2);
         mas_for_print[i] = mx_strdup(help_v1);
+        mx_strdel(&space);
+        mx_strdel(&help_v1);
+        mx_strdel(&help_v2);
     }
-    mx_strdel(&space);
-    mx_strdel(&help_v1);
-    mx_strdel(&help_v2);
     return;
 }
 

@@ -10,12 +10,13 @@ void mx_add_group_name_help(char **mas_for_print, int count_of_row, char **help_
         space = spaces(help_arr, help_arr[i], count_of_row);
         help_v1 = mx_strjoin(help_arr[i], space);
         help_v2 = mx_strjoin(help_v1, "  ");
+        mx_strdel(&help_v1);
         help_v1 = mx_strjoin(mas_for_print[i], help_v2);
         mas_for_print[i] = mx_strdup(help_v1);
+        mx_strdel(&space);
+        mx_strdel(&help_v1);
+        mx_strdel(&help_v2);
     }
-    mx_strdel(&space);
-    mx_strdel(&help_v1);
-    mx_strdel(&help_v2);
     return;
 }
 

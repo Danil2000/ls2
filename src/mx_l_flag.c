@@ -12,9 +12,9 @@ static char **files_with_adsres(char **s, char *address) {
 	for(i = 0; i < count; i++) {
 		help_v = mx_strjoin(address, "/");
 		chnged_files[i] = mx_strjoin(help_v, s[i]);
-		//mx_strdel(&help_v);
+		mx_strdel(&help_v);
 	}
-	mx_strdel(&help_v);
+	//mx_strdel(&help_v);
 	return chnged_files;
 }
 
@@ -23,7 +23,6 @@ static void l_print(char **f_name, char **s) {
 	char **arr_print = NULL;
 
 	count = mx_len_arr(f_name);
-	mx_bubble_sort(s, count);
 	arr_print = (char**)malloc(sizeof(char*) * (count + 1));
 	arr_print[count] = NULL;
 	mx_printstr("total ");
@@ -38,20 +37,24 @@ static void l_print(char **f_name, char **s) {
 	mx_add_name(arr_print, count, s, f_name);
 	mx_print_strarr(arr_print, "\n");
 	mx_del_strarr(&arr_print);
-	
 }
 void mx_ls_l(DIR *dir, char **argv) {
 	char **s = NULL;
-	char **l_files;
+	char **l_files = NULL;
 	int s_dir = 0;
 	DIR *dir1;
+	int len_files = 0;
 
 	dir1 = opendir(argv[2]);
 	s_dir = mx_dir_size(dir, 0);
 	s = malloc(sizeof(char *) * (s_dir + 1));
 	s = mx_write_to_arr(dir1, s);
 	l_files = files_with_adsres(s, argv[2]);
+	len_files = mx_len_arr(l_files);
+	mx_bubble_sort(l_files, len_files);
+	mx_bubble_sort(s, mx_len_arr(s));
 	l_print(l_files, s);
 	mx_del_strarr(&s);
 	mx_del_strarr(&l_files);
+	closedir(dir1);
 }
