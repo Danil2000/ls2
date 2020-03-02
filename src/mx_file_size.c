@@ -6,8 +6,8 @@ static void add_spaces(char **str, int expected_len) {
     while (mx_strlen(*str) < expected_len) {
         tmp = *str;
         *str = mx_strjoin(" ", tmp);
+        mx_strdel(&tmp);
     }
-    mx_strdel(&tmp);
 }
 
 static char *find_minor(struct stat file) {
@@ -23,7 +23,7 @@ static char *find_minor(struct stat file) {
         }
         tmp = minor;
         minor = mx_strjoin(" 0x", tmp);
-        //mx_strdel(&tmp);
+        mx_strdel(&tmp);
     }
     else
         minor = mx_itoa(file.st_rdev & 0xffffff);
@@ -38,22 +38,17 @@ char *mx_file_size(struct stat file) {
     if ((file.st_mode & S_IFMT)== S_IFCHR || (file.st_mode & S_IFMT) == S_IFBLK) {
         tmp = mx_itoa((file.st_rdev >> 24) & 0xff);
         file_size = mx_strjoin(tmp, ","); 
+        mx_strdel(&tmp);
         add_spaces(&file_size, 5);
         minor = find_minor(file);
         add_spaces(&minor, 4);
-        free(&tmp);
         tmp = file_size;
-        mx_strdel(&file_size);
         file_size = mx_strjoin(tmp, minor);
         mx_strdel(&tmp);
-        mx_strdel(&file_size);
         mx_strdel(&minor);
     }
     else
         file_size = mx_itoa((int)file.st_size);
-        //mx_strdel(&file_size);
-    //
-    //mx_strdel(&minor);
     return file_size;
 }
 
@@ -66,13 +61,16 @@ void mx_add_file_size_help(char **mas_for_print, int count_of_row, char **help_a
     for (i = 0; i < count_of_row; i++) {
         space = spaces(help_arr, help_arr[i], count_of_row);
         help_v1 = mx_strjoin(space, help_arr[i]);
-        help_v2 = mx_strjoin(help_v1, " ");
-        help_v1 = mx_strjoin(mas_for_print[i], help_v2);
-        mas_for_print[i] = mx_strdup(help_v1);
         mx_strdel(&space);
+        help_v2 = mx_strjoin(help_v1, " ");
+        mx_strdel(&help_v1);
+        help_v1 = mx_strjoin(mas_for_print[i], help_v2);
+        mx_strdel(&mas_for_print[i]);
+        mas_for_print[i] = mx_strdup(help_v1);
         mx_strdel(&help_v1);
         mx_strdel(&help_v2);
     }
+    mx_del_strarr(&help_arr);
     return;
 }
 
@@ -89,5 +87,4 @@ void mx_get_file_size(char **arr_print, int count, char **files) {
 	}
 	help_arr[count] = NULL;
 	mx_add_file_size_help(arr_print, count, help_arr);
-    mx_del_strarr(&help_arr);
 }

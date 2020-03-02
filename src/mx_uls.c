@@ -58,6 +58,7 @@ static void choose_wf_d(char **argv, int argc) {
 	if (argv[1][0] == '-' && argv[2] == NULL) {
 		dir = opendir(".");
 		mx_choose_flag(argv[1], argv, dir, argc);
+		system("leaks -q uls");
 		exit(1);
 	}
 	if(mx_strcmp(argv[2], "") == 0) {
@@ -95,5 +96,5 @@ int main(int argc, char **argv) {
 	mx_check_dir(dir, argv);
 	choose_combination(argv[1], argv, dir);
 	mx_choose_flag(argv[1], argv, dir, argc);
-	//system("leaks -q uls");
+	system("leaks -q uls");
 }

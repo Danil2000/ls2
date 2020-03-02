@@ -4,19 +4,19 @@ static void type_of_file(struct stat file, char **str) {
     char *tmp = *str;
 
     if ((file.st_mode & S_IFMT) == S_IFSOCK)
-        *str = mx_strcat(tmp, "s");
+        *str = mx_strjoin(tmp, "s");
     if ((file.st_mode & S_IFMT) == S_IFLNK)
-        *str = mx_strcat(tmp, "l");
+        *str = mx_strjoin(tmp, "l");
     if ((file.st_mode & S_IFMT) == S_IFREG)
-        *str = mx_strcat(tmp, "-");
+        *str = mx_strjoin(tmp, "-");
     if ((file.st_mode & S_IFMT) == S_IFBLK)
-        *str = mx_strcat(tmp, "b");
+        *str = mx_strjoin(tmp, "b");
     if ((file.st_mode & S_IFMT) == S_IFDIR)
-        *str = mx_strcat(tmp, "d");
+        *str = mx_strjoin(tmp, "d");
     if ((file.st_mode & S_IFMT) == S_IFCHR)
-        *str = mx_strcat(tmp, "c");
+        *str = mx_strjoin(tmp, "c");
     if ((file.st_mode & S_IFMT) == S_IFIFO)
-        *str = mx_strcat(tmp, "p");
+        *str = mx_strjoin(tmp, "p");
     mx_strdel(&tmp);
 }
 
@@ -26,18 +26,18 @@ void mx_attr_or_acl(char *file, char **permissions) {
 
     tmp = *permissions;
     if (listxattr(file, NULL, 0, XATTR_NOFOLLOW) > 0){
-        *permissions = mx_strcat(tmp, "@");
+        *permissions = mx_strjoin(tmp, "@");
     }
     else {
         if ((acl = acl_get_file(file, ACL_TYPE_EXTENDED)) != NULL) {
-            *permissions = mx_strcat(tmp, "+");
+            *permissions = mx_strjoin(tmp, "+");
             mx_strdel(&tmp);
         }
         else
-            *permissions = mx_strcat(tmp, " ");
+            *permissions = mx_strjoin(tmp, " ");
         acl_free(acl);
     }
-    
+    mx_strdel(&tmp);
 }
 
 char * mx_permissions(char *f) {

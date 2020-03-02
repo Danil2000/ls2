@@ -19,14 +19,16 @@ void mx_dop_owner_name(char **arr_print, int count, char **dop_arr) {
 	{
 		spcs = spaces(dop_arr, dop_arr[i], count);
 		help1 = mx_strjoin(dop_arr[i], spcs);
+        mx_strdel(&spcs);
 		help2 = mx_strjoin(help1, " ");
         mx_strdel(&help1);
 		help1 = mx_strjoin(arr_print[i], help2);
+        mx_strdel(&arr_print[i]);
 		arr_print[i] = mx_strdup(help1);
-        mx_strdel(&spcs);
         mx_strdel(&help1);
         mx_strdel(&help2);
 	}
+     mx_del_strarr(&dop_arr);
 	return;
 }
 
@@ -43,5 +45,5 @@ void mx_owner_names(char **arr_print, int count, char **files) {
    	}
    	help_arr[count] = NULL;
    	mx_dop_owner_name(arr_print, count, help_arr);
-    mx_del_strarr(&help_arr);
+    //mx_del_strarr(&help_arr);
 }

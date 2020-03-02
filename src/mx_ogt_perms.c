@@ -10,14 +10,12 @@ static void S_x_s(struct stat file, char **str) {
             *str = mx_strjoin(tmp, "s");
         else
             *str = mx_strjoin(tmp, "x");
-        mx_strdel(&tmp);
     }
     else {
         if ((file.st_mode & S_ISUID) == S_ISUID)
             *str = mx_strjoin(tmp, "S");
         else
             *str = mx_strjoin(tmp, "-");
-        mx_strdel(&tmp);
     }
     mx_strdel(&tmp);
 }
@@ -29,8 +27,8 @@ void mx_owner_permissions(struct stat file, char **str) {
         *str = mx_strjoin(tmp, "r");
     else
         *str = mx_strjoin(tmp, "-");
+    mx_strdel(&tmp);
     tmp = *str;
-    mx_strdel(str);
     if ((file.st_mode & S_IWUSR) == S_IWUSR)
         *str = mx_strjoin(tmp, "w");
     else

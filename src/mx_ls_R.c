@@ -29,7 +29,7 @@ char* make_R_str(char *fn, char *filename) {
 
 	s = mx_strjoin(fn, "/");
 	s1 = mx_strjoin(s, filename);
-	free(s);
+	mx_strdel(&s);
 	return s1;
 }
 
@@ -48,7 +48,7 @@ void mx_ls_R(char *fn, char** argv) {
 				s1 = make_R_str(fn, files->d_name);
 				print_name_dir(s1);
 				mx_ls_R(s1, argv);
-				free(s1);
+				mx_strdel(&s1);
 			}
 		}
 	}

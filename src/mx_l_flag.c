@@ -45,16 +45,22 @@ void mx_ls_l(DIR *dir, char **argv) {
 	DIR *dir1;
 	int len_files = 0;
 
-	dir1 = opendir(argv[2]);
+	if (!argv[2])
+		dir1 = opendir(".");
+	else
+		dir1 = opendir(argv[2]);
 	s_dir = mx_dir_size(dir, 0);
 	s = malloc(sizeof(char *) * (s_dir + 1));
 	s = mx_write_to_arr(dir1, s);
-	l_files = files_with_adsres(s, argv[2]);
+	if (!argv[2])
+		l_files = files_with_adsres(s, ".");
+	else
+		l_files = files_with_adsres(s, argv[2]);
 	len_files = mx_len_arr(l_files);
 	mx_bubble_sort(l_files, len_files);
 	mx_bubble_sort(s, mx_len_arr(s));
 	l_print(l_files, s);
-	mx_del_strarr(&s);
 	mx_del_strarr(&l_files);
+	mx_del_strarr(&s);
 	closedir(dir1);
 }

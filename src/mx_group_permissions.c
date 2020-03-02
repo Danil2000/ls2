@@ -26,8 +26,8 @@ void mx_group_permissions(struct stat file, char **str) {
         *str = mx_strjoin(tmp, "r");
     else
         *str = mx_strjoin(tmp, "-");
+    mx_strdel(&tmp);
     tmp = *str;
-    mx_strdel(str);
     if ((file.st_mode & S_IWGRP) == S_IWGRP)
         *str = mx_strjoin(tmp, "w");
     else
