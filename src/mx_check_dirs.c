@@ -16,13 +16,16 @@ int mx_dirlen(char *dir) {
     return len;
 }
 
-void mx_check_files(char *file) {
+void mx_check_files(char *file, char **argv) {
 	errno = 0;
 	char *str;
     mx_dirlen(file);
     if (errno == 2) {
-        str = mx_strjoin("uls: ", file);
-        perror(str);
-        mx_strdel(&str);
+        if(argv[1][0] != '-'){
+            str = mx_strjoin("uls: ", &argv[1][0]);
+            perror(str);
+            mx_strdel(&str);
+            exit(1);
+        }
     }
 }
