@@ -14,7 +14,6 @@ char *mx_link(char *file) {
     for (i = 0; i < len; i++)
         link[i] = buf[i];
     tmp = link;
-    //mx_strdel(&link);
     link = mx_strjoin(" -> ", tmp);
     mx_strdel(&tmp);
     return link;

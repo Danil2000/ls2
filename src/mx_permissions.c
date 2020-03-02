@@ -47,7 +47,6 @@ char * mx_permissions(char *f) {
     lstat(f, &file);
     type_of_file(file, &permissions);
     mx_owner_permissions(file, &permissions);
-    //mx_printstr(permissions);
     mx_group_permissions(file, &permissions);
     mx_other_permissions(file, &permissions);
     mx_attr_or_acl(f, &permissions);

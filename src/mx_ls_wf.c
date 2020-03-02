@@ -11,7 +11,7 @@ char** mx_write_to_arr(DIR *dir, char **s) {
 		}
 	}
 	s[i] = NULL;
-	return s; //массив с названиями файлов
+	return s;
 }
 
 void mx_ls_wf(DIR *dir, char *argv) {

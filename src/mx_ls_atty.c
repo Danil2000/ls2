@@ -24,7 +24,7 @@ void mx_ls_atty(char **argv) {
 	dir1 = opendir(c);
 	if (!argv[1])
 		mx_ls_prnt_cat_e_no_dir(size_dir, s, dir, dir1);
-	if (ls_is_flg_aAf(argv) == 1)
+	if (mx_ls_is_flg_aAf(argv) == 1)
 		mx_prnt_aAf(size_dir, s, dir, dir1, argv);
 	if (argv[1][0] != '-')
 		mx_ls_prnt_flg_one(size_dir, s, dir, dir1);

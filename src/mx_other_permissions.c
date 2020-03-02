@@ -28,7 +28,6 @@ void mx_other_permissions(struct stat file, char **str) {
         *str = mx_strjoin(tmp, "-");
     mx_strdel(&tmp);
     tmp = *str;
-    //mx_strdel(str);
     if ((file.st_mode & S_IWOTH) == S_IWOTH)
         *str = mx_strjoin(tmp, "w");
     else

@@ -33,7 +33,7 @@ void mx_ls_G(DIR *dir, int size_dir) {
         st = stat(s[i], &fst);
         type = fst.st_mode;
         reztype = mx_type_of_file(type);
-        choose_color(reztype, s[i]);
+        mx_choose_color(reztype, s[i]);
         i++;
     }
 }

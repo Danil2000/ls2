@@ -14,7 +14,6 @@ static char **files_with_adsres(char **s, char *address) {
 		chnged_files[i] = mx_strjoin(help_v, s[i]);
 		mx_strdel(&help_v);
 	}
-	//mx_strdel(&help_v);
 	return chnged_files;
 }
 
@@ -38,6 +37,7 @@ static void l_print(char **f_name, char **s) {
 	mx_print_strarr(arr_print, "\n");
 	mx_del_strarr(&arr_print);
 }
+
 void mx_ls_l(DIR *dir, char **argv) {
 	char **s = NULL;
 	char **l_files = NULL;

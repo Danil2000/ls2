@@ -1,15 +1,14 @@
 #include "uls.h"
 
 //считаем количество ТОЛЬКО одних папок (без прог и файлов)
-static int count_all_dir(char **argv)
-{
+static int count_all_dir(char **argv) {
 	int i = 0;
 	int cout_dir = 0;
 
 	while (argv[i])
 	{
 		if (mx_is_dir(argv[i]))
-		{ //проверяем если папка
+		{
 			cout_dir++;
 		}
 		i++;
@@ -17,8 +16,7 @@ static int count_all_dir(char **argv)
 	return cout_dir;
 }
 
-char **check_files(char **s_file, char **argv)
-{
+char **mx_check_files_1(char **s_file, char **argv) {
 	int i = 0;
 	int j = 0;
 
@@ -37,8 +35,7 @@ char **check_files(char **s_file, char **argv)
 	return s_file; //массив файлов
 }
 
-char **check_dirs(char **s_dir, char **argv)
-{
+char **mx_check_dirs(char **s_dir, char **argv) {
 	int i = 0;
 	int j = 0;
 
@@ -57,8 +54,7 @@ char **check_dirs(char **s_dir, char **argv)
 	return s_dir; //массив папок
 }
 
-char **chk(char **argv, char **ss)
-{
+char **mx_chk(char **argv, char **ss) {
 	int i = 0;
 	int j = 0;
 	int size = 0;
@@ -83,14 +79,14 @@ char **chk(char **argv, char **ss)
 	return ss;
 }
 
-void mx_few_dirs(char **argv)
-{
+void mx_few_dirs(char **argv) {
 	char **f = NULL;
 	char **ss = NULL;
 	char **s = NULL;
-	ss = chk(argv, ss); //вывод ошибок и папок
-	s = check_dirs(s, ss);
-	f = check_files(f, ss);
+
+	ss = mx_chk(argv, ss); //вывод ошибок и папок
+	s = mx_check_dirs(s, ss);
+	f = mx_check_files_1(f, ss);
 	mx_bubble_sort(ss, mx_len_arr(ss));
 	mx_print_few_dir(s, f, argv);
 	mx_del_strarr(&f);

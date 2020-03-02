@@ -1,6 +1,6 @@
 #include "uls.h"
 
-char *spaces(char** files, char *file, int counter) {
+char *mx_spaces(char** files, char *file, int counter) {
 	char *space = NULL;
 	int max = 0;
 	int i = 0;
@@ -25,7 +25,7 @@ void mx_add_count_link_help(char **mas_for_print, int count_of_row, char **links
     char *help_v2;
 
     for (i = 0; i < count_of_row; i++) {
-        space = spaces(links_arr, links_arr[i], count_of_row);
+        space = mx_spaces(links_arr, links_arr[i], count_of_row);
         help_v1 = mx_strjoin(space, links_arr[i]);
         mx_strdel(&space);
         help_v2 = mx_strjoin(help_v1, " ");

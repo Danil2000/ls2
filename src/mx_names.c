@@ -15,9 +15,8 @@ void mx_dop_owner_name(char **arr_print, int count, char **dop_arr) {
 	char *help1;
 	char *help2;
 
-	for (i = 0; i < count; i++)
-	{
-		spcs = spaces(dop_arr, dop_arr[i], count);
+	for (i = 0; i < count; i++) {
+		spcs = mx_spaces(dop_arr, dop_arr[i], count);
 		help1 = mx_strjoin(dop_arr[i], spcs);
         mx_strdel(&spcs);
 		help2 = mx_strjoin(help1, " ");
@@ -45,5 +44,4 @@ void mx_owner_names(char **arr_print, int count, char **files) {
    	}
    	help_arr[count] = NULL;
    	mx_dop_owner_name(arr_print, count, help_arr);
-    //mx_del_strarr(&help_arr);
 }

@@ -9,7 +9,7 @@ char** mx_write_to_arr_a(DIR *dir, char **s) {
 		i++;
 	}
 	s[i] = NULL;
-	return s; //массив с названиями файлов
+	return s;
 }
 
 void mx_lsa(DIR *dir, char *argv) {

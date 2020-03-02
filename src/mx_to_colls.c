@@ -29,7 +29,6 @@ static void mx_to_clls_prnt(t_ls_colls *c, int colls, char **s, int spaces)
 	}
 }
 
-//печатаем содержимое папки
 void mx_to_colls(int colls, char **s, int spaces, t_ls_colls *c) {
 	c->len = mx_len_arr(s);
 	c->res = (char**) malloc(c->len * sizeof(char**));

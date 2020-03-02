@@ -1,7 +1,6 @@
 #include "uls.h"
 
-int mx_dirlen(char *dir)
-{
+int mx_dirlen(char *dir) {
     DIR *dd;
     int len = 0;
     struct dirent *entry;
@@ -17,8 +16,7 @@ int mx_dirlen(char *dir)
     return len;
 }
 
-void mx_check_files(char *file, char **argv)
-{
+void mx_check_files(char *file, char **argv) {
     errno = 0;
     char *str;
     mx_dirlen(file);

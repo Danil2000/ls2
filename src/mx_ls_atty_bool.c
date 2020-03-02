@@ -12,7 +12,7 @@ char **mx_ls_chs_sm_flg(DIR *dir, char **s, char **argv)
     return s;
 }
 
-bool ls_is_flg_A(char **argv)
+bool mx_ls_is_flg_A(char **argv)
 {
     if (argv[1][1] == 'A')
         return 1;
@@ -21,8 +21,9 @@ bool ls_is_flg_A(char **argv)
 }
 
 
-bool ls_is_flg_aAf(char **argv) {
-	if ((argv[1][1] == 'a') || (argv[1][1] == 'f') || (argv[1][1] == 'A'))
+bool mx_ls_is_flg_aAf(char **argv) {
+	if ((argv[1][1] == 'a') || (argv[1][1] == 'f')
+    || (argv[1][1] == 'A'))
 		return 1;
 	else
 		return 0;

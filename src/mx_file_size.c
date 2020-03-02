@@ -59,7 +59,7 @@ void mx_add_file_size_help(char **mas_for_print, int count_of_row, char **help_a
     char *help_v2;
 
     for (i = 0; i < count_of_row; i++) {
-        space = spaces(help_arr, help_arr[i], count_of_row);
+        space = mx_spaces(help_arr, help_arr[i], count_of_row);
         help_v1 = mx_strjoin(space, help_arr[i]);
         mx_strdel(&space);
         help_v2 = mx_strjoin(help_v1, " ");
@@ -80,8 +80,7 @@ void mx_get_file_size(char **arr_print, int count, char **files) {
 	char **help_arr = NULL;
 
 	help_arr = (char **)malloc(sizeof(char **) * (count + 1));
-	for (i = 0; i < count; i++)
-	{
+	for (i = 0; i < count; i++) {
 		lstat(files[i], &file);
 		help_arr[i] = mx_file_size(file);
 	}

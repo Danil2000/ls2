@@ -58,7 +58,7 @@ static void choose_wf_d(char **argv, int argc)
 		dir = opendir(argv[1]);
 		mx_check_dir(argv);
 		mx_ls_wf(dir, argv[1]);
-		system("leaks -q uls");
+		//system("leaks -q uls");
 		exit(1);
 	}
 	if (argv[1][0] == '-' && argv[2] == NULL)
@@ -72,14 +72,11 @@ static void choose_wf_d(char **argv, int argc)
 		mx_ls_d(argv);
 		exit(1);
 	}
-	system("leaks -q uls");
+	//system("leaks -q uls");
 }
 
-static void ls_isatty_prnt_1_clm(char **argv, int argc)
-{
-	//isatty если перенаправляет в терминал, то единица, иначе ноль
-	if (isatty(1) == 0)
-	{
+static void ls_isatty_prnt_1_clm(char **argv, int argc) {
+	if (isatty(1) == 0) {
 		if (argc > 2 && argv[1][0] != '-')
 			mx_few_dirs(argv);
 		else
@@ -87,15 +84,13 @@ static void ls_isatty_prnt_1_clm(char **argv, int argc)
 		//system("leaks -q uls");
 		exit(1);
 	}
-	if (argc == 1)
-	{
+	if (argc == 1) {
 		mx_ls_wd();
 		exit(1);
 	}
-	if (argc > 2 && argv[1][0] != '-')
-	{
+	if (argc > 2 && argv[1][0] != '-') {
 		mx_few_dirs(argv);
-		system("leaks -q uls");
+		//system("leaks -q uls");
 		exit(1);
 	}
 }
@@ -109,13 +104,12 @@ int main(int argc, char **argv)
 	if (argv[1][0] == '-')
 	{
 		mx_check(argc, argv);
-		system("leaks -q uls");
+		//system("leaks -q uls");
 	}
 	mx_check(argc, argv);
 	dir = opendir(argv[2]);
-	//mx_print_strarr(argv, " ");
 	mx_check_dir(argv);
 	choose_combination(argv[1], argv, dir);
 	mx_choose_flag(argv[1], argv, dir, argc);
-	system("leaks -q uls");
+	//system("leaks -q uls");
 }

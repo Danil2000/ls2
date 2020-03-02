@@ -28,14 +28,13 @@ void mx_check_dir(char **argv) {
 	char **s_files = NULL;
 	char **s = NULL;
 
-	s = chk(argv, s);
-	s_dir = check_dirs(s_dir, s);
-	//mx_printstr(s_dir[0]);
+	s = mx_chk(argv, s);
+	s_dir = mx_check_dirs(s_dir, s);
 	if (s_dir[0] != NULL) {
 		print_chk_err(s_dir, argv, i, str);
 	}
 	else {
-		s_files = check_files(s_files, s);
+		s_files = mx_check_files_1(s_files, s);
 		mx_print_strarr(s_files, "   ");
 		exit(0);
 	}

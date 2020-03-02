@@ -12,7 +12,7 @@ int mx_size_win() {
 bool mx_min_size(char **s, int width) {
 	int i = 0;
     int loc = 0;
-    int size = 0; //кол-во файлов в дирректории
+    int size = 0; //кол-во файлов в дирр
     int res = 0;
     int lens[size];
 
@@ -39,17 +39,9 @@ void mx_get_width(char **s, int spaces, int isf) {
 	c = malloc(sizeof(t_ls_colls));
 	size = mx_size_win();
 	if (!isf) {
-		mx_bubble_sort(s, mx_len_arr(s)); //сортируем название файлов в папке
+		mx_bubble_sort(s, mx_len_arr(s));
 	}
 	count = mx_count_for_print(s);
 	size = (size / mx_uls_len_name(count));
-
-	//тут проблема с выводом минимальной длины экрана
-	
-	// if (mx_min_size(s, size)) {
-	// 	mx_print_flag_one(s, size);
-	// 	return;
-	// }
-
 	mx_to_colls(size, s, spaces, c);
 }

@@ -23,7 +23,7 @@ static void open_dubble_read_dir(DIR *dir) {
 	files = readdir(dir);
 }
 
-char* make_R_str(char *fn, char *filename) {
+char* mx_make_R_str(char *fn, char *filename) {
 	char *s1;
 	char *s;
 
@@ -45,7 +45,7 @@ void mx_ls_R(char *fn, char** argv) {
 		if (mx_is_dir(files->d_name)) {
 			if (files->d_name[0] != '.') {
 				mx_printchar('\n');
-				s1 = make_R_str(fn, files->d_name);
+				s1 = mx_make_R_str(fn, files->d_name);
 				print_name_dir(s1);
 				mx_ls_R(s1, argv);
 				mx_strdel(&s1);
