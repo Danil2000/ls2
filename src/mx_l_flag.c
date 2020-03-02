@@ -46,7 +46,10 @@ void mx_ls_l(DIR *dir, char **argv) {
 	int s_dir = 0;
 	DIR *dir1;
 
-	dir1 = opendir(argv[2]);
+	if (!argv[2])
+		dir1 = opendir(".");
+	else
+		dir1 = opendir(argv[2]);
 	s_dir = mx_dir_size(dir, 0);
 	s = malloc(sizeof(char *) * (s_dir + 1));
 	s = mx_write_to_arr(dir1, s);

@@ -41,10 +41,10 @@ typedef struct s_ls_colls {
 typedef struct s_lst {
     void *data;
     struct s_lst *next;
-}   t_lst;
+}              t_lst;
 
 void mx_check(int argc, char **argv);
-void mx_check_dir(DIR *dir, char **argv);
+void mx_check_dir(char **argv);
 void mx_ls_wf(DIR *dir, char *argv);
 void mx_ls_A(DIR *dir, char **argv);
 void mx_lsa(DIR *dir, char *argv);
@@ -90,7 +90,7 @@ int mx_size_win();
 void mx_choose_flag(char *arg, char **args, DIR *dir, int argc);
 void mx_ls_atty(char **argv);
 char **mx_write_p(DIR *dir, char **s);
-void mx_check_files(char *file);
+void mx_check_files(char *file, char **argv);
 void mx_print_err_few(char **files);
 void mx_ls_l(DIR *dir, char **argv);
 int mx_total(char **s, int count);
@@ -118,4 +118,9 @@ void mx_ls_prnt_flg_one(int size_dir, char **s, DIR *dir, DIR *dir1);
 char **mx_ls_chs_sm_flg(DIR *dir, char **s, char **argv);
 bool ls_is_flg_A(char **argv);
 bool ls_is_flg_aAf(char **argv);
+
+char **check_dirs(char **s_dir, char **argv);
+char **check_files(char **s_file, char **argv);
+char **chk(char **argv, char **ss);
+
 #endif
