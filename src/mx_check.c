@@ -1,50 +1,20 @@
 #include "uls.h"
 
-static void print_chk_err(char **s_dir, char **argv, int i, char *str) {
-	while (s_dir[i]) {
-		if (!mx_is_dir(s_dir[i])) {
-			str = mx_strnew(1);
-			if (argv[1][0] == '-') {
-				str = mx_strjoin("uls: ", &argv[2][0]);
-				perror(str);
-				mx_strdel(&str);
-				exit(1);
-			}
-			else {
-				str = mx_strjoin("uls: ", &argv[1][0]);
-				perror(str);
-				mx_strdel(&str);
-				exit(1);
-			}
-		}
-		i++;
-	}
-}
+void mx_check_dir(DIR *dir, char **argv) {
+	char *str;
 
-void mx_check_dir(char **argv) {
-	char *str = NULL;
-	char **s_dir = NULL;
-	int i = 0;
-	char **s_files = NULL;
-	char **s = NULL;
-
-	s = chk(argv, s);
-	s_dir = check_dirs(s_dir, s);
-	//mx_printstr(s_dir[0]);
-	if (s_dir[0] != NULL) {
-		print_chk_err(s_dir, argv, i, str);
+	if (!dir) {
+		str = mx_strnew(1);
+		str = mx_strjoin("uls: ", &argv[1][0]);
+		perror(str);
+		mx_strdel(&str);
+		exit(1);
 	}
-	else {
-		s_files = check_files(s_files, s);
-		mx_print_strarr(s_files, "   ");
-		exit(0);
-	}
-	mx_del_strarr(&s_dir);
-	mx_del_strarr(&s);
 }
 
 void mx_check(int argc, char **argv) {
 	char *str;
+
 	if (mx_check_flags(argv[1][1]) == 0) {
 		str = mx_strnew(1);
 		str = mx_strjoin("uls: illegal option -- ", &argv[1][1]);

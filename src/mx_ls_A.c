@@ -23,7 +23,7 @@ void mx_ls_A(DIR *dir, char **argv) {
 	int hres = 0;
 	int count = 0;
 
-	size_dir = mx_dir_size(dir, 1); //к-во папок и файлов в дир-ии
+	size_dir = mx_dir_size(dir, 1); //количество папок и файлов в дирректории
 	if (!argv[2])
 		dir1 = opendir(".");
 	else
@@ -31,7 +31,7 @@ void mx_ls_A(DIR *dir, char **argv) {
 	s = malloc(sizeof(char *) * (size_dir + 1));
 	s = mx_write_to_arr_A(dir1, s);
 	hres = mx_count_for_print(s);//длина максимального файла 
-	count = mx_uls_len_name(hres);// кол-во название + пробелы
+	count = mx_uls_len_name(hres);// кол-во название плюс пробелы
 	mx_get_width(s, count, 0);
 	mx_del_strarr(&s);
 	closedir(dir1);

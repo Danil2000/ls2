@@ -38,16 +38,10 @@ void mx_print_few_dir(char **s_dir, char **s_file, char **argv) {
 		if (!isatty(1)) {
 			dir1 = opendir(s_dir[i]);
 			mx_ls_flag_one(dir1, argv, s_dir[i]);
-			//mx_strdel(&s_dir[i]);
 			i++;
 		}
-		else{
+		else
 			mx_ls_prnt_ls_wf(dir, s_dir, i);
-			//mx_strdel(&s_dir[i]);
 			i++;
-		}
-		
 	}
-	// mx_del_strarr(&s_dir);
-	// mx_del_strarr(&s_file);
 }

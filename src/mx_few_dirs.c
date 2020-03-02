@@ -21,7 +21,7 @@ char **check_files(char **s_file, char **argv) {
 	s_file = (char **)malloc((count_all_dir(argv) + 1) * sizeof(char **));
 	while (argv[i]) {
 		if (mx_is_dir(argv[i]) == 0) { //проверяем если не папка, то файл
-			s_file[j] = mx_strdup(argv[i]);
+			s_file[j] = argv[i];
 			j++;
 		}
 		i++;
@@ -31,14 +31,14 @@ char **check_files(char **s_file, char **argv) {
 	return s_file; //массив файлов
 }
 
-char **check_dirs(char **s_dir, char** argv) {
+static char **check_dirs(char **s_dir, char** argv) {
 	int i = 0;
 	int j = 0;
 
 	s_dir = (char **)malloc((count_all_dir(argv) + 1) * sizeof(char **));
 	while (argv[i]) {
 		if (mx_is_dir(argv[i])) {//проверяем если папка
-			s_dir[j] = mx_strdup(argv[i]);
+			s_dir[j] = argv[i];
 			j++;
 		}
 		i++;
@@ -48,21 +48,17 @@ char **check_dirs(char **s_dir, char** argv) {
 	return s_dir; //массив папок
 }
 
-char** chk(char **argv, char **ss) {
-	int i =0;
+static char** chk(char **argv, char **ss) {
+	int i =1;
 	int j = 0;
 	int size  = 0;
 
-	ss = malloc(sizeof(char *) * (mx_len_arr(argv) + 1));
-	if (argv[1][0] == '-')
-		i = 2;
-	else 
-		i = 1;
 	size = mx_len_arr(argv);
+	ss = malloc(sizeof(char *) * (mx_len_arr(argv) + 1));
 	while (argv[i]) {
-		mx_check_files(argv[i], argv);
+		mx_check_files(argv[i]);
 		if (errno != 2) {
-			ss[j]= mx_strdup(argv[i]);
+			ss[j]= argv[i];
 			j++;
 		}
 		i++;
@@ -75,12 +71,10 @@ void mx_few_dirs(char** argv) {
 	char **f = NULL;
 	char **ss = NULL;
 	char **s = NULL;
+
 	ss = chk(argv, ss);//вывод ошибок и папок
 	s = check_dirs(s, ss);
 	f = check_files(f, ss);
 	mx_bubble_sort(ss, mx_len_arr(ss));
 	mx_print_few_dir(s, f, argv);
-	mx_del_strarr(&f);
-	mx_del_strarr(&ss);
-	mx_del_strarr(&s);
 }

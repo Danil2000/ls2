@@ -29,5 +29,4 @@ void mx_ls_wf(DIR *dir, char *argv) {
 	count = mx_uls_len_name(hres);
 	mx_get_width(s, count, 0);
 	mx_del_strarr(&s);
-	closedir(dir1);
 }
