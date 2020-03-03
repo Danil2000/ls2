@@ -38,24 +38,33 @@ static void l_print(char **f_name, char **s) {
 	mx_del_strarr(&arr_print);
 }
 
-void mx_ls_l(DIR *dir, char **argv) {
-	char **s = NULL;
-	char **l_files = NULL;
-	int s_dir = 0;
-	DIR *dir1;
-	int len_files = 0;
-
+static DIR *dirs(char **argv, DIR *dir1) {
 	if (!argv[2])
 		dir1 = opendir(".");
 	else
 		dir1 = opendir(argv[2]);
-	s_dir = mx_dir_size(dir, 0);
-	s = malloc(sizeof(char *) * (s_dir + 1));
-	s = mx_write_to_arr(dir1, s);
+	return dir1;
+}
+static char **files(char **l_files, char **s, char ** argv) {
 	if (!argv[2])
 		l_files = files_with_adsres(s, ".");
 	else
 		l_files = files_with_adsres(s, argv[2]);
+	return l_files;
+}
+
+void mx_ls_l(DIR *dir, char **argv) {
+	char **s = NULL;
+	char **l_files = NULL;
+	int s_dir = 0;
+	DIR *dir1 = NULL;
+	int len_files = 0;
+
+	dir1 = dirs(argv, dir1);
+	s_dir = mx_dir_size(dir, 0);
+	s = malloc(sizeof(char *) * (s_dir + 1));
+	s = mx_write_to_arr(dir1, s);
+	l_files = files(l_files, s, argv);
 	len_files = mx_len_arr(l_files);
 	mx_bubble_sort(l_files, len_files);
 	mx_bubble_sort(s, mx_len_arr(s));
