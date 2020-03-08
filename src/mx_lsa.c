@@ -12,7 +12,7 @@ char** mx_write_to_arr_a(DIR *dir, char **s) {
 	return s;
 }
 
-void mx_lsa(DIR *dir, char *argv) {
+void mx_lsa(DIR *dir, char *argv, char **args) {
 	DIR *dir1;
 	int size_dir = 0;
 	char **s = NULL;
@@ -20,7 +20,7 @@ void mx_lsa(DIR *dir, char *argv) {
 	int count = 0;
 
 	size_dir = mx_dir_size(dir, 1);
-	if (!argv[2])
+	if (!args[2])
 		dir1 = opendir(".");
 	else
 		dir1 = opendir(argv);

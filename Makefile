@@ -12,7 +12,6 @@ INC = uls.h
 INCS	=	$(addprefix $(INCD)/, $(INC))
 
 SRC =	mx_check_flags.c\
-		mx_check.c\
 		mx_colors.c\
 		mx_count_for_print.c\
 		mx_dir_size.c\
@@ -56,7 +55,8 @@ SRC =	mx_check_flags.c\
 		mx_l_name.c\
 		mx_ls_prnt_few_dirs.c\
 		mx_ls_atty_prnt.c\
-		mx_ls_atty_bool.c
+		mx_ls_atty_bool.c\
+		mx_check.c\
 
 SRCS	=	$(addprefix $(SRCD)/, $(SRC))
 OBJS	=	$(addprefix $(OBJD)/, $(SRC:%.c=%.o))

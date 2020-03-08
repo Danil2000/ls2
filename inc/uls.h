@@ -48,7 +48,7 @@ void mx_check(int argc, char **argv);
 void mx_check_dir(char **argv);
 void mx_ls_wf(DIR *dir, char *argv);
 void mx_ls_A(DIR *dir, char **argv);
-void mx_lsa(DIR *dir, char *argv);
+void mx_lsa(DIR *dir, char *argv, char **args);
 void mx_ls_d(char **argv);
 void mx_ls_wd();
 int mx_dir_size(DIR *dir, int is_a);
@@ -88,7 +88,7 @@ void mx_take_ogp(mode_t mode, mode_t *modes, char *str);
 void mx_ls_ma(DIR *dir, char **argv);
 void mx_print_m(char **s, int winsize);
 int mx_size_win();
-void mx_choose_flag(char *arg, char **args, DIR *dir, int argc);
+void mx_choose_flag(char *arg, char **args, DIR *dir);
 void mx_ls_atty(char **argv);
 char **mx_write_p(DIR *dir, char **s);
 void mx_check_files(char *file, char **argv);
@@ -119,8 +119,9 @@ void mx_ls_prnt_flg_one(int size_dir, char **s, DIR *dir, DIR *dir1);
 char **mx_ls_chs_sm_flg(DIR *dir, char **s, char **argv);
 bool mx_ls_is_flg_A(char **argv);
 bool mx_ls_is_flg_aAf(char **argv);
-
 char **mx_check_dirs(char **s_dir, char **argv);
 char **mx_chk(char **argv, char **ss);
+void mx_not_file(char **argv, char *file);
+void mx_not_perm(char *file);
 
 #endif

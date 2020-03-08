@@ -41,7 +41,7 @@ void mx_attr_or_acl(char *file, char **permissions) {
 }
 
 char * mx_permissions(char *f) {
-    char * permissions = mx_strnew(0);
+    char * permissions = mx_strnew(1);
     struct stat file;
 
     lstat(f, &file);

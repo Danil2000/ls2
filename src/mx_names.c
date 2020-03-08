@@ -19,7 +19,7 @@ void mx_dop_owner_name(char **arr_print, int count, char **dop_arr) {
 		spcs = mx_spaces(dop_arr, dop_arr[i], count);
 		help1 = mx_strjoin(dop_arr[i], spcs);
         mx_strdel(&spcs);
-		help2 = mx_strjoin(help1, " ");
+		help2 = mx_strjoin(help1, "  ");
         mx_strdel(&help1);
 		help1 = mx_strjoin(arr_print[i], help2);
         mx_strdel(&arr_print[i]);

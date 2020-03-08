@@ -17,6 +17,10 @@ static void mx_ls_prnt_isatty_1(char **s_file)
 
 static void mx_ls_prnt_dirname(char **s_dir, int i)
 {
+	if (i != 0)
+	{
+		mx_printstr("\n");	
+	}
 	mx_printstr(s_dir[i]);
 	mx_printstr(":");
 	mx_printchar('\n');
@@ -42,6 +46,9 @@ void mx_print_few_dir(char **s_dir, char **s_file, char **argv) {
 			dir1 = opendir(s_dir[i]);
 			mx_ls_flag_one(dir1, argv, s_dir[i]);
 			i++;
+		}
+		else if (argv[1][1] == 'l') {
+			mx_ls_l(dir1, argv);
 		}
 		else {
 			mx_ls_prnt_ls_wf(dir, s_dir, i);

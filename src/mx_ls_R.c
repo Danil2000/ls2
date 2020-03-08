@@ -11,7 +11,7 @@ static void open_dir1_print_fl(char *fn, char **argv) {
 
 	dir1 = opendir(fn);
 	if (!mx_strcmp(argv[1], "-Ra"))
-		mx_lsa(dir1, argv[2]);
+		mx_lsa(dir1, argv[2], argv);
 	else
 		mx_ls_wf(dir1, fn);
 }

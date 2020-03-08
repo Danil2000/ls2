@@ -11,7 +11,7 @@ void mx_ls_wd() {
 	dir = opendir(".");
 	size_dir = mx_dir_size(dir, 0);
 	dir1 = opendir(".");
-	s = malloc(sizeof(char *) * size_dir + 1);
+	s = malloc(sizeof(char *) * (size_dir + 1));
 	s = mx_write_to_arr(dir1, s);
 	hres = mx_count_for_print(s);
 	count = mx_uls_len_name(hres);

@@ -16,21 +16,23 @@ int mx_dirlen(char *dir) {
     return len;
 }
 
-static void not_file(char **argv, char *file) {
+void mx_not_file(char **argv, char *file) {
     char *str;
+    int size = 0;
 
     mx_dirlen(file);
+    size = mx_len_arr(argv);   
     if (errno == 2)
     {
-        if (argv[1][0] != '-')
+        if (size >2)
         {
-            str = mx_strjoin("uls: ", &argv[1][0]);
+            str = mx_strjoin("uls: ", file);
             perror(str);
             mx_strdel(&str);
-            exit(1);
+            return;
         }
         else {
-            str = mx_strjoin("uls: ", &argv[2][0]);
+            str = mx_strjoin("uls: ", file);
             perror(str);
             mx_strdel(&str);
             exit(1);
@@ -38,31 +40,22 @@ static void not_file(char **argv, char *file) {
     }
 }
 
-static void not_perm(char **argv, char *file) {
+void mx_not_perm(char *file) {
     char *str;
 
     mx_dirlen(file);
     if (errno == 13)
     {
-        if (argv[1][0] != '-')
-        {
-            str = mx_strjoin("uls: ", &argv[1][0]);
-            perror(str);
-            mx_strdel(&str);
-            exit(1);
-        }
-        else {
-            str = mx_strjoin("uls: ", &argv[2][0]);
-            perror(str);
-            mx_strdel(&str);
-            exit(1);
-        }
+        str = mx_strjoin("uls: ", file);
+        perror(str);
+        mx_strdel(&str);
+        exit(1);
     }
 }
 
 void mx_check_files(char *file, char **argv) {
     errno = 0;
     
-    not_file(argv, file);
-    not_perm(argv, file);
+    mx_not_file(argv, file);
+    mx_not_perm(file);
 }
