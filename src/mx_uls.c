@@ -4,7 +4,7 @@ int main(int argc, char **argv) {
 	DIR *dir;
 
 	mx_choose(argv, argc);
-	
+	//mx_check(argc, argv);
 	if (argc == 2 && argv[1][0] == '-')
 		dir = opendir(".");
 	else 

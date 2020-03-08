@@ -50,18 +50,24 @@ void mx_choose(char **argv, int argc) {
 		choose_wf_d(argv, argc);
 		return;
 	}
-	if (argv[1][0] == '-') {
-		mx_check(argc, argv);
+	if (!mx_is_dir(argv[1]) && argv[1][0] != '-' && argc == 2)
+	{
+		mx_not_file(argv, argv[1]);
+		mx_not_perm(argv[1]);
+		mx_print_with_new_line(argv[1]);
+		return;
 	}
 	ls_isatty_prnt_1_clm(argv, argc);
-	if (argv[1][0] == '-') {
-		mx_not_file(argv, argv[2]);
-		mx_not_perm(argv[2]);
-		mx_check(argc, argv);
-	}
-	else {
+	if (argv[1][0] != '-')
+	{
 		mx_not_file(argv, argv[1]);
-		mx_not_perm(argv[2]);
+		mx_not_perm(argv[1]);
 		choose_wf_d(argv, argc);
 	}
+	
+	// if (argv[1][0] == '-') {
+	// 	mx_not_file(argv, argv[2]);
+	// 	mx_not_perm(argv[2]);
+	// 	mx_check(argc, argv);
+	// }
 }

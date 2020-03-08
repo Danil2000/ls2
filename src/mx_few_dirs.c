@@ -19,7 +19,7 @@ char **mx_check_files_1(char **s_file, char **argv) {
 	int i = 0;
 	int j = 0;
 
-	s_file = (char **)malloc((count_all_dir(argv) + 1) * sizeof(char **));
+	s_file = (char **)malloc((mx_len_arr(argv) + 1) * sizeof(char **));
 	while (argv[i]) {
 		if (!mx_is_dir(argv[i]))
 		{
