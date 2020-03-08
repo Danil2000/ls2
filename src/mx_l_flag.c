@@ -24,8 +24,7 @@ static void l_print(char **f_name, char **s, int is_file) {
 	count = mx_len_arr(f_name);
 	arr_print = (char**)malloc(sizeof(char*) * (count + 1));
 	arr_print[count] = NULL;
-	if (!is_file)
-	{
+	if (!is_file) {
 		mx_printstr("total ");
 		mx_printint(mx_total(f_name, count));
 		mx_printstr("\n");
@@ -72,15 +71,15 @@ void mx_ls_l(DIR *dir, char **argv) {
 	char **ss = NULL;
 	DIR *dir1 = NULL;
 
-	if(!mx_is_dir(argv[2])) {
+	if(mx_len_arr(argv)!= 2 && !mx_is_dir(argv[2])) {
 		ss = mx_chk(argv, ss);
 		l_files_print(ss);
 		return;
 	}
 	dir1 = dirs(argv, dir1);
-	s_dir = mx_dir_size(dir, 0);
+	s_dir = mx_dir_size(dir1, 0);
 	s = malloc(sizeof(char *) * (s_dir + 1));
-	s = mx_write_to_arr(dir1, s);
+	s = mx_write_to_arr(dir, s);
 	l_files = files(l_files, s, argv);
 	len_files = mx_len_arr(l_files);
 	mx_bubble_sort(l_files, len_files);
@@ -88,5 +87,5 @@ void mx_ls_l(DIR *dir, char **argv) {
 	l_print(l_files, s, 0);
 	mx_del_strarr(&l_files);
 	mx_del_strarr(&s);
-	closedir(dir1);
+	closedir(dir);
 }

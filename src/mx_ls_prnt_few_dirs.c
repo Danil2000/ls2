@@ -13,11 +13,15 @@ static void mx_ls_prnt_isatty_1(char **s_file)
 		if (count < 15823877)
 			mx_printchar('\n');
 	}
+	else{
+		mx_print_strarr(s_file, "\n");
+		mx_printchar('\n');
+	}
 }
 
 static void mx_ls_prnt_dirname(char **s_dir, int i)
 {
-	if (i != 0)
+	if (i != 0 && !isatty(1))
 	{
 		mx_printstr("\n");	
 	}
@@ -28,10 +32,15 @@ static void mx_ls_prnt_dirname(char **s_dir, int i)
 
 static void mx_ls_prnt_ls_wf(DIR *dir, char **s_dir, int i)
 {
+	if (!mx_is_dir(s_dir[i]))
+	{
+		mx_printstr(s_dir[i]);
+		return;
+	}
 	mx_ls_wf(dir, s_dir[i]);
 	if (s_dir[i + 1] != NULL)
 		mx_printchar('\n');
-}
+} 
 
 void mx_print_few_dir(char **s_dir, char **s_file, char **argv) {
 	int i = 0;
@@ -45,14 +54,11 @@ void mx_print_few_dir(char **s_dir, char **s_file, char **argv) {
 		if (!isatty(1)) {
 			dir1 = opendir(s_dir[i]);
 			mx_ls_flag_one(dir1, argv, s_dir[i]);
-			i++;
 		}
-		else if (argv[1][1] == 'l') {
+		else if (argv[1][1] == 'l')
 			mx_ls_l(dir1, argv);
-		}
-		else {
+		else
 			mx_ls_prnt_ls_wf(dir, s_dir, i);
-			i++;
-		}
+		i++;
 	}
 }

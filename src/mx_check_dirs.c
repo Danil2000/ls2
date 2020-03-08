@@ -24,12 +24,27 @@ void mx_not_file(char **argv, char *file) {
     size = mx_len_arr(argv);   
     if (errno == 2)
     {
-        if (size >2)
+        if (size > 2 && argv[1][0] != '-')
         {
             str = mx_strjoin("uls: ", file);
             perror(str);
             mx_strdel(&str);
+            //mx_strdel(&file);
             return;
+        }
+        // if (size > 3 && argv[1][0] == '-')
+        // {
+        //     str = mx_strjoin("uls: ", file);
+        //     perror(str);
+        //     mx_strdel(&str);
+        //     return;
+        // }
+        if (argv[1][0] == '-')
+        {
+            str = mx_strjoin("uls: ", file);
+            perror(str);
+            mx_strdel(&str);
+            exit(1);
         }
         else {
             str = mx_strjoin("uls: ", file);

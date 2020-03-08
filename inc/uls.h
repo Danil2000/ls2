@@ -106,12 +106,14 @@ void mx_add_count_link_help(char **arr_print, int count, char **links_arr);
 void mx_count_link(char **arrs, int count, char **fls);
 char *mx_spaces(char **files, char *file, int counter);
 void mx_owner_names(char **arr_print, int count, char **files);
-void mx_add_group_name_help(char **mas_for_print, int count_of_row, char **help_arr);
+void mx_add_group_name_help(char **mas_for_print,
+int count_of_row, char **help_arr);
 void mx_add_group_name(char **mas_for_print, int count_of_row, char **files);
 char *mx_group_name(struct stat file);
 void mx_get_file_size(char **arr_print, int count, char **files);
 void mx_add_time(char **mas_for_print, int count_of_row, char **files);
-void mx_add_name(char **mas_for_print, int count_of_row, char **name, char **files);
+void mx_add_name(char **mas_for_print,
+int count_of_row, char **name, char **files);
 void mx_print_few_dir(char **s_dir, char **s_file, char **argv);
 void mx_ls_prnt_cat_e_no_dir(int size_dir, char **s, DIR *dir, DIR *dir1);
 void mx_prnt_aAf(int size_dir, char **s, DIR *dir, DIR *dir1, char **argv);
@@ -123,5 +125,7 @@ char **mx_check_dirs(char **s_dir, char **argv);
 char **mx_chk(char **argv, char **ss);
 void mx_not_file(char **argv, char *file);
 void mx_not_perm(char *file);
+void mx_choose_combination(char *arg, char **args, DIR *dir);
+void mx_choose(char **argv, int argc);
 
 #endif

@@ -48,6 +48,10 @@ void mx_ls_atty(char **argv) {
 	}
 	else {
 		mx_chk(argv, ss);
+		if(!mx_is_dir(argv[1]) && argv[1][0] != '-') {
+			mx_print_with_new_line(argv[1]);
+			return;
+		}
 		if (!argv[1])
 			mx_ls_prnt_cat_e_no_dir(size_dir, s, dir, dir1);
 		if (mx_ls_is_flg_aAf(argv) == 1)

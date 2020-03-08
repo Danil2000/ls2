@@ -5,8 +5,7 @@ static int count_all_dir(char **argv) {
 	int i = 0;
 	int cout_dir = 0;
 
-	while (argv[i])
-	{
+	while (argv[i])	{
 		if (mx_is_dir(argv[i]))
 		{
 			cout_dir++;
@@ -20,11 +19,10 @@ char **mx_check_files_1(char **s_file, char **argv) {
 	int i = 0;
 	int j = 0;
 
-	s_file = (char **)malloc((mx_len_arr(argv) + 1));
-	while (argv[i])
-	{
-		if (mx_is_dir(argv[i]) == 0)
-		{ //проверяем если не папка, то файл
+	s_file = (char **)malloc((count_all_dir(argv) + 1) * sizeof(char **));
+	while (argv[i]) {
+		if (!mx_is_dir(argv[i]))
+		{
 			s_file[j] = mx_strdup(argv[i]);
 			j++;
 		}
@@ -86,7 +84,9 @@ void mx_few_dirs(char **argv) {
 
 	ss = mx_chk(argv, ss); //вывод ошибок и папок
 	s = mx_check_dirs(s, ss);
+	//mx_print_strarr(s, "\n");
 	f = mx_check_files_1(f, ss);
+	//mx_print_strarr(f, "\n");
 	mx_bubble_sort(ss, mx_len_arr(ss));
 	mx_print_few_dir(s, f, argv);
 	mx_del_strarr(&f);
